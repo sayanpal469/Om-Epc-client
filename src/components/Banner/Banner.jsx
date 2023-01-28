@@ -1,42 +1,52 @@
-import React from 'react';
+// import React from 'react';
+// import { Swiper, SwiperSlide } from "swiper/react";
+
+// // // Import Swiper styles
+// import "./Banner.css";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
+
+// // import "./styles.css";
+
+// // import required modules
+// import { Autoplay, Pagination, Navigation } from "swiper";
+
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
+
 // Import Swiper styles
-import "./Banner.css";
+import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import "./styles.css";
+import "./Banner.css";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper";
 
 const Banner = () => {
-    return (
-        <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+    return ( <div className="mt-10">
+      <Swiper
         pagination={{
-          clickable: true,
+          type: "progressbar",
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper w-50"
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <img src="https://i.ibb.co/C7jDygz/breakfast6.png" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://i.ibb.co/9psgscK/breakfast3.png" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://i.ibb.co/thVhY9L/breakfast1.png" alt="" />
+        </SwiperSlide>
+        {/* <SwiperSlide>Slide 4</SwiperSlide> */}
       </Swiper>
+      </div>
     );
 };
 
