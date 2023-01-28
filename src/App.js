@@ -6,7 +6,6 @@ import Service from './components/Service/Service';
 
 function App() {
   return (
-    <div className="App">
       <Nav>
         <Routes>
           <Route path='/' element={<Home/>}></Route>
@@ -14,7 +13,6 @@ function App() {
           <Route path='/about' element={<About/>}></Route>
         </Routes>
       </Nav>
-    </div>
   );
 }
 
