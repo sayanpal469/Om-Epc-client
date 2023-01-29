@@ -1,0 +1,9 @@
+.brand-container {
+  height: 420px;
+  width: 100%;
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/016/586/706/small_2x/abstract-blue-hexagon-shape-for-frame-illustration-design-png.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size:auto;
+  /* border: 1px solid red; */
+}
