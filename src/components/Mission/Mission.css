@@ -1,0 +1,10 @@
+.mission-container{
+    margin-top: 100px;
+    width: 100%;
+    height: fit-content;
+    /* border: 1px solid red; */
+}
+.mission{
+    border-bottom: 4px solid #3B82F6;
+}
+

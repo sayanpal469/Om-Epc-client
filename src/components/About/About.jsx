@@ -6,7 +6,13 @@ const About = () => {
     <>
       <div class="landing-animation">
         <div className="mx-10">
-        <h4 className="text-6xl text-center mb-20 text-white">OM EPC Solution</h4>
+        <div class="container-about text-center w-full">
+  <h2 class="title">
+    <span class="title-word title-word-1">OM </span>
+    <span class="title-word title-word-2">EPC </span>
+    <span class="title-word title-word-3">SOLUTION</span>
+  </h2>
+</div>
         <p>OM EPC Solutions is a leading provider of comprehensive maintenance services for all types of computers, printers, cameras, batteries, and inverters. With its team of experienced technicians and their expertise in troubleshooting and fixing different types of electronic devices, the company is a trusted partner for individuals and businesses alike. The company offers an annual maintenance contract that covers regular check-ups and preventative maintenance, ensuring that all devices are functioning optimally at all times. In addition, the company provides 24/7 support for urgent repair needs, ensuring minimal downtime and interruption to the customer's operations.
 
 In today's digital age, electronic devices have become an integral part of our daily lives. Whether it's a home office setup or a large enterprise network, the functioning of these devices is critical to our personal and professional lives. However, even the most reliable devices can experience problems, and the downtime caused by these issues can be costly and disruptive. That's why it's important to have a reliable maintenance partner that can ensure the smooth functioning of these devices.
