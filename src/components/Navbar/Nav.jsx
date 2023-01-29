@@ -4,12 +4,12 @@ import './Nav.css'
 
 const Nav = ({children}) => {
     return (
-        <div className='mt-0'>
+        <div className='mt-0 nav-bar'>
             <div className="drawer">
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content  flex flex-col">
                     {/* <!-- Navbar --> */}
-                    <div className="w-full navbar  bg-red-200">
+                    <div className="w-full navbar bg-black">
                         <div className="flex-none lg:hidden">
                             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -21,9 +21,14 @@ const Nav = ({children}) => {
                         <div className="flex-none hidden lg:block">
                             <ul className="menu menu-horizontal">
                                 {/* <!-- Navbar menu content here --> */}
-                                <li><Link to='/'>Home</Link></li>
-                                <li><Link to='/Service'>Service</Link></li>
-                                <li><Link to='/about'>About</Link></li>
+                                <li className='font-medium'><Link to='/'>Home</Link></li>
+                                <li className='font-medium'><Link to='/about'>About</Link></li>
+                                <li className='font-medium'><Link to='/Service'>Service</Link></li>
+                                <li className='font-medium'><Link to='/Service'>UPS & Backup</Link></li>
+                                <li className='font-medium'><Link to='/Service'>Computer</Link></li>
+                                <li className='font-medium'><Link to='/Service'>Printer</Link></li>
+                                <li className='font-medium'><Link to='/Service'>Survillence</Link></li>
+                                <li className='font-medium'><Link to='/Service'>Career</Link></li>
                             </ul>
                         </div>
                     </div>

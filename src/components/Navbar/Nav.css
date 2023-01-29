@@ -2,3 +2,6 @@
   /* border: 2px solid red; */
   width: 120px;
 }
+.menu li:hover{
+  color: #0670da;
+}

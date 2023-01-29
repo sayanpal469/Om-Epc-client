@@ -3,6 +3,10 @@
   height: 80vh;
 }
 
+.banner{
+  position: relative;
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -28,4 +32,175 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.slide-1 {
+  background-image: url("https://i.ibb.co/XSSg1Vz/1674554624354.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-2 {
+  background-image: url("https://i.ibb.co/fkmr7y8/1674554624358.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slide-3 {
+  background-image: url("https://i.ibb.co/FJdKwPC/1674554624363.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-4 {
+  background-image: url("https://i.ibb.co/tzgCdMP/1674554624370.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-5 {
+  background-image: url("https://i.ibb.co/d79yQkH/1674554624376.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-6 {
+  background-image: url("https://i.ibb.co/HYS6sZx/1674554624383.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-content {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/*------------------------------ button code---------------------------------- */
+
+.button-container {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  transition: 0.5s;
+  border: 1px solid #0670da;
+}
+
+.button-container button {
+  width: 101%;
+  height: 100%;
+  font-family: "Monument Extended", sans-serif;
+  font-size: 40px;
+  background: #0670da;
+  -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+  mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+  border: none;
+  color: White;
+  cursor: pointer;
+  animation: anim2 0.7s steps(22) forwards;
+}
+
+.button-container button:hover {
+  animation: anim1 0.7s steps(22) forwards;
+}
+
+.mask {
+  position: absolute;
+  color: black;
+  text-align: center;
+  width: 101%;
+  font-family: "Monument Extended", sans-serif;
+  font-weight: lighter;
+  font-size: 30px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+/*--------------------------------------------- wave -------------------------------------*/
+.ocean {
+  height: 16vh; /* change the height of the waves here */
+  width: 100%;
+  position: relative;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.wave {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(2) {
+  bottom: 0;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.5;
+}
+
+.wave:nth-of-type(3) {
+  bottom: 0;
+  animation: wave 20s -1s linear infinite;
+  opacity: 0.5;
+}
+/*------------------------------ wave-animation-------------------------------------------- */
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Text animation */
+
+/*---------------------------------------- button-animation----------------------------------- */
+@keyframes anim1 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
+@keyframes anim2 {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
 }
