@@ -1,20 +1,5 @@
-// import React from 'react';
-// import { Swiper, SwiperSlide } from "swiper/react";
-
-// // // Import Swiper styles
-// import "./Banner.css";
-// import "swiper/css/pagination";
-// import "swiper/css/navigation";
-
-// // import "./styles.css";
-
-// // import required modules
-// import { Autoplay, Pagination, Navigation } from "swiper";
-
-
+import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -23,29 +8,108 @@ import "swiper/css/navigation";
 import "./Banner.css";
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Autoplay} from "swiper";
 
 const Banner = () => {
-    return ( <div className="mt-10">
+    return ( <div className="mt-0 banner">
       <Swiper
+        direction={"vertical"}
+        loop={true}
         pagination={{
-          type: "progressbar",
+          clickable: true,
         }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        mousewheel={true}
+        modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://i.ibb.co/C7jDygz/breakfast6.png" alt="" />
+          <div className='slide-1 text-left bg-none'>
+          <div className="banner-content px-10">
+            <h1 className='text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <div class="container mt-5">
+      <div class="button-container">
+        <span class="mask">Buy Now</span>
+        <button type="button" name="Hover">Buy Now</button>
+      </div>
+    </div>
+          </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/9psgscK/breakfast3.png" alt="" />
+          <div className='slide-2 text-left bg-none'>
+          <div className="banner-content px-10">
+            <h1 className='text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <div class="container mt-5">
+      <div class="button-container">
+        <span class="mask">Buy Now</span>
+        <button type="button" name="Hover">Buy Now</button>
+      </div>
+    </div>
+          </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/thVhY9L/breakfast1.png" alt="" />
+          <div className='slide-3 text-left bg-none'>
+          <div className="banner-content px-10">
+            <h1 className='text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <div class="container mt-5">
+      <div class="button-container">
+        <span class="mask">Buy Now</span>
+        <button type="button" name="Hover">Buy Now</button>
+      </div>
+    </div>
+          </div>
+          </div>
         </SwiperSlide>
-        {/* <SwiperSlide>Slide 4</SwiperSlide> */}
+        <SwiperSlide>
+          <div className='slide-4 text-left bg-none'>
+          <div className="banner-content px-10">
+            <h1 className='text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <div class="container mt-5">
+      <div class="button-container">
+        <span class="mask">Buy Now</span>
+        <button type="button" name="Hover">Buy Now</button>
+      </div>
+    </div>
+          </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className='slide-5 text-left bg-none'>
+          <div className="banner-content px-10">
+            <h1 className='text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <div class="container mt-5">
+      <div class="button-container">
+        <span class="mask">Buy Now</span>
+        <button type="button" name="Hover">Buy Now</button>
+      </div>
+    </div>
+          </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className='slide-6 text-left bg-none'>
+          <div className="banner-content px-10">
+            <h1 className='text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <div class="container mt-5">
+      <div class="button-container">
+        <span class="mask">Buy Now</span>
+        <button type="button" name="Hover">Buy Now</button>
+      </div>
+    </div>
+          </div>
+          </div>
+        </SwiperSlide>
       </Swiper>
+      <div class="ocean">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
       </div>
     );
 };
