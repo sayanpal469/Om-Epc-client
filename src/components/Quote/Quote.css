@@ -10,6 +10,11 @@
     align-items: center;
   }
   
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
   .container-form {
     flex: 0 1 700px;
     padding: 10px;
@@ -140,7 +145,7 @@
     border-bottom: 1px solid #666;
     color: #ddd;
     font-size: 14px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     outline: none;
     transition: border-color .2s;
   }
