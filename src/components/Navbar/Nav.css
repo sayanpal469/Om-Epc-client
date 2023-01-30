@@ -5,3 +5,7 @@
 .menu li:hover{
   color: #0670da;
 }
+
+.navbar{
+   height: 5rem;
+}
