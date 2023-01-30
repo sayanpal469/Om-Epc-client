@@ -43,8 +43,8 @@
 }
 .slide-2 {
   background-image: url("https://i.ibb.co/56vGnHb/1674995817364.png");
-  height: 100%;
-  width: 100%;
+  height: 100% auto;
+  width: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -96,7 +96,7 @@
 
 .button-container {
   position: relative;
-  width: 200px;
+  width: 11rem;
   height: 60px;
   transition: 0.5s;
   border: 1px solid #0670da;
@@ -106,7 +106,7 @@
   width: 101%;
   height: 100%;
   font-family: "Monument Extended", sans-serif;
-  font-size: 40px;
+  font-size: 30px;
   background: #0670da;
   -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
   mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
@@ -203,4 +203,110 @@
     -webkit-mask-position: 100% 0;
     mask-position: 100% 0;
   }
+}
+
+
+@media only screen and (max-width: 767px){
+	/*Small smartphones [325px -> 425px]*/
+  .button-container button {
+    width: 101%;
+    height: 100%;
+    font-family: "Monument Extended", sans-serif;
+    font-size: 20px;
+    background: #0670da;
+    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+    border: none;
+    color: White;
+    cursor: pointer;
+    animation: anim2 0.7s steps(22) forwards;
+  }
+
+  .mask {
+    position: absolute;
+    color: black;
+    text-align: center;
+    width: 101%;
+    font-family: "Monument Extended", sans-serif;
+    font-weight: lighter;
+    font-size: 19px;
+    margin-top: 2px;
+    overflow: hidden;
+  }
+
+  .button-container {
+    position: relative;
+    width: 7rem;
+    height: 2rem;
+    transition: 0.5s;
+    border: 1px solid #0670da;
+  }
+
+  /* .swiper {
+    width: fit-content;
+    height: fit-content;
+  } */
+  
+.slide-1 {
+  background-image: url("https://i.ibb.co/wYBPwxZ/1674997352109.png");
+  height: 100%;
+  width: 100%;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.slide-2 {
+  background-image: url("https://i.ibb.co/56vGnHb/1674995817364.png");
+  height: auto;
+  width: auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-3 {
+  background-image: url("https://i.ibb.co/TLZ2fR1/1674995817359.png");
+  height: auto;
+  width: auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-4 {
+  background-image: url("https://i.ibb.co/Bq2DRmX/1674995817354.png");
+  height: auto;
+  width: auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-5 {
+  background-image: url("https://i.ibb.co/m6b2YRS/1674995817349.png");
+  height: auto;
+  width: auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide-6 {
+  background-image: url("https://i.ibb.co/7Yb99WJ/1674995817345.png");
+  height: auto;
+  width: auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 }

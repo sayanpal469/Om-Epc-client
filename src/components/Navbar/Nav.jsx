@@ -33,14 +33,6 @@ const Nav = ({ children }) => {
                             <ul className="menu menu-horizontal">
                                 {/* <!-- Navbar menu content here --> */}
                                 {menu}
-                                <li className='font-medium text-black'><Link to='/'>Home</Link></li>
-                                <li className='font-medium text-black'><Link to='/about'>About</Link></li>
-                                <li className='font-medium text-black'><Link to='/Service'>Service</Link></li>
-                                <li className='font-medium text-black'><Link to='/Service'>UPS & Backup</Link></li>
-                                <li className='font-medium text-black'><Link to='/Service'>Computer</Link></li>
-                                <li className='font-medium text-black'><Link to='/Service'>Printer</Link></li>
-                                <li className='font-medium text-black'><Link to='/Service'>Survillence</Link></li>
-                                <li className='font-medium text-black'><Link to='/Service'>Career</Link></li>
                             </ul>
                         </div>
                     </div>
