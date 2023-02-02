@@ -138,4 +138,12 @@
       }
     }
     
-  
+    @media only screen and (max-width: 767px){
+      .title-word {
+        animation: color-animation 4s linear infinite;
+        font-size: 28px;
+      }
+      .landing-animation p{
+        font-size: 16px;
+      }
+    }

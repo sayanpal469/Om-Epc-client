@@ -20,10 +20,10 @@ const Banner = () => {
       pagination={{
         clickable: true,
       }}
-      // autoplay={{
-      //   delay: 2500,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       mousewheel={true}
       modules={[Pagination, Autoplay]}
       className="mySwiper"
@@ -32,7 +32,7 @@ const Banner = () => {
         <div className='slide-1 text-left bg-none'>
           <div className="banner-content px-10">
             <Flip right>
-              <h1 className='lg:text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+              <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             </Flip>
             <div class="container mt-5">
               <div class="button-container">
@@ -46,7 +46,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className='slide-2 text-left bg-none'>
           <div className="banner-content px-10">
-            <h1 className='lg:text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             <div class="container mt-5">
               <div class="button-container">
                 <span class="mask">Buy Now</span>
@@ -59,7 +59,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className='slide-3 text-left bg-none'>
           <div className="banner-content px-10">
-            <h1 className='lg:text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             <div class="container mt-5">
               <div class="button-container">
                 <span class="mask">Buy Now</span>
@@ -72,7 +72,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className='slide-4 text-left bg-none'>
           <div className="banner-content px-10">
-            <h1 className='lg:text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             <div class="container mt-5">
               <div class="button-container">
                 <span class="mask">Buy Now</span>
@@ -85,7 +85,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className='slide-5 text-left bg-none'>
           <div className="banner-content px-10">
-            <h1 className='lg:text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             <div class="container mt-5">
               <div class="button-container">
                 <span class="mask">Buy Now</span>
@@ -98,7 +98,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className='slide-6 text-left bg-none'>
           <div className="banner-content px-10">
-            <h1 className='lg:text-2xl text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
+            <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             <div class="container mt-5">
               <div class="button-container">
                 <span class="mask">Buy Now</span>

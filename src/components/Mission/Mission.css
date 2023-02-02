@@ -26,3 +26,20 @@
     object-fit: cover;
     filter:grayscale(0%);
   }
+
+  @media only screen and (max-width: 767px){
+    .mission-container{
+      padding: 0px 20px 0px 20px;
+      justify-items: center;
+      text-align: center;
+    }
+    .heading{
+      font-size: 20px;
+    }
+    .heading2{
+      font-size: 30px;
+    }
+    .swiper-div{
+      display: none;
+    }
+  }
