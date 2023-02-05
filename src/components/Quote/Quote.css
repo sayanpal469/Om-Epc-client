@@ -173,52 +173,75 @@
   
   
   @media screen and (max-width: 767px) {
-.background{
-  /* overflow-y: hidden; */
-  padding: 0px!important;
-  width: 100vw;
-  margin:0px !important;
-  border: 1px solid red;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-image: none;
-}
-.app-contact{
-  display: none;
-}
-.container-form {
-  flex: 900px;
-  padding: 0px;
-}
-
-    .screen{
-      width: 90%;
+    .background{
+      overflow-y: hidden;
+      background-image: none;
+      /* border: 1px solid red; */
+      width: 98%;
       margin: 0 auto;
-      height: 100%;
-      /* border: 6px solid red; */
     }
-    .screen-body {
-      flex-direction: column;
-    }
-  
-    .screen-body-item.left {
-      margin-bottom: 30px;
-    }
-  
-    .app-title {
-      flex-direction: row;
-    }
-  
-    .app-title span {
-      width: 100%;
-      text-align: center;
-      margin-right:20px;
+    .callback-container{
       margin-left: 0px;
+      margin-right: 0px;
     }
-  
+    .container-form{
+      width: 100%;
+      /* border: 3px solid green; */
+    }
+    .screen{
+      width: 100%;
+    }
+    .screen-body{
+      /* border: 1px solid red; */
+    }
+    .left{
+      width: 10%;
+      /* border: 6px solid black; */
+      
+    }
+    .app-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      color: #1fa3e5 ;
+      font-size: 22px;
+    }
+
+    .app-title span{
+     /* border: 1px solid white;  */
+    }
+    .request{
+      margin-left: -30px;
+    }
+    .callback{
+      margin-top: 10px;
+      margin-left:-30px ;
+    }
     .app-title:after {
+      content: '';
       display: none;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 145px;
+      height: 4px;
+      background:  #1fa3e5;
+    }
+    .app-contact {
+      width: 130px;
+      margin-bottom: 2px;
+      /* margin-top:40px; */
+      margin-left: -39px;
+      /* border:1px solid red; */
+      font-size: 8px;
+      color: white;
+    }
+    .buttons{
+      display: flex;
+    }
+
+    .app-form-group.message {
+      margin-top: 0px;
     }
   }

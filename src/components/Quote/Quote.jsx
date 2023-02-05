@@ -49,12 +49,12 @@ const Quote = () => {
             <div class="screen-body">
               <div class="screen-body-item left">
                 <div class="app-title">
-                  <span>Request </span>
-                  <span>Callback</span>
+                  <span className="request">Request </span>
+                  <span className="callback">Callback</span>
                 </div>
                 <div class="app-contact">CONTACT INFO : 917981413743</div>
               </div>
-              <div class="screen-body-item">
+              <div class="screen-body-item right-box">
                 <form onSubmit={handelSubmit} class="app-form">
                   <div class="app-form-group">
                     <input type='text' name='name' class="app-form-control" placeholder="NAME" />

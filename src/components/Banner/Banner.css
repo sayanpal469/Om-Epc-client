@@ -212,7 +212,7 @@
     width: 100%;
     /* border: 4px solid yellow; */
     height: 380px;
-    position: static;
+    /* margin-top: 80px; */
   }
   .swiper-pagination-bullets {
     display: none;
