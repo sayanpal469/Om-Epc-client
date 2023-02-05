@@ -16,16 +16,16 @@ const Banner = () => {
   return (<div className="mt-0 banner">
     <Swiper
       direction={"vertical"}
-      loop={true}
+      loop={false}
       pagination={{
         clickable: true,
       }}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
+      // autoplay={{
+      //   delay: 2500,
+      //   disableOnInteraction: false,
+      // }}
       mousewheel={true}
-      modules={[Pagination, Autoplay]}
+      modules={[Pagination]}
       className="mySwiper"
     >
       <SwiperSlide>

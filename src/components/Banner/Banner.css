@@ -4,6 +4,7 @@
 }
 
 .banner{
+  /* border: 1px solid red; */
   position: relative;
 }
 
@@ -43,8 +44,8 @@
 }
 .slide-2 {
   background-image: url("https://i.ibb.co/56vGnHb/1674995817364.png");
-  height: 100% auto;
-  width: 100% auto;
+  height: 100% ;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -207,106 +208,93 @@
 
 
 @media only screen and (max-width: 767px){
-	/*Small smartphones [325px -> 425px]*/
-  .button-container button {
-    width: 101%;
-    height: 100%;
-    font-family: "Monument Extended", sans-serif;
-    font-size: 20px;
-    background: #0670da;
-    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
-    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
-    -webkit-mask-size: 2300% 100%;
-    mask-size: 2300% 100%;
-    border: none;
-    color: White;
-    cursor: pointer;
-    animation: anim2 0.7s steps(22) forwards;
+  .swiper {
+    width: 100%;
+    /* border: 4px solid yellow; */
+    height: 380px;
+    position: static;
   }
-
-  .mask {
+  .swiper-pagination-bullets {
+    display: none;
+}
+  .banner-content {
+    width: 100%;
     position: absolute;
-    color: black;
-    text-align: center;
-    width: 101%;
-    font-family: "Monument Extended", sans-serif;
-    font-weight: lighter;
-    font-size: 19px;
-    margin-top: 2px;
-    overflow: hidden;
-  }
-
-  .button-container {
-    position: relative;
-    width: 7rem;
-    height: 2rem;
-    transition: 0.5s;
-    border: 1px solid #0670da;
-  }
-
-  /* .swiper {
-    width: fit-content;
     height: fit-content;
-  } */
+    /* top: 80; */
+    bottom: 0;
+    margin-bottom: 10px;
+    display: flex;
+    /* border: 5px solid black; */
+    /* background: red; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left:10px;
+    /* margin: 0; */
+  }
+  .slide-1 {
+    background-image: url("https://i.ibb.co/wYBPwxZ/1674997352109.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* border: 5px solid green; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slide-2 {
+    background-image: url("https://i.ibb.co/56vGnHb/1674995817364.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .slide-3 {
+    background-image: url("https://i.ibb.co/TLZ2fR1/1674995817359.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .slide-4 {
+    background-image: url("https://i.ibb.co/Bq2DRmX/1674995817354.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .slide-5 {
+    background-image: url("https://i.ibb.co/m6b2YRS/1674995817349.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .slide-6 {
+    background-image: url("https://i.ibb.co/7Yb99WJ/1674995817345.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .wave {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
+    position: absolute;
+    width: 350%;
+    /* z-index: 5; */
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    /* border: 5px solid red; */
+  }
+
+  .wave:nth-of-type(2) {
+    bottom: 0;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.5;
+  }
   
-.slide-1 {
-  background-image: url("https://i.ibb.co/wYBPwxZ/1674997352109.png");
-  height: 100%;
-  width: 100%;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-position: initial;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.slide-2 {
-  background-image: url("https://i.ibb.co/56vGnHb/1674995817364.png");
-  height: auto;
-  width: auto;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.slide-3 {
-  background-image: url("https://i.ibb.co/TLZ2fR1/1674995817359.png");
-  height: auto;
-  width: auto;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.slide-4 {
-  background-image: url("https://i.ibb.co/Bq2DRmX/1674995817354.png");
-  height: auto;
-  width: auto;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.slide-5 {
-  background-image: url("https://i.ibb.co/m6b2YRS/1674995817349.png");
-  height: auto;
-  width: auto;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.slide-6 {
-  background-image: url("https://i.ibb.co/7Yb99WJ/1674995817345.png");
-  height: auto;
-  width: auto;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+  .wave:nth-of-type(3) {
+    bottom: 0;
+    animation: wave 20s -1s linear infinite;
+    opacity: 0.5;
+  }
+  
 }

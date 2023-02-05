@@ -172,7 +172,33 @@
   }
   
   
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 767px) {
+.background{
+  /* overflow-y: hidden; */
+  padding: 0px!important;
+  width: 100vw;
+  margin:0px !important;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: none;
+}
+.app-contact{
+  display: none;
+}
+.container-form {
+  flex: 900px;
+  padding: 0px;
+}
+
+    .screen{
+      width: 90%;
+      margin: 0 auto;
+      height: 100%;
+      /* border: 6px solid red; */
+    }
     .screen-body {
       flex-direction: column;
     }
@@ -186,21 +212,13 @@
     }
   
     .app-title span {
-      margin-right: 12px;
+      width: 100%;
+      text-align: center;
+      margin-right:20px;
+      margin-left: 0px;
     }
   
     .app-title:after {
       display: none;
     }
   }
-  
-  @media screen and (max-width: 600px) {
-    .screen-body {
-      padding: 40px;
-    }
-  
-    .screen-body-item {
-      padding: 0;
-    }
-  }
-  

@@ -49,7 +49,7 @@ const Quote = () => {
             <div class="screen-body">
               <div class="screen-body-item left">
                 <div class="app-title">
-                  <span>Request A</span>
+                  <span>Request </span>
                   <span>Callback</span>
                 </div>
                 <div class="app-contact">CONTACT INFO : 917981413743</div>

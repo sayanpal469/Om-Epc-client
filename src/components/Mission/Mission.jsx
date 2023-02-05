@@ -26,7 +26,7 @@ const Mission = () => {
         <h2 className="lg:text-5xl md:text-3xl heading2 sm:text-2xl mt-2 text-black">
           OM EPC Solution - We are here to help you.
         </h2>
-        <p className="lg:text-lg sm:text-sm text-black mt-6">
+        <p className="lg:text-lg sm:text-sm text-justify text-black mt-6">
           OM EPC Solution is dedicated to providing exceptional servicing and
           support for a wide range of computer, printer, CCTV camera, and UPS
           brands. Our mission is to be the trusted and reliable source for all
