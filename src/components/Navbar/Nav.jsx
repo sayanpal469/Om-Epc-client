@@ -7,7 +7,7 @@ const Nav = ({ children }) => {
 
         <li className='font-medium'><Link to='/'>Home</Link></li>
         <li className='font-medium'><Link to='/about'>About</Link></li>
-        <li className='font-medium'><Link to='/Service'>Service</Link></li>
+        <li className='font-medium'><Link to='/service'>Service</Link></li>
         <li className='font-medium'><Link to='/Service'>UPS & Backup</Link></li>
         <li className='font-medium'><Link to='/Service'>Computer</Link></li>
         <li className='font-medium'><Link to='/Service'>Printer</Link></li>

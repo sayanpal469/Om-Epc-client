@@ -1,11 +1,25 @@
+#parentFooter{
+    position: relative;
+    margin-top: 3rem;
+}
+
 .pg-footer {
     font-family: 'Roboto', sans-serif;
   }
   
-  
+ 
+
   .footer {
       background-color: #004658;
       color: #fff;
+      position: absolute;
+      top: 100px;
+  }
+  .subscribeBox{
+    position: absolute;
+    top: 0;
+    left: 8%;
+    z-index: 2;
   }
   .footer-wave-svg {
       background-color: transparent;
@@ -237,5 +251,10 @@
   
   
   @media only screen and (max-width: 767px){
-    
+    .subscribeBox{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
  }

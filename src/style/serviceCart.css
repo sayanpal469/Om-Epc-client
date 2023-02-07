@@ -1,0 +1,19 @@
+.serviceImg{
+    width: 100%;
+    height: 15vw;
+}
+
+/* .service-btn{
+    display: none;
+}
+
+.serviceCart:hover .service-btn{
+    display: block;
+} */
+
+@media only screen and (max-width: 767px){
+    .serviceImg{
+        width: 100%;
+        height: auto;
+    }
+}
