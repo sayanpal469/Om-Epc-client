@@ -3,16 +3,19 @@ import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div id='parentFooter'>
-      <div className='lg:max-w-7xl w-full bg-orange-500 mx-auto subscribeBox'>
-        <div className='flex justify-between px-10 py-8 items-center gap-5 '>
-          <h1 className='text-sm lg:text-3xl text-white font-semibold'>Subscribe to Our OM EPC</h1>
-          {/* <input className='lg:w-[35rem] py-3 border-0' type="text" /> */}
-          <input type="text" placeholder="Enter your email@" className="input input-bordered lg:input-lg w-full lg:max-w-xl" />
-          <button className='btn'>Subscribe now</button>
-        </div>
-      </div>
-      <footer className="footer bg-sky-700 p-10 py-28">
+    // <div id='parentFooter'>
+    //   <div className='lg:max-w-7xl w-full bg-orange-500 mx-auto subscribeBox'>
+    //     <div className='flex justify-between px-10 py-8 items-center gap-5 '>
+    //       <h1 className='text-sm lg:text-3xl text-white font-semibold'>Subscribe to Our OM EPC</h1>
+    //       {/* <input className='lg:w-[35rem] py-3 border-0' type="text" /> */}
+    //       <input type="text" placeholder="Enter your email@" className="input input-bordered lg:input-lg w-full lg:max-w-xl" />
+    //       <button className='btn'>Subscribe now</button>
+    //     </div>
+    //   </div>
+      
+    // </div>
+
+    <footer className="footer bg-sky-700 p-10 py-28">
         <div>
           <img src="https://i.ibb.co/7Xt1RPG/1674998575548.png" className='logo' alt="" />
           <p>OM EPC Solution<br />Providing reliable service since 2019</p>
@@ -37,7 +40,6 @@ const Footer = () => {
           <a className="link link-hover">Linkedin</a>
         </div>
       </footer>
-    </div>
   );
 };
 

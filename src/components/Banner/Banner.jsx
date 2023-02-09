@@ -20,10 +20,10 @@ const Banner = () => {
       pagination={{
         clickable: true,
       }}
-      // autoplay={{
-      //   delay: 2500,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       mousewheel={true}
       modules={[Pagination]}
       className="mySwiper"
