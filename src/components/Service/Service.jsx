@@ -7,6 +7,7 @@ import axios from 'axios';
 import ServiceCart from './ServiceCart';
 import WhyUs from './WhyUs';
 import ServiceModal from '../modal/ServiceModal';
+import Footer from '../Footer/Footer';
 
 const Service = () => {
     const [serviceData, setServiceData] = useState([])
@@ -62,7 +63,7 @@ const Service = () => {
 
             <WhyUs/>
 
-
+            <Footer/>
         </div>
     );
 };

@@ -4,7 +4,8 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'
 
 const ServiceModal = ({ serviceData }) => {
-    const [value, setValue] = useState()
+    // const [value, setValue] = useState()
+
     return (
         <div className=''>
             {/* The button to open modal */}
@@ -20,14 +21,16 @@ const ServiceModal = ({ serviceData }) => {
                         <input name='name' type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
                         <div className='flex space-x-2 my-3'>
                             <input name='email' type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
-                            <PhoneInput 
+                            {/* <PhoneInput 
                                 value={value}
                                 onChange={setValue}
                                 defaultCountry="India"
                                 name='contact'
                                 type="number"
                                 placeholder="Your phone number"
-                                className="input input-bordered w-full max-w-lg rounded-none" />
+                                className="input input-bordered w-full max-w-lg rounded-none" /> */}
+
+                            <input name='contact' type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
                         </div>
                         <input name='address' type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
                         <input name='city' type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />

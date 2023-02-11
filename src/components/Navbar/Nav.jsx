@@ -1,10 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../userAuth';
 import './Nav.css'
 
 const Nav = ({ children }) => {
-    const menu = <>
+    const navigate = useNavigate()
 
+    const logout = () => {
+        localStorage.clear()
+        navigate('/login')
+    }
+
+    const menu = <>
         <li className='font-medium'><Link to='/'>Home</Link></li>
         <li className='font-medium'><Link to='/about'>About</Link></li>
         <li className='font-medium'><Link to='/service'>Service</Link></li>
@@ -13,8 +20,14 @@ const Nav = ({ children }) => {
         <li className='font-medium'><Link to='/Service'>Printer</Link></li>
         <li className='font-medium'><Link to='/Service'>Survillence</Link></li>
         <li className='font-medium'><Link to='/Service'>Career</Link></li>
-        <li className='font-medium'><Link to='/login'>Login</Link></li>
-        <li className='font-medium'><Link to='/Service'>Register</Link></li>
+        {
+            auth ? <li className='font-medium'><Link onClick={logout} to='/login'>Log out</Link></li>
+            :
+            <>
+            <li className='font-medium'><Link to='/login'>Login</Link></li>
+            <li className='font-medium'><Link to='/register'>Register</Link></li>
+            </>
+        }
     </>
     return (
         <div className='mt-0 nav-bar'>

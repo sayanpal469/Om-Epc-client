@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import AboutPage from './components/AboutPage/AboutPage';
-import Footer from './components/Footer/Footer';
+import ChangePassword from './components/ChangePassword/ChangePassword';
+import CheckEmail from './components/CheckEmail/CheckEmail';
+// import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Nav from './components/Navbar/Nav';
+import Register from './components/Register/Register';
 import Service from './components/Service/Service';
 import SingelService from './components/Service/SingelService';
 
@@ -16,8 +19,11 @@ function App() {
           <Route path='/service/:serviceId' element={<SingelService/>}></Route>
           <Route path='/about' element={<AboutPage/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
+          <Route path='/register' element={<Register/>}></Route>
+          <Route path='/checkEmail' element={<CheckEmail/>}></Route>
+          <Route path='/changePass/:email' element={<ChangePassword/>}></Route>
         </Routes>
-        <Footer/>
+        {/* <Footer/> */}
       </Nav>
   );
 }
