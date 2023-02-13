@@ -2,14 +2,17 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
-import auth from '../userAuth';
+import userAuth from '../userAuth';
 import './Nav.css'
 
 const Nav = ({ children }) => {
     const navigate = useNavigate()
     const [admin] = useAdmin()
 
-    console.log(admin)
+    // console.log(admin)
+
+
+    // console.log(userAuth.email)
 
     const logout = () => {
         localStorage.clear()
@@ -22,7 +25,7 @@ const Nav = ({ children }) => {
 
     const menu = <>
 
-        {admin == true && auth == true ? <>
+        {admin && userAuth ? <>
             <li className='font-medium'><Link to='/admin'>Admin</Link></li>
             <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
              </>
@@ -38,14 +41,14 @@ const Nav = ({ children }) => {
                 <li className='font-medium'><Link to='/Service'>Survillence</Link></li>
                 <li className='font-medium'><Link to='/Service'>Career</Link></li>
 
-                {/* {
-                    auth ? <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
+                {
+                    userAuth ? <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
                         :
                         <>
                             <li className='font-medium'><Link to='/login'>Login</Link></li>
                             <li className='font-medium'><Link to='/register'>Register</Link></li>
                         </>
-                } */}
+                }
 
             </>
             

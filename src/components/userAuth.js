@@ -1,4 +1,5 @@
-const auth = localStorage.getItem('user')
+const auth = localStorage.getItem('user');
+const userAuth = JSON.parse(auth)
 
 
-export default auth;
+export default userAuth;
