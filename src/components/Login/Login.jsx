@@ -25,7 +25,7 @@ const Login = () => {
         console.log(data)
         if (data.success == true) {
           console.log(data)
-          // localStorage.setItem('user', JSON.stringify(data.userData))
+          localStorage.setItem('user', JSON.stringify(data.user))
           navigate('/')
         } else {
           alert(`${data.message}`)

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import AboutPage from './components/AboutPage/AboutPage';
+import Admin from './components/Admin/Admin';
 import ChangePassword from './components/ChangePassword/ChangePassword';
 import CheckEmail from './components/CheckEmail/CheckEmail';
 // import Footer from './components/Footer/Footer';
@@ -22,6 +23,7 @@ function App() {
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/checkEmail' element={<CheckEmail/>}></Route>
           <Route path='/changePass/:email' element={<ChangePassword/>}></Route>
+          <Route path='/admin' element={<Admin/>}></Route>
         </Routes>
         {/* <Footer/> */}
       </Nav>

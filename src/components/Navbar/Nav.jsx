@@ -1,33 +1,55 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 import auth from '../userAuth';
 import './Nav.css'
 
 const Nav = ({ children }) => {
     const navigate = useNavigate()
+    const [admin] = useAdmin()
+
+    console.log(admin)
 
     const logout = () => {
         localStorage.clear()
         navigate('/login')
     }
 
+    // useEffect(() => {
+    //     if(!auth) {}
+    // },[])
+
     const menu = <>
-        <li className='font-medium'><Link to='/'>Home</Link></li>
-        <li className='font-medium'><Link to='/about'>About</Link></li>
-        <li className='font-medium'><Link to='/service'>Service</Link></li>
-        <li className='font-medium'><Link to='/Service'>UPS & Backup</Link></li>
-        <li className='font-medium'><Link to='/Service'>Computer</Link></li>
-        <li className='font-medium'><Link to='/Service'>Printer</Link></li>
-        <li className='font-medium'><Link to='/Service'>Survillence</Link></li>
-        <li className='font-medium'><Link to='/Service'>Career</Link></li>
-        {
-            auth ? <li className='font-medium'><Link onClick={logout} to='/login'>Log out</Link></li>
+
+        {admin == true && auth == true ? <>
+            <li className='font-medium'><Link to='/admin'>Admin</Link></li>
+            <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
+             </>
             :
+
             <>
-            <li className='font-medium'><Link to='/login'>Login</Link></li>
-            <li className='font-medium'><Link to='/register'>Register</Link></li>
+                <li className='font-medium'><Link to='/'>Home</Link></li>
+                <li className='font-medium'><Link to='/about'>About</Link></li>
+                <li className='font-medium'><Link to='/service'>Service</Link></li>
+                <li className='font-medium'><Link to='/Service'>UPS & Backup</Link></li>
+                <li className='font-medium'><Link to='/Service'>Computer</Link></li>
+                <li className='font-medium'><Link to='/Service'>Printer</Link></li>
+                <li className='font-medium'><Link to='/Service'>Survillence</Link></li>
+                <li className='font-medium'><Link to='/Service'>Career</Link></li>
+
+                {/* {
+                    auth ? <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
+                        :
+                        <>
+                            <li className='font-medium'><Link to='/login'>Login</Link></li>
+                            <li className='font-medium'><Link to='/register'>Register</Link></li>
+                        </>
+                } */}
+
             </>
-        }
+            
+            }
     </>
     return (
         <div className='mt-0 nav-bar'>
@@ -42,7 +64,9 @@ const Nav = ({ children }) => {
                             </label>
                         </div>
                         <div className="flex-1 px-2 mx-2">
-                            <img className='logo' src="https://i.ibb.co/7Xt1RPG/1674998575548.png" alt ="logo"/>
+                            <Link to='/'>
+                                <img className='logo' src="https://i.ibb.co/7Xt1RPG/1674998575548.png" alt="logo" />
+                            </Link>
                         </div>
                         <div className="flex-none hidden lg:block">
                             <ul className="menu menu-horizontal">
