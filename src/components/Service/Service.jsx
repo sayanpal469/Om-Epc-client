@@ -8,18 +8,10 @@ import ServiceCart from './ServiceCart';
 import WhyUs from './WhyUs';
 import ServiceModal from '../modal/ServiceModal';
 import Footer from '../Footer/Footer';
+import useService from '../hooks/useService';
 
 const Service = () => {
-    const [serviceData, setServiceData] = useState([])
-
-    useEffect(() => {
-        axios.get("http://localhost:5000/api/omEpc/service")
-            .then((res) => {
-                // console.log(res.data.services)
-                setServiceData(res.data.services)
-            })
-            .catch((err) => console.log(err))
-    }, [])
+    const [services] = useService()
     return (
         <div className='main'>
             <div className='service-container'>
@@ -50,12 +42,12 @@ const Service = () => {
             <div className='lg:px-10 flex justify-center'>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 mb-10'>
                     {
-                        serviceData.map(service => <ServiceCart key={service._id} service={service} />)
+                        services.map(service => <ServiceCart key={service._id} service={service} />)
                     }
                 </div>
             </div>
             
-            <ServiceModal serviceData={serviceData}/>
+            <ServiceModal services={services}/>
             <div className='flex justify-center'>
                 <label label htmlFor="serviceModal" className='rounded-sm btn bg-orange-500 hover:bg-white capitalize text-white hover:text-orange-500 font-semibold border-0 px-6 text-lg hover:border hover:border-orange-500'><MdOutlineMiscellaneousServices className='mr-1'/> Shedule for service</label>
             </div>

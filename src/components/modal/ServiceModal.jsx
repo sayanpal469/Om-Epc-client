@@ -3,7 +3,7 @@ import { MdOutlineMiscellaneousServices } from 'react-icons/md';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'
 
-const ServiceModal = ({ serviceData }) => {
+const ServiceModal = ({ services }) => {
     // const [value, setValue] = useState()
 
     return (
@@ -21,14 +21,6 @@ const ServiceModal = ({ serviceData }) => {
                         <input name='name' type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
                         <div className='flex space-x-2 my-3'>
                             <input name='email' type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
-                            {/* <PhoneInput 
-                                value={value}
-                                onChange={setValue}
-                                defaultCountry="India"
-                                name='contact'
-                                type="number"
-                                placeholder="Your phone number"
-                                className="input input-bordered w-full max-w-lg rounded-none" /> */}
 
                             <input name='contact' type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
                         </div>
@@ -40,7 +32,7 @@ const ServiceModal = ({ serviceData }) => {
                             <span className="ml-1">Category*</span>
                             <select name='category' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                 {
-                                    serviceData.map(service => <option className='capitalize' value={service.category}>{service.category}</option>)
+                                    services.map(service => <option className='capitalize' value={service.category}>{service.category}</option>)
                                 }
                             </select>
                         </div>
