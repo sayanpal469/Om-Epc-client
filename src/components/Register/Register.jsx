@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import auth from '../userAuth';
+import userAuth from '../userAuth';
 
 const Register = () => {
 
     const navigate = useNavigate()
  
-    useEffect(() => {
-        if(auth) {
-            navigate('/')
-        }
-    },[])
+ 
+    if(userAuth) {
+        navigate('/')
+    }
 
     const handelSubmit = (e) => {
         e.preventDefault()
@@ -38,7 +37,7 @@ const Register = () => {
                 if (data.success == true) {
                     console.log(data)
                     localStorage.setItem('user', JSON.stringify(data.userData))
-                    navigate('/')
+                    // navigate('/')
                 } else {
                     alert(`${data.message}`)
                 }

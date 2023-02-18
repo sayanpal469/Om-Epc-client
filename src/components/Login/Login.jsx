@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import userAuth from "../userAuth";
 import "./Login.css"
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  if (userAuth) {
+    navigate('/')
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +29,7 @@ const Login = () => {
       .then(data => {
         console.log(data)
         if (data.success == true) {
-          console.log(data)
+          // console.log(data)
           localStorage.setItem('user', JSON.stringify(data.user))
           navigate('/')
         } else {

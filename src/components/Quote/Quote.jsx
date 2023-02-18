@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import userAuth from '../userAuth';
 import "./Quote.css"
 
 const Quote = () => {
+  const navigate = useNavigate()
 
   const URL = 'http://localhost:5000/api/omEpc/getRequest/new'
 
@@ -13,16 +16,23 @@ const Quote = () => {
     const contact = e.target.contact.value;
     const message = e.target.message.value;
 
-    console.log(user, email, contact, message)
+    // console.log(user, email, contact, message)
+
+
 
     try {
-      const resp = await axios.post(URL, {
-        user: user,
-        email: email,
-        contact: contact,
-        message: message
-      });
-      console.log(resp.data)
+      if (userAuth) {
+        const resp = await axios.post(URL, {
+          user: user,
+          email: email,
+          contact: contact,
+          message: message
+        });
+        console.log(resp.data)
+      } else {
+        alert('Please login')
+        navigate('/login')
+      }
     } catch (err) {
       console.log(err.message);
     }

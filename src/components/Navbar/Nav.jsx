@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 import userAuth from '../userAuth';
@@ -8,20 +7,11 @@ import './Nav.css'
 const Nav = ({ children }) => {
     const navigate = useNavigate()
     const [admin] = useAdmin()
-
-    // console.log(admin)
-
-
-    // console.log(userAuth.email)
-
+    
     const logout = () => {
         localStorage.clear()
         navigate('/login')
     }
-
-    // useEffect(() => {
-    //     if(!auth) {}
-    // },[])
 
     const menu = <>
 

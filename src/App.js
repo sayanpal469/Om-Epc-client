@@ -15,6 +15,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Nav from './components/Navbar/Nav';
 import Register from './components/Register/Register';
+import RequireAdmin from './components/RequireAdmin/RequireAdmin';
 import Service from './components/Service/Service';
 import SingelService from './components/Service/SingelService';
 
@@ -30,7 +31,9 @@ function App() {
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/checkEmail' element={<CheckEmail/>}></Route>
           <Route path='/changePass/:email' element={<ChangePassword/>}></Route>
-          <Route path='/admin' element={<Admin/>}>
+          <Route path='/admin' element={<RequireAdmin>
+            <Admin/>
+          </RequireAdmin>}>
 
             <Route path='getRequest' element={<GetRequest/>}/>
             <Route path='products' element={<Products/>}/>
