@@ -5,6 +5,16 @@
 }
 .menu li:hover{
   color: #0670da;
+
+}
+
+.menu li{
+  color: black;
+}
+
+.active{
+  color:  #0670da;
+  background-color: transparent;
 }
 
 .navbar{
