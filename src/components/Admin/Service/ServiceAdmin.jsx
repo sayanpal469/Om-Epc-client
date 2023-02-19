@@ -1,12 +1,21 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useService from '../../hooks/useService';
 import ServiceRaw from './ServiceRaw';
 
 const ServiceAdmin = () => {
-    const [services] = useService();
+    const [services, setServices] = useState([]);
     const [category, setCategory] = useState('')
     const [serviceImage, setServiceImage] = useState(null)
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/omEpc/service')
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            setServices(data.services)
+        })
+    },[])
 
     const postProduct = (e) => {
         e.preventDefault();
