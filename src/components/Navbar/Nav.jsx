@@ -1,42 +1,56 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import useActiveLink from '.././hooks/useActiveLink';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 import userAuth from '../userAuth';
 import './Nav.css'
 
 const Nav = ({ children }) => {
-    const navigate = useNavigate()
-    const [admin] = useAdmin()
-    
+    const [loggedIn, setLoggedIn] = useState(false);
+    const location = useLocation();
+    const [admin] = useAdmin();
+    const activeLink = useActiveLink();
+
     const logout = () => {
         localStorage.clear()
-        navigate('/login')
+        setLoggedIn(false);
     }
+    useEffect(()=>{
+        if(localStorage.getItem('user') ||  location.state?.isLoggedIn){
+            setLoggedIn(true)
+        }
+        else{
+            setLoggedIn(false)
+        }
+    },[location])
+
 
     const menu = <>
 
-        {admin && userAuth ? <>
-            <li className='font-medium'><Link to='/admin'>Admin</Link></li>
-            <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
+        {admin && loggedIn  ? <>
+            <li className={`font-medium ${activeLink === '/admin' ? 'active' : ''}`}><Link to='/admin'>Admin</Link></li>
+            <li className='font-medium'><Link onClick={logout} to='/login'>Log out</Link></li>
              </>
             :
 
             <>
-                <li className='font-medium'><Link to='/'>Home</Link></li>
-                <li className='font-medium'><Link to='/about'>About</Link></li>
-                <li className='font-medium'><Link to='/service'>Service</Link></li>
-                <li className='font-medium'><Link to='/Service'>UPS & Backup</Link></li>
-                <li className='font-medium'><Link to='/Service'>Computer</Link></li>
-                <li className='font-medium'><Link to='/Service'>Printer</Link></li>
-                <li className='font-medium'><Link to='/Service'>Survillence</Link></li>
-                <li className='font-medium'><Link to='/Service'>Career</Link></li>
+                <li className={`font-medium ${activeLink === '/' ? 'active' : ''}`}><Link to='/'>Home</Link></li>
+                <li className={`font-medium ${activeLink === '/about' ? 'active' : ''}`}><Link to='/about'>About</Link></li>
+                <li className={`font-medium ${activeLink === '/service' ? 'active' : ''}`}><Link to='/service'>Service</Link></li>
+                <li className={`font-medium ${activeLink === '/ups' ? 'active' : ''}`}><Link to='/Service'>UPS & Backup</Link></li>
+                <li className={`font-medium ${activeLink === '/computer' ? 'active' : ''}`}><Link to='/Service'>Computer</Link></li>
+                <li className={`font-medium ${activeLink === '/printer' ? 'active' : ''}`}><Link to='/Service'>Printer</Link></li>
+                <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Survillence</Link></li>
+                <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Career</Link></li>
 
                 {
-                    userAuth ? <li className='font-medium'><Link onClick={logout} to='#'>Log out</Link></li>
+                    loggedIn ? <li className='font-medium'><Link onClick={logout} to='/login'>Log out</Link></li>
                         :
                         <>
-                            <li className='font-medium'><Link to='/login'>Login</Link></li>
-                            <li className='font-medium'><Link to='/register'>Register</Link></li>
+                            <li className={`font-medium ${activeLink === '/login' ? 'active' : ''}`}><Link to='/login'>Login</Link></li>
+                            <li className={`font-medium ${activeLink === '/' ? 'register' : ''}`}><Link to='/register'>Register</Link></li>
                         </>
                 }
 
@@ -50,7 +64,7 @@ const Nav = ({ children }) => {
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content  flex flex-col">
                     {/* <!-- Navbar --> */}
-                    <div className="w-full navbar  lg:px-20 bg-white">
+                    <div className="w-full navbar  lg:px-20 sticky top-0  bg-opacity-30 z-50 backdrop-filter backdrop-blur-lg bg-white">
                         <div className="flex-none lg:hidden">
                             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>

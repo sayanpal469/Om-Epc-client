@@ -35,9 +35,9 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Social Links</span>
-          <a className="link link-hover">Facebook</a>
-          <a className="link link-hover">Instagram</a>
-          <a className="link link-hover">Linkedin</a>
+          <a href="https://www.facebook.com/omepcsolution" className="link link-hover">Facebook</a>
+          <a src="https://www.instagram.com/omepcsolution/" className="link link-hover">Instagram</a>
+          <a href="https://wa.me/7981413743" className="link link-hover">Whatsapp</a>
         </div>
       </footer>
   );

@@ -1,16 +1,10 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import userAuth from '../userAuth';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
     const navigate = useNavigate()
  
- 
-    if(userAuth) {
-        navigate('/')
-    }
-
     const handelSubmit = (e) => {
         e.preventDefault()
 
@@ -34,9 +28,12 @@ const Register = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                if (data.success == true) {
+                if (data.success === true) {
                     console.log(data)
                     localStorage.setItem('user', JSON.stringify(data.userData))
+                    if(data.userData.role === "user" || data.userData.role === "admin"){
+                        navigate('/', { state:{isLoggedIn : true} })
+                    }
                     // navigate('/')
                 } else {
                     alert(`${data.message}`)
@@ -46,16 +43,72 @@ const Register = () => {
 
 
     return (
-        <div className='flex justify-center items-center h-screen '>
-            <div>
-                <h1 className='text-3xl'>Register</h1>
-                <form action="" onSubmit={handelSubmit} enctype="multipart/form-data">
-                    <input type="text" name='userName' placeholder="user name" className="input input-bordered input-primary w-full max-w-xs mt-5" /> <br />
-                    <input type="email" name='email' placeholder="email" className="input input-bordered input-primary w-full max-w-xs mt-5" /> <br />
-                    <input type="password" name='password' placeholder="password" className="input input-bordered input-primary w-full max-w-xs mt-5" /> <br />
-                    <input type="number" name='contact' placeholder="phone number" className="input input-bordered input-primary w-full max-w-xs mt-5" /> <br />
-                    <input type="submit" className="mt-5 btn" value='Submit' /> <br />
-                </form>
+        <div className='login-container '>
+            <div className="flex items-center justify-center h-[100%]">
+            <div className="w-full lg:w-[550px]">
+                <form onSubmit={handelSubmit} className=" form-container  rounded-lg p-8">
+            <div className="mb-4">
+              <label
+                className="block text-white font-medium mb-2"
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <input type="text" name='userName' placeholder="John Dexter" className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" required /> 
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-white font-medium mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input type="text" name='email' placeholder="abc@gmail.com" className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required /> 
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-white font-medium mb-2"
+                htmlFor="email"
+              >
+                Phone Number
+              </label>
+              <input type="number" name='contact'  className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg"  required /> 
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-white font-medium mb-2"
+                htmlFor="email"
+              >
+                password
+              </label>
+              <input type="text" name='password'  className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg"  required /> 
+            </div>
+            {/* <div className="mb-4">
+              <label
+                className="block text-white font-medium mb-2"
+                htmlFor="email"
+              >
+                Confirm Password
+              </label>
+              <input type="text" name='userName'  className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg"  required /> 
+            </div> */}
+            <div className="flex items-center justify-between">
+              <button
+                type="submit"
+                value='Submit'
+                className="bg-transparent border hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg"
+              >
+                Register
+              </button>
+              <Link
+                to="/login"
+                className="bg-transparent  hover:text-sky-600 text-white font-medium"
+              >
+               Already Registered?
+              </Link>
+            </div>
+          </form>
+          </div>
             </div>
         </div>
     );

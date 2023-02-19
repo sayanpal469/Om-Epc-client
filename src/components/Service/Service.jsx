@@ -39,7 +39,7 @@ const Service = () => {
                         <p className='lg:text-lg font-bold'>Call us today</p>
                         <div className='flex items-center mt-2 space-x-2'>
                             <IoMdCall className='text-orange-500 font-bold lg:text-3xl' />
-                            <h2 className='lg:text-2xl text-orange-500'> 1 (800) 765-43-21</h2>
+                            <h2 className='lg:text-2xl text-orange-500'>91 7981413743</h2>
                         </div>
                     </div>
                 </div>

@@ -8,10 +8,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  if (userAuth) {
-    navigate('/')
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -31,7 +27,7 @@ const Login = () => {
         if (data.success == true) {
           // console.log(data)
           localStorage.setItem('user', JSON.stringify(data.user))
-          navigate('/')
+          navigate('/', { state:{isLoggedIn : true} })
         } else {
           alert(`${data.message}`)
         }
@@ -41,7 +37,8 @@ const Login = () => {
     <div className="login-container">
       <div className="flex items-center justify-center h-[100%]">
         <div className="w-full lg:w-[550px]">
-          <form onSubmit={handleSubmit} className=" form-container  rounded-lg shadow-md p-8">
+          <form onSubmit={handleSubmit} className=" form-container  rounded-lg p-8">
+          <h2 className="text-5xl text-white">Login</h2>
             <div className="mb-4">
               <label
                 className="block text-white font-medium mb-2"
