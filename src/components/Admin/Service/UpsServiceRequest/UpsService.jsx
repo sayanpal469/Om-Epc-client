@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ComputerServiceRaw from './ComputerServiceRaw';
+import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import UpsServiceRaw from './UpsServiceRaw';
 
-const ComputerService = () => {
+const UpsService = () => {
     const [serviceRequest, setServiceRequest] = useState([]);
     // const [responce, setResponce] = useState()
 
@@ -11,7 +13,7 @@ const ComputerService = () => {
     // console.log(resStatus)
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/omEpc/serviceReq/computer')
+        fetch('http://localhost:5000/api/omEpc/serviceReq/ups')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
@@ -26,7 +28,8 @@ const ComputerService = () => {
 
     return (
         <div>
-            <p className='text-center lg:text-3xl mt-2 font-semibold text-orange-500'>Computer Service Requests</p>
+            <p className='text-center lg:text-3xl mt-2 font-semibold text-orange-500'>Ups Service Requests</p>
+
             <div className='my-10'>
                 <p className='text-xl font-bold text-blue-500'>Total completed services- {resStatus.length}</p>
                 <p className='text-xl mt-2 font-bold text-red-500'>Total Pending services- {pendingStatus.length}</p>
@@ -46,9 +49,7 @@ const ComputerService = () => {
                                 <th>City</th>
                                 <th>Pin code</th>
                                 <th>Service Category</th>
-                                <th>Item</th>
                                 <th>Brand</th>
-                                <th>Operating</th>
                                 <th>Date</th>
                                 <th>Message</th>
                                 <th>Status</th>
@@ -56,11 +57,11 @@ const ComputerService = () => {
                         </thead>
                         <tbody>
                             {
-                                serviceRequest.map((request, index) => <ComputerServiceRaw
+                                serviceRequest.map((request, index) => <UpsServiceRaw
                                     key={request._id}
                                     index={index}
                                     request={request}
-                                ></ComputerServiceRaw>)
+                                ></UpsServiceRaw>)
                             }
                         </tbody>
                     </table>
@@ -70,4 +71,4 @@ const ComputerService = () => {
     );
 };
 
-export default ComputerService;
+export default UpsService;

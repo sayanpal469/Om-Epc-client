@@ -20,7 +20,8 @@ const Admin = () => {
                     <li><Link className='my-3' to='/admin/products'>Products</Link></li>
                     <li><Link className='my-3' to='/admin/buyRequest'>Product Buy Request</Link></li>
                     <li><Link className='my-3' to='/admin/service'>Services</Link></li>
-                    <li><Link className='my-3' to='/admin/serviceReq'>Service Requests</Link></li>
+                    <li><Link className='my-3' to='/admin/computerServiceReq'>Computer Service Requests</Link></li>
+                    <li><Link className='my-3' to='/admin/upsServiceReq'>Ups Service Requests</Link></li>
                     <li><Link className='my-3' to='/admin/users'>Users</Link></li>
                 </ul>
             </div>

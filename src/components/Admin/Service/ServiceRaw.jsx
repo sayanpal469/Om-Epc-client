@@ -1,6 +1,8 @@
 import React from 'react';
+import { useReducer } from 'react';
 
 const ServiceRaw = ({index, service}) => {
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     const serviceImg = `http://localhost:5000/uploads/${service.image}`;
 
     const handelDelete = (id) => {
@@ -18,6 +20,8 @@ const ServiceRaw = ({index, service}) => {
         }).catch(err => {
             alert(err.message)
         })
+
+        forceUpdate()
     }
 
 

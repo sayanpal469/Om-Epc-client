@@ -11,28 +11,36 @@ const Nav = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const location = useLocation();
     const [admin] = useAdmin();
+    const [isAdmin, setIsAdmin] = useState(false)
     const activeLink = useActiveLink();
 
     const logout = () => {
         localStorage.clear()
         setLoggedIn(false);
     }
-    useEffect(()=>{
-        if(localStorage.getItem('user') ||  location.state?.isLoggedIn){
+    useEffect(() => {
+        if (localStorage.getItem('user') || location.state?.isLoggedIn) {
             setLoggedIn(true)
         }
-        else{
+        else {
             setLoggedIn(false)
+        }
+    }, [location])
+
+
+    useEffect(() => {
+        if(admin) {
+            setIsAdmin(true)
         }
     },[location])
 
 
     const menu = <>
 
-        {admin && loggedIn  ? <>
+        {admin && loggedIn ? <>
             <li className={`font-medium ${activeLink === '/admin' ? 'active' : ''}`}><Link to='/admin'>Admin</Link></li>
             <li className='font-medium'><Link onClick={logout} to='/login'>Log out</Link></li>
-             </>
+        </>
             :
 
             <>
@@ -55,8 +63,8 @@ const Nav = ({ children }) => {
                 }
 
             </>
-            
-            }
+
+        }
     </>
     return (
         <div className='mt-0 nav-bar'>

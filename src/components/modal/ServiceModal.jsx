@@ -26,8 +26,8 @@ const ServiceModal = () => {
                     <h3 className="font-bold text-3xl mt-2">Make an Appointment for your</h3>
 
 
-                    <div className='mt-5 mb-3'>
-                        <ul className="menu menu-horizontal space-x-5 border-orange-500 text-sm">
+                    <div className='mt-8 mb-3'>
+                        <ul className="menu menu-horizontal space-x-1 lg:space-x-5 border-orange-500 text-xs lg:text-sm">
                             <li><Link to='#' className="border" onClick={() => updateValue(0)} >Computer or Laptop</Link></li>
                             <li><Link to='#' className="border" onClick={() => updateValue(1)} >Ups</Link></li>
                             <li><Link to='#' className="border" onClick={() => updateValue(2)} >Printer</Link></li>

@@ -47,8 +47,8 @@ const Service = () => {
 
             <h1 className='text-center text-2xl lg:text-4xl my-14 font-bold'>What We Offer</h1>
 
-            <div className='flex justify-center mb-10'>
-                <ul className="menu menu-horizontal space-x-3  md:space-x-5 lg:space-x-10 border-orange-500">
+            <div className='flex justify-center mb-10 '>
+                <ul className="menu menu-horizontal space-x-2 gap-3 md:space-x-5 flex justify-center lg:space-x-10 border-orange-500">
                     <li><Link to='#' className="border" onClick={() => updateValue(0)} >Computer or Laptop</Link></li>
                     <li><Link to='#' className="border" onClick={() => updateValue(1)} >Ups</Link></li>
                     <li><Link to='#' className="border" onClick={() => updateValue(2)} >Printer</Link></li>

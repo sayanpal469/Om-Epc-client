@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ServiceRequestRaw = ({ index, request }) => {
-    const {_id, collectionDate, category, item, brand, operating, clientName, email, contact, address, city, pinCode, message, responseStatus} = request;
+const UpsServiceRaw = ({ index, request }) => {
+    const { _id, collectionDate, category, brand, clientName, email, contact, address, city, pinCode, message, responseStatus } = request;
 
     const handelDelevery = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/serviceReq/status/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/serviceReq/ups/status/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -13,12 +13,14 @@ const ServiceRequestRaw = ({ index, request }) => {
                 responseStatus: true
             })
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-         })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                if (data.success == true) {
+                    alert('Service completed')
+                }
+            })
     }
-    
     return (
         <tr>
             <td>{index + 1}</td>
@@ -29,16 +31,14 @@ const ServiceRequestRaw = ({ index, request }) => {
             <td className='capitalize'>{city}</td>
             <td>{pinCode}</td>
             <td className='capitalize'>{category}</td>
-            <td className='capitalize'>{item}</td>
             <td className='capitalize'>{brand}</td>
-            <td className='capitalize'>{operating}</td>
             <td>{collectionDate}</td>
             <td className='capitalize'>{message}</td>
             <td>{
-                responseStatus == true ? <button className='btn btn-primary'>Complete</button> : <button onClick={() => handelDelevery(_id)} className='btn btn-error'>Pending</button>
+                responseStatus == true ? <button className='btn btn-disabled'>Complete</button> : <button onClick={() => handelDelevery(_id)} className='btn btn-error'>Pending</button>
             }</td>
         </tr>
     );
 };
 
-export default ServiceRequestRaw;
+export default UpsServiceRaw;

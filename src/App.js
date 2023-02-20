@@ -5,8 +5,9 @@ import GetRequest from './components/Admin/GetRequest/GetRequest';
 import ProductBuyRequest from './components/Admin/ProductBuyRequest/ProductBuyRequest';
 import AddProduct from './components/Admin/Products/AddProduct';
 import Products from './components/Admin/Products/Products';
+import ComputerService from './components/Admin/Service/ComputerServiceRequest/ComputerService';
 import ServiceAdmin from './components/Admin/Service/ServiceAdmin';
-import ServiceRequest from './components/Admin/Service/ServiceRequest';
+import UpsService from './components/Admin/Service/UpsServiceRequest/UpsService';
 import Users from './components/Admin/Users/Users';
 import ChangePassword from './components/ChangePassword/ChangePassword';
 import CheckEmail from './components/CheckEmail/CheckEmail';
@@ -39,7 +40,8 @@ function App() {
             <Route path='products' element={<Products/>}/>
             <Route path='buyRequest' element={<ProductBuyRequest/>}/>
             <Route path='service' element={<ServiceAdmin/>}/>
-            <Route path='serviceReq' element={<ServiceRequest/>}/>
+            <Route path='computerServiceReq' element={<ComputerService/>}/>
+            <Route path='upsServiceReq' element={<UpsService/>}/>
             <Route path='users' element={<Users/>}/>
 
           </Route>
