@@ -3,10 +3,12 @@ import AboutPage from './components/AboutPage/AboutPage';
 import Admin from './components/Admin/Admin';
 import GetRequest from './components/Admin/GetRequest/GetRequest';
 import ProductBuyRequest from './components/Admin/ProductBuyRequest/ProductBuyRequest';
-import AddProduct from './components/Admin/Products/AddProduct';
+// import AddProduct from './components/Admin/Products/AddProduct';
 import Products from './components/Admin/Products/Products';
 import ComputerService from './components/Admin/Service/ComputerServiceRequest/ComputerService';
+import PrinterService from './components/Admin/Service/PrinterServiceRequest/PrinterService';
 import ServiceAdmin from './components/Admin/Service/ServiceAdmin';
+import Surveillance from './components/Admin/Service/SurveillanceServiceRequest/Surveillance';
 import UpsService from './components/Admin/Service/UpsServiceRequest/UpsService';
 import Users from './components/Admin/Users/Users';
 import ChangePassword from './components/ChangePassword/ChangePassword';
@@ -42,6 +44,8 @@ function App() {
             <Route path='service' element={<ServiceAdmin/>}/>
             <Route path='computerServiceReq' element={<ComputerService/>}/>
             <Route path='upsServiceReq' element={<UpsService/>}/>
+            <Route path='printerServiceReq' element={<PrinterService/>}/>
+            <Route path='surveillanceServiceReq' element={<Surveillance/>}/>
             <Route path='users' element={<Users/>}/>
 
           </Route>
