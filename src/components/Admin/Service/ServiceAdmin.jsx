@@ -6,18 +6,17 @@ import ServiceRaw from './ServiceRaw';
 
 const serviceItems = ['computer', 'ups', 'printer', 'survillence']
 
-
 const ServiceAdmin = () => {
-    const [item, setItem] = useState('')
-    const [category, setCategory] = useState('')
-    const [serviceImage, setServiceImage] = useState(null)
-    const [value, setValue] = useState(0)
+    const [item, setItem] = useState('');
+    const [category, setCategory] = useState('');
+    const [serviceImage, setServiceImage] = useState(null);
+    const [value, setValue] = useState(0);
     const [services, loading] = useService(serviceItems[value]);
     const [alls, setAlls] = useState([]);
 
     useEffect(() => {
         setAlls(services)
-    },[services])
+    }, [services])
 
     const updateValue = (id) => {
         setValue(id)
@@ -39,11 +38,27 @@ const ServiceAdmin = () => {
         const UPLOAD_URL = 'http://localhost:5000/api/omEpc/service/new'
 
         axios.post(UPLOAD_URL, formData)
-            .then(response => console.log(response))
+            .then(response => {
+                console.log(response.status)
+                if (response.status == 200) {
+                    const interval = setInterval(() => {
+                        setAlls(services)
+                    }, 5000);
+
+                    return () => clearInterval(interval);
+                }
+                // console.log(response)
+            })
             .catch((err) => {
                 console.log(err.message)
             })
     }
+
+    useEffect(() => {
+
+    }, [])
+
+
     return (
         <div>
 
@@ -107,6 +122,8 @@ const ServiceAdmin = () => {
                                 key={service._id}
                                 index={index}
                                 service={service}
+                                alls={alls}
+                                setAlls={setAlls}
                             ></ServiceRaw>)
                         }
                     </tbody>

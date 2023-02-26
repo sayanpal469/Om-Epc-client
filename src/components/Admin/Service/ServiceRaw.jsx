@@ -1,8 +1,9 @@
 import React from 'react';
 import { useReducer } from 'react';
 
-const ServiceRaw = ({index, service}) => {
-    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+const ServiceRaw = ({index, service, setAlls, alls}) => {
+    const {_id} = service;
+    // const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     const serviceImg = `http://localhost:5000/uploads/${service.image}`;
 
     const handelDelete = (id) => {
@@ -14,6 +15,7 @@ const ServiceRaw = ({index, service}) => {
             console.log(data)
             if(data.success == true) {
                 alert(data.message)
+                setAlls(alls.filter(item => item._id !== _id))
             } else {
                 alert(data.message)
             }
@@ -21,7 +23,7 @@ const ServiceRaw = ({index, service}) => {
             alert(err.message)
         })
 
-        forceUpdate()
+        // forceUpdate()
     }
 
 

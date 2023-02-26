@@ -8,6 +8,8 @@ import ServiceModal from '../modal/ServiceModal';
 import Footer from '../Footer/Footer';
 import useService from '../hooks/useService';
 import { Link, NavLink } from 'react-router-dom';
+import Loading from '../Loading/Loading';
+import '../../style/scrollMouse.css'
 
 const serviceItems = ['computer', 'ups', 'printer', 'survillence']
 
@@ -22,10 +24,25 @@ const Service = () => {
 
     return (
         <div className='main'>
-            <div className='service-container'>
-                <div className='Heading text-4xl md:text-5xl lg:text-5xl text-white'>
-                    Our Service
+            <div className='service-container bg-fixed'>
+                <div className='Heading text-4xl md:text-5xl lg:text-6xl text-white font-mono'>
+                    Our Services
+                    <div className='flex text-2xl justify-center mt-2 space-x-2'>
+                        <Link to='/'>Home</Link>
+                        <span className='text-orange-500'>//</span>
+                        <Link to='/service' className='text-orange-500'>Services</Link>
+                    </div>
+
+                    {/* mouse scroll */}
+                    <div id="scroll-down-animation" className='mt-20'>
+                        <span class="mouse">
+                            <span class="move"></span>
+                        </span>
+                    </div>
+
+
                 </div>
+
             </div>
             <div className='lg:px-20 mt-20 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 space-x-5'>
                 <div className=''>
@@ -62,12 +79,12 @@ const Service = () => {
                         services.map(service => <ServiceCart key={service._id} service={service} />)
                     }
                     {
-                        loading && <progress className="progress w-56"></progress>
+                        loading && <Loading />
                     }
                 </div>
             </div>
 
-            <ServiceModal/>
+            <ServiceModal />
 
 
             <div className='flex justify-center'>

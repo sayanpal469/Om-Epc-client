@@ -32,7 +32,8 @@ const ProductRaw = ({index, product}) => {
                 </div>
             </td>
             <td>{product.name}</td>
-            <td>{product.modelNo}</td>
+            <td>{product.model}</td>
+            <td>{product.brand}</td>
             <td>
                 <button onClick={() => handelDelete(product._id)} className='btn btn-error'>Delete</button>
             </td>

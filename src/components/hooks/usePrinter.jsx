@@ -1,20 +1,20 @@
 import axios from 'axios';
-import { useState } from 'react';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
-const useService = (item) => {
-    const [services, setServices] = useState([]);
+const usePrinter = () => {
+    const [printers, setPrinters] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState('')
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/service/${item}`)
+                let { data, status } = await axios.get('http://localhost:5000/api/omEpc/product/printer')
                 // let data = await res.json
-                // console.log(data)
+                // console.log(data.printers)
                 if (status == 200) {
-                    setServices(data.services)
+                    setPrinters(data.printers)
                     setLoading(false)
                     // setError('')
                 }
@@ -26,16 +26,9 @@ const useService = (item) => {
             }
         }
 
-        fetchData()
-
-        // const interval = setInterval(() => {
-        //     fetchData();
-        // }, 5000);
-
-        // return () => clearInterval(interval);
-    }, [item])
-
-    return [services, loading]
+        fetchData();
+    }, [printers])
+    return [printers, loading]
 };
 
-export default useService;
+export default usePrinter;

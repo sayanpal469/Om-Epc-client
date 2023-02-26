@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import SurveillanceRaw from './SurveillanceRaw';
 
-const Surveillance = () => {
+const SurveillanceService = () => {
     const [serviceRequest, setServiceRequest] = useState([]);
     // const [responce, setResponce] = useState()
 
@@ -70,4 +70,4 @@ const Surveillance = () => {
     );
 };
 
-export default Surveillance;
+export default SurveillanceService;

@@ -1,20 +1,20 @@
 import axios from 'axios';
-import { useState } from 'react';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
-const useService = (item) => {
-    const [services, setServices] = useState([]);
+const useSurveillance = () => {
+    const [surveillances, setSurveillances] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState('')
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/service/${item}`)
+                let { data, status } = await axios.get('http://localhost:5000/api/omEpc/product/surveillance')
                 // let data = await res.json
                 // console.log(data)
                 if (status == 200) {
-                    setServices(data.services)
+                    setSurveillances(data.surveillance)
                     setLoading(false)
                     // setError('')
                 }
@@ -28,14 +28,8 @@ const useService = (item) => {
 
         fetchData()
 
-        // const interval = setInterval(() => {
-        //     fetchData();
-        // }, 5000);
-
-        // return () => clearInterval(interval);
-    }, [item])
-
-    return [services, loading]
+    }, [surveillances])
+    return [surveillances, loading]
 };
 
-export default useService;
+export default useSurveillance;

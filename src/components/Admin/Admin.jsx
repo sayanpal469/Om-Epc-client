@@ -12,7 +12,7 @@ const Admin = () => {
             </div>
             <div class="drawer-side shadow-xl rounded-2xl">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="menu p-4 overflow-y-auto w-80 text-white bg-orange-400 pl-8">
+                <ul class="menu p-4 w-80 text-white bg-orange-400 pl-8">
                     <li><Link className='' to='/admin'>
                         <FaUserAlt className='text-2xl'></FaUserAlt>
                     </Link></li>

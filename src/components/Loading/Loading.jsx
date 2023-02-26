@@ -3,7 +3,8 @@ import './Loading.css'
 
 const Loading = () => {
     return (
-        <div class="square-wrap">
+        <div className='l'>
+            <div class="load ">
             <div class="square"></div>
             <div class="square"></div>
             <div class="square"></div>
@@ -34,6 +35,7 @@ const Loading = () => {
             <div class="square"></div>
             <div class="square"></div>
             <div class="square"></div>
+        </div>
         </div>
     );
 };

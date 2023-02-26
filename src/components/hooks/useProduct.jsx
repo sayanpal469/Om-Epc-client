@@ -1,20 +1,21 @@
 import axios from 'axios';
+import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const useService = (item) => {
-    const [services, setServices] = useState([]);
+const useProduct = (category) => {
+    const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
     // const [error, setError] = useState('')
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/service/${item}`)
+                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/${category}`)
                 // let data = await res.json
                 // console.log(data)
                 if (status == 200) {
-                    setServices(data.services)
+                    setProducts(data)
                     setLoading(false)
                     // setError('')
                 }
@@ -27,15 +28,9 @@ const useService = (item) => {
         }
 
         fetchData()
+    }, [])
 
-        // const interval = setInterval(() => {
-        //     fetchData();
-        // }, 5000);
-
-        // return () => clearInterval(interval);
-    }, [item])
-
-    return [services, loading]
+    return [products, loading]
 };
 
-export default useService;
+export default useProduct;

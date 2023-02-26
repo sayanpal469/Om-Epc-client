@@ -6,6 +6,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 import userAuth from '../userAuth';
 import './Nav.css'
+import classNames from 'classnames';
 
 const Nav = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -13,6 +14,22 @@ const Nav = ({ children }) => {
     const [admin] = useAdmin();
     const [isAdmin, setIsAdmin] = useState(false)
     const activeLink = useActiveLink();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        function handleScroll() {
+            if (window.scrollY < 100) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [])
 
     const logout = () => {
         localStorage.clear()
@@ -29,10 +46,18 @@ const Nav = ({ children }) => {
 
 
     useEffect(() => {
-        if(admin) {
+        if (admin) {
             setIsAdmin(true)
         }
-    },[location])
+    }, [location])
+
+    const navbarClasses = classNames(
+        'fixed w-full z-50 transition-colors duration-500 navbar lg:px-10 py-10',
+        {
+          'bg-transparent': !scrolled,
+          'bg-white': scrolled,
+        }
+      );
 
 
     const menu = <>
@@ -47,10 +72,10 @@ const Nav = ({ children }) => {
                 <li className={`font-medium ${activeLink === '/' ? 'active' : ''}`}><Link to='/'>Home</Link></li>
                 <li className={`font-medium ${activeLink === '/about' ? 'active' : ''}`}><Link to='/about'>About</Link></li>
                 <li className={`font-medium ${activeLink === '/service' ? 'active' : ''}`}><Link to='/service'>Service</Link></li>
-                <li className={`font-medium ${activeLink === '/ups' ? 'active' : ''}`}><Link to='/Service'>UPS & Backup</Link></li>
-                <li className={`font-medium ${activeLink === '/computer' ? 'active' : ''}`}><Link to='/Service'>Computer</Link></li>
-                <li className={`font-medium ${activeLink === '/printer' ? 'active' : ''}`}><Link to='/Service'>Printer</Link></li>
-                <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Survillence</Link></li>
+                <li className={`font-medium ${activeLink === '/ups' ? 'active' : ''}`}><Link to='/ups'>UPS & Backup</Link></li>
+                <li className={`font-medium ${activeLink === '/computer' ? 'active' : ''}`}><Link to='/computer'>Computer</Link></li>
+                <li className={`font-medium ${activeLink === '/printer' ? 'active' : ''}`}><Link to='/printer'>Printer</Link></li>
+                <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/surveillance'>Survillence</Link></li>
                 <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Career</Link></li>
 
                 {
@@ -72,7 +97,7 @@ const Nav = ({ children }) => {
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content  flex flex-col">
                     {/* <!-- Navbar --> */}
-                    <div className="w-full navbar  lg:px-20 sticky top-0  bg-opacity-30 z-50 backdrop-filter backdrop-blur-lg bg-white">
+                    <div className='w-full navbar lg:px-20 sticky transition-colors duration-500 bg-opacity-30 z-50 backdrop-filter backdrop-blur-lg bg-white'>
                         <div className="flex-none lg:hidden">
                             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
