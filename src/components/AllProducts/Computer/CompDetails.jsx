@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 
 const CompDetails = () => {
@@ -10,6 +10,7 @@ const CompDetails = () => {
     const [computer, setComputer] = useState({});
     const [loading, setLoading] = useState(true);
     const [readmore, setReadmore] = useState(false);
+    const navigate = useNavigate();
     // console.log(compId)
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const CompDetails = () => {
                 // let data = await res.json
                 // console.log(data.computer)
                 if (status == 200) {
-                    setComputer(data.computer)
+                    setComputer(data.data)
                     setLoading(false)
                     // setError('')
                 }
@@ -34,6 +35,13 @@ const CompDetails = () => {
 
         fetchData()
     }, [])
+
+
+    const handelBuyClick = (id) => {
+        localStorage.setItem('buyProduct', JSON.stringify(computer))
+        navigate(`/buy/${id}`)
+    };
+
     const { modelName, series, brand, processor, processorBrand, processorFrequency, operatingSystem, processorModel, ram, displaySize, graphics, hardDrive, ssdCapacity, warranty, image, price, wrongPrice, category, color, description } = computer;
     const imgUrl = `http://localhost:5000/uploads/${image}`;
 
@@ -168,7 +176,7 @@ const CompDetails = () => {
                             <span class="title-font font-medium text-gray-900 text-3xl">₹{price}</span>
                             <span className='text-gray-400 ml-2 text-xl'><del>₹{wrongPrice}</del></span>
                         </div>
-                        <button class="text-white btn capitalize bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded">Buy Now</button>
+                        <button onClick={() => handelBuyClick(compId)} class="text-white btn capitalize bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded">Buy Now</button>
                     </div>
                 </div>
             </div>}

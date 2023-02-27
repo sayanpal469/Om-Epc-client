@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 
 const PrinterDetails = () => {
@@ -8,6 +8,12 @@ const PrinterDetails = () => {
     const [printer, setPrinter] = useState({});
     const [loading, setLoading] = useState(true);
     const [readmore, setReadmore] = useState(false);
+    const navigate = useNavigate();
+    
+    const handelBuyClick = (id) => {
+        localStorage.setItem('buyProduct', JSON.stringify(printer))
+        navigate(`/buy/${id}`)
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,6 +39,8 @@ const PrinterDetails = () => {
 
     const { modelName, printingMethod, brand, type, refilType, warranty, image, price, wrongPrice, color, description } = printer;
     const imgUrl = `http://localhost:5000/uploads/${image}`;
+
+    
 
     return (
         <div class="container px-14 py-24 mx-auto">
@@ -135,7 +143,7 @@ const PrinterDetails = () => {
                             <span class="title-font font-medium text-gray-900 text-3xl">₹{price}</span>
                             <span className='text-gray-400 ml-2 text-xl'><del>₹{wrongPrice}</del></span>
                         </div>
-                        <button class="text-white btn capitalize bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded">Buy Now</button>
+                        <button onClick={() => handelBuyClick(printId)} class="text-white btn capitalize bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded">Buy Now</button>
                     </div>
                 </div>
             </div>}

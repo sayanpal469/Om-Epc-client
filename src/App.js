@@ -29,6 +29,7 @@ import Printer from './components/AllProducts/Printer/Printer';
 import PrinterDetails from './components/AllProducts/Printer/PrinterDetails';
 import Surveillance from './components/AllProducts/Surveillance/Surveillance';
 import SurveillanceDetails from './components/AllProducts/Surveillance/SurveillanceDetails';
+import BuyPage from './components/BuyPage/BuyPage';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='/printer/:printId' element={<PrinterDetails/>} />
           <Route path='/surveillance' element={<Surveillance/>} />
           <Route path='/surveillance/:surveId' element={<SurveillanceDetails/>} />
+          <Route path='/buy/:buyId' element={<BuyPage/>}/>
           <Route path='/about' element={<AboutPage/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>

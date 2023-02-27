@@ -17,9 +17,9 @@ const ComputerCart = ({ computer }) => {
                     <span class="text-gray-400 mr-3 uppercase text-xs">Brand- <span className='text-orange-500'>{brand}</span></span>
                     <p title={modelName} class="text-lg font-semibold text-black truncate block capitalize">{modelName}</p>
                     <div class="flex items-center">
-                        <p class="text-lg font-semibold text-black cursor-auto my-3">${price}</p>
+                        <p class="text-lg font-semibold text-black cursor-auto my-3">₹{price}</p>
                         <del>
-                            <p class="text-sm text-gray-600 cursor-auto ml-2">${wrongPrice}</p>
+                            <p class="text-sm text-gray-600 cursor-auto ml-2">₹{wrongPrice}</p>
                         </del>
                         <button onClick={() => getDetails(_id)} class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
