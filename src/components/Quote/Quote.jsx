@@ -41,46 +41,46 @@ const Quote = () => {
 
   return (
     <div className='callback-container mx-20'>
-      <div class="background">
-        <div class="container-form">
-          <div class="screen">
-            <div class="screen-header">
-              <div class="screen-header-left">
-                <div class="screen-header-button close"></div>
-                <div class="screen-header-button maximize"></div>
-                <div class="screen-header-button minimize"></div>
+      <div className="background">
+        <div className="container-form">
+          <div className="screen">
+            <div className="screen-header">
+              <div className="screen-header-left">
+                <div className="screen-header-button close"></div>
+                <div className="screen-header-button maximize"></div>
+                <div className="screen-header-button minimize"></div>
               </div>
-              <div class="screen-header-right">
-                <div class="screen-header-ellipsis"></div>
-                <div class="screen-header-ellipsis"></div>
-                <div class="screen-header-ellipsis"></div>
+              <div className="screen-header-right">
+                <div className="screen-header-ellipsis"></div>
+                <div className="screen-header-ellipsis"></div>
+                <div className="screen-header-ellipsis"></div>
               </div>
             </div>
-            <div class="screen-body">
-              <div class="screen-body-item left">
-                <div class="app-title">
+            <div className="screen-body">
+              <div className="screen-body-item left">
+                <div className="app-title">
                   <span className="request">Request </span>
                   <span className="callback">Callback</span>
                 </div>
-                <div class="app-contact">CONTACT INFO : 917981413743</div>
+                <div className="app-contact">CONTACT INFO : 917981413743</div>
               </div>
-              <div class="screen-body-item right-box">
-                <form onSubmit={handelSubmit} class="app-form">
-                  <div class="app-form-group">
-                    <input type='text' name='name' class="app-form-control" placeholder="NAME" />
+              <div className="screen-body-item right-box">
+                <form onSubmit={handelSubmit} className="app-form">
+                  <div className="app-form-group">
+                    <input type='text' name='name' className="app-form-control" placeholder="NAME" />
                   </div>
-                  <div class="app-form-group">
-                    <input type='email' name='email' class="app-form-control" placeholder="EMAIL" />
+                  <div className="app-form-group">
+                    <input type='email' name='email' className="app-form-control" placeholder="EMAIL" />
                   </div>
-                  <div class="app-form-group">
-                    <input type='number' name='contact' class="app-form-control" placeholder="CONTACT NO" />
+                  <div className="app-form-group">
+                    <input type='number' name='contact' className="app-form-control" placeholder="CONTACT NO" />
                   </div>
-                  <div class="app-form-group message">
-                    <textarea type='text' name='message' class="app-form-control" placeholder="MESSAGE" />
+                  <div className="app-form-group message">
+                    <textarea type='text' name='message' className="app-form-control" placeholder="MESSAGE" />
                   </div>
-                  <div class="app-form-group buttons">
-                    <button class="app-form-button mr-10">CANCEL</button>
-                    <button class="app-form-button" type='submit'>SEND</button>
+                  <div className="app-form-group buttons">
+                    <button className="app-form-button mr-10">CANCEL</button>
+                    <button className="app-form-button" type='submit'>SEND</button>
                   </div>
                 </form>
               </div>

@@ -61,6 +61,8 @@ const Products = () => {
 
     return (
         <div>
+
+            
             <div className='flex justify-center mt-2'>
                 {/* <button className='btn'>Add</button> */}
                 {/* The button to open modal */}
@@ -106,8 +108,8 @@ const Products = () => {
                 </ul>
             </div>
 
-            <div class="overflow-x-auto mt-10">
-                <table class="table w-full text-center">
+            <div className="overflow-x-auto mt-10">
+                <table className="table w-full text-center">
                     <thead>
                         <tr>
                             <th>No</th>

@@ -48,16 +48,17 @@ const Nav = ({ children }) => {
     useEffect(() => {
         if (admin) {
             setIsAdmin(true)
+            // window.location.reload();
         }
-    }, [location])
+    }, [admin])
 
     const navbarClasses = classNames(
         'fixed w-full z-50 transition-colors duration-500 navbar lg:px-10 py-10',
         {
-          'bg-transparent': !scrolled,
-          'bg-white': scrolled,
+            'bg-transparent': !scrolled,
+            'bg-white': scrolled,
         }
-      );
+    );
 
 
     const menu = <>
@@ -76,6 +77,7 @@ const Nav = ({ children }) => {
                 <li className={`font-medium ${activeLink === '/computer' ? 'active' : ''}`}><Link to='/computer'>Computer</Link></li>
                 <li className={`font-medium ${activeLink === '/printer' ? 'active' : ''}`}><Link to='/printer'>Printer</Link></li>
                 <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/surveillance'>Survillence</Link></li>
+                <li className={`font-medium ${activeLink === '/myOrder' ? 'active' : ''}`}><Link to='/myOrder'>Order</Link></li>
                 <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Career</Link></li>
 
                 {

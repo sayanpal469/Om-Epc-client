@@ -34,9 +34,9 @@ const Banner = () => {
             <Flip right>
               <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
             </Flip>
-            <div class="container mt-5">
-              <div class="button-container">
-                <span class="mask">Buy Now</span>
+            <div className="container mt-5">
+              <div className="button-container">
+                <span className="mask">Buy Now</span>
                 <button className='' type="button" name="Hover">Buy Now</button>
               </div>
             </div>
@@ -47,9 +47,9 @@ const Banner = () => {
         <div className='slide-2 text-left bg-none'>
           <div className="banner-content px-10">
             <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
-            <div class="container mt-5">
-              <div class="button-container">
-                <span class="mask">Buy Now</span>
+            <div className="container mt-5">
+              <div className="button-container">
+                <span className="mask">Buy Now</span>
                 <button type="button" name="Hover">Buy Now</button>
               </div>
             </div>
@@ -60,9 +60,9 @@ const Banner = () => {
         <div className='slide-3 text-left bg-none'>
           <div className="banner-content px-10">
             <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
-            <div class="container mt-5">
-              <div class="button-container">
-                <span class="mask">Buy Now</span>
+            <div className="container mt-5">
+              <div className="button-container">
+                <span className="mask">Buy Now</span>
                 <button type="button" name="Hover">Buy Now</button>
               </div>
             </div>
@@ -73,9 +73,9 @@ const Banner = () => {
         <div className='slide-4 text-left bg-none'>
           <div className="banner-content px-10">
             <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
-            <div class="container mt-5">
-              <div class="button-container">
-                <span class="mask">Buy Now</span>
+            <div className="container mt-5">
+              <div className="button-container">
+                <span className="mask">Buy Now</span>
                 <button type="button" name="Hover">Buy Now</button>
               </div>
             </div>
@@ -86,9 +86,9 @@ const Banner = () => {
         <div className='slide-5 text-left bg-none'>
           <div className="banner-content px-10">
             <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
-            <div class="container mt-5">
-              <div class="button-container">
-                <span class="mask">Buy Now</span>
+            <div className="container mt-5">
+              <div className="button-container">
+                <span className="mask">Buy Now</span>
                 <button type="button" name="Hover">Buy Now</button>
               </div>
             </div>
@@ -99,9 +99,9 @@ const Banner = () => {
         <div className='slide-6 text-left bg-none'>
           <div className="banner-content px-10">
             <h1 className='lg:text-2xl text-lg text-black'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, nulla. Voluptate voluptatibus eius qui maiores aperiam consequatur aliquid? Omnis, suscipit.</h1>
-            <div class="container mt-5">
-              <div class="button-container">
-                <span class="mask">Buy Now</span>
+            <div className="container mt-5">
+              <div className="button-container">
+                <span className="mask">Buy Now</span>
                 <button type="button" name="Hover">Buy Now</button>
               </div>
             </div>
@@ -109,10 +109,10 @@ const Banner = () => {
         </div>
       </SwiperSlide>
     </Swiper>
-    <div class="ocean">
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
+    <div className="ocean">
+      <div className="wave"></div>
+      <div className="wave"></div>
+      <div className="wave"></div>
     </div>
   </div>
   );

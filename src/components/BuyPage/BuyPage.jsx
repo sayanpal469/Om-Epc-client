@@ -1,23 +1,56 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // import './BuyPageStyle.css'
 import { HiPlusCircle } from 'react-icons/hi';
 import { AiFillMinusCircle } from 'react-icons/ai';
+import userAuth from '../userAuth';
+import axios from 'axios';
 
 const BuyPage = () => {
     const { buyId } = useParams();
     const buyRequestProduct = localStorage.getItem('buyProduct');
     const [buyProduct, setBuyProduct] = useState({})
     const [quantity, setQuantuty] = useState(1);
+    const [userEmail, setUserEmail] = useState('');
+    const navigate = useNavigate();
     let deliveryCost = 100;
+    // console.log(buyId)
 
     useEffect(() => {
+        // const auth = localStorage.getItem('user');
         if (buyRequestProduct) {
+            // const userAuth = JSON.parse(auth)
             setBuyProduct(JSON.parse(buyRequestProduct))
+            // setUserEmail(userAuth?.email);
+            // window.location.reload();
         }
+        getUserEmail()
     }, [])
 
-    // console.log(buyProduct);
+    async function getDataUserLocalStorage(key) {
+        return new Promise((resolve, reject) => {
+            try {
+                const data = localStorage.getItem(key);
+                resolve(JSON.parse(data));
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+
+    async function getUserEmail() {
+        try {
+            const data = await getDataUserLocalStorage('user');
+            if (data) {
+                setUserEmail(data?.email);
+                console.log(data.email)
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // console.log(userEmail);
 
     const { image, price, ram, modelName, brand, color } = buyProduct
 
@@ -25,6 +58,42 @@ const BuyPage = () => {
 
     const handelSubmit = (e) => {
         e.preventDefault()
+        const firstName = e.target.first_name.value;
+        const lastName = e.target.last_name.value;
+        const address = e.target.street_address.value;
+        const city = e.target.city.value;
+        const post_code = e.target.post_code.value;
+        const phone = e.target.phone.value;
+        const Quantity = quantity;
+        const email = userEmail;
+        const totalBill = (quantity * price) + deliveryCost;
+        const product = buyProduct;
+        // const buyInfo = { firstName, lastName, city, post_code, phone, email, Quantity, totalBill, product }
+        // console.log(buyInfo)
+
+
+        axios.post('http://localhost:5000/api/omEpc/buy/new', {
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            city: city,
+            email: email,
+            contact: phone,
+            postCode: post_code,
+            Quantity: Quantity,
+            totalBill: totalBill,
+            product: product
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.status == 200) {
+                    navigate('/myOrder')
+                    window.location.reload();
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
 
@@ -41,10 +110,10 @@ const BuyPage = () => {
                         <input type="text" name='last_name' required className="rounded-none input input-bordered w-full max-w-xs" />
                     </div>
                 </div>
-                <div className='my-5'>
+                {/* <div className='my-5'>
                     <p className="label-text text-lg">Company name (optional)</p>
                     <input type="text" name='company_name' className="rounded-none input input-bordered w-full" />
-                </div>
+                </div> */}
                 {/* <label for="country">Country / Region</label> */}
                 {/* <select value={getUserCountry} onChange={getCountry} className="input input-bordered w-full mb-5" id="cars" name="cars">
                     {
@@ -54,13 +123,13 @@ const BuyPage = () => {
                 <label className='' htmlFor="">Street address</label>
                 <input type="text" name='street_address' required placeholder="House number and street name" className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Town / City</label>
-                <input type="text" name='town_name' required className="rounded-none input input-bordered w-full mb-5" />
+                <input type="text" name='city' required className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Postcode</label>
                 <input type="text" name='post_code' required className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Phone</label>
                 <input type="text" name='phone' required className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Email address</label>
-                <input type="email" disabled value='email' required className="rounded-none input input-bordered w-full" />
+                <input type="email" disabled value={userEmail} required className="rounded-none input input-bordered w-full" />
             </div>
 
 

@@ -35,8 +35,8 @@ const Service = () => {
 
                     {/* mouse scroll */}
                     <div id="scroll-down-animation" className='mt-20'>
-                        <span class="mouse">
-                            <span class="move"></span>
+                        <span className="mouse">
+                            <span className="move"></span>
                         </span>
                     </div>
 

@@ -4,20 +4,20 @@ import { FaUserAlt } from 'react-icons/fa';
 
 const Admin = () => {
     return (
-        <div class="drawer drawer-mobile bg-slate-100 pt-1">
-            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col px-12">
-                <label for="my-drawer-2" class="btn btn-primary mt-10 drawer-button lg:hidden">Open drawer</label>
+        <div className="drawer drawer-mobile bg-slate-100 pt-1">
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content flex flex-col px-12">
+                <label for="my-drawer-2" className="btn btn-primary mt-10 drawer-button lg:hidden">Open drawer</label>
                 <Outlet></Outlet>
             </div>
-            <div class="drawer-side shadow-xl rounded-2xl">
-                <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="menu p-4 w-80 text-white bg-orange-400 pl-8">
+            <div className="drawer-side shadow-xl rounded-2xl">
+                <label for="my-drawer-2" className="drawer-overlay"></label>
+                <ul className="menu p-4 w-80 text-white bg-orange-400 pl-8">
                     <li><Link className='' to='/admin'>
                         <FaUserAlt className='text-2xl'></FaUserAlt>
                     </Link></li>
                     <li><Link className='my-3' to='/admin/getRequest'>Customer Get Request</Link></li>
-                    <li><Link className='my-3' to='/admin/products'>Products</Link></li>
+                    <li><Link className='my-3' to='/admin/computer'>Computers</Link></li>
                     <li><Link className='my-3' to='/admin/buyRequest'>Product Buy Request</Link></li>
                     <li><Link className='my-3' to='/admin/service'>Services</Link></li>
                     <li><Link className='my-3' to='/admin/computerServiceReq'>Computer Service Requests</Link></li>

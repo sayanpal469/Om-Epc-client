@@ -106,8 +106,8 @@ const ServiceAdmin = () => {
             </div>
 
             {/* Service table */}
-            <div class="overflow-x-auto mt-5">
-                <table class="table w-full text-center mb-5">
+            <div className="overflow-x-auto mt-5">
+                <table className="table w-full text-center mb-5">
                     <thead>
                         <tr>
                             <th>No</th>

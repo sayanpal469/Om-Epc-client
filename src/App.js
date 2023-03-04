@@ -30,6 +30,9 @@ import PrinterDetails from './components/AllProducts/Printer/PrinterDetails';
 import Surveillance from './components/AllProducts/Surveillance/Surveillance';
 import SurveillanceDetails from './components/AllProducts/Surveillance/SurveillanceDetails';
 import BuyPage from './components/BuyPage/BuyPage';
+import UserOrder from './components/UserOrder/UserOrder';
+import RequireUser from './components/RequireAdmin/RequireUser';
+import AdminComputer from './components/Admin/Products/Computers/AdminComputer';
 
 function App() {
   return (
@@ -47,6 +50,11 @@ function App() {
           <Route path='/surveillance' element={<Surveillance/>} />
           <Route path='/surveillance/:surveId' element={<SurveillanceDetails/>} />
           <Route path='/buy/:buyId' element={<BuyPage/>}/>
+          <Route path='/myOrder' element={
+            <RequireUser>
+              <UserOrder/>
+            </RequireUser>
+          }/>
           <Route path='/about' element={<AboutPage/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
@@ -58,7 +66,7 @@ function App() {
             <Admin/>
           </RequireAdmin>}>
             <Route path='getRequest' element={<GetRequest/>}/>
-            <Route path='products' element={<Products/>}/>
+            <Route path='computer' element={<AdminComputer/>}/>
             <Route path='buyRequest' element={<ProductBuyRequest/>}/>
             <Route path='service' element={<ServiceAdmin/>}/>
             <Route path='computerServiceReq' element={<ComputerService/>}/>

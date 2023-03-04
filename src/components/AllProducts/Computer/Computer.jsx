@@ -23,15 +23,15 @@ const Computer = () => {
 
                     {/* mouse scroll */}
                     <div id="scroll-down-animation" className='mt-24'>
-                        <span class="mouse">
-                            <span class="move"></span>
+                        <span className="mouse">
+                            <span className="move"></span>
                         </span>
                     </div>
                 </div>
             </div>
 
             {/* Products section area */}
-            <section class="w-fitmx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
+            <section className="w-fitmx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
                 {
                     computers?.map(computer => <ComputerCart
                         key={computer._id}

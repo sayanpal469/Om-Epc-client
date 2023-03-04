@@ -20,8 +20,8 @@ const Surveillance = () => {
                     </div>
                     {/* mouse scroll */}
                     <div id="scroll-down-animation" className='mt-20'>
-                        <span class="mouse">
-                            <span class="move"></span>
+                        <span className="mouse">
+                            <span className="move"></span>
                         </span>
                     </div>
 
@@ -30,7 +30,7 @@ const Surveillance = () => {
 
 
             {/* Products section area */}
-            <section class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
+            <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
                 {
                     surveillances.map(surveillance => <SurveillanceCart
                         key={surveillance._id}

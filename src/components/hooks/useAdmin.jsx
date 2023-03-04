@@ -4,6 +4,7 @@ import userAuth from '../userAuth';
 const useAdmin = () => {
     const [user, setUser] = useState({})
     const [admin, setAdmin] = useState(false)
+    // const [isReloaded, setIsReloaded] = useState(false);
 
     useEffect(() => {
         let email = userAuth?.email;
@@ -18,13 +19,14 @@ const useAdmin = () => {
                         // console.log(adminUser.role)
                         if (user.role == "admin") {
                             setAdmin(true)
+                            // setIsReloaded(true);
                         }
                     }
                 })
         }
     }, [user])
 
-return [admin]
+    return [admin]
 };
 
 export default useAdmin;

@@ -4,13 +4,13 @@ import "./About.css";
 const About = () => {
   return (
     <>
-      <div class="landing-animation">
+      <div className="landing-animation">
         <div className="mx-10">
-          <div class="container-about text-center w-full">
-            <h2 class="title">
-              <span class="title-word title-word-1">OM </span>
-              <span class="title-word title-word-2">EPC </span>
-              <span class="title-word title-word-3">SOLUTION</span>
+          <div className="container-about text-center w-full">
+            <h2 className="title">
+              <span className="title-word title-word-1">OM </span>
+              <span className="title-word title-word-2">EPC </span>
+              <span className="title-word title-word-3">SOLUTION</span>
             </h2>
           </div>
           <p className="text-2xl text-white font-mono">OM EPC Solutions is a leading provider of comprehensive maintenance services for all types of computers, printers, cameras, batteries, and inverters. With its team of experienced technicians and their expertise in troubleshooting and fixing different types of electronic devices, the company is a trusted partner for individuals and businesses alike. The company offers an annual maintenance contract that covers regular check-ups and preventative maintenance, ensuring that all devices are functioning optimally at all times. In addition, the company provides 24/7 support for urgent repair needs, ensuring minimal downtime and interruption to the customer's operations.
@@ -21,9 +21,9 @@ const About = () => {
 
             In addition to its repair and maintenance services, OM EPC Solutions also offers training and support to its customers. The company's training programs are designed to help customers get the most out of their devices and to prevent problems from occurring in the first place. The company's support team is available 24/7 to answer any questions and to provide guidance and support whenever needed.</p>
         </div>
-        <div class="sine-wave">
+        <div className="sine-wave">
           <svg
-            class="svg-waves"
+            className="svg-waves"
             xmlns="http://www.w3.org/2000/svg"
             xlink="http://www.w3.org/1999/xlink"
             viewBox="0 24 150 28"
@@ -36,7 +36,7 @@ const About = () => {
                 d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
               ></path>
             </defs>
-            <g class="svg-waves__parallax">
+            <g className="svg-waves__parallax">
               <use href="#gentle-wave" x="48" y="0"></use>
               <use href="#gentle-wave" x="48" y="3"></use>
               <use href="#gentle-wave" x="48" y="5"></use>
