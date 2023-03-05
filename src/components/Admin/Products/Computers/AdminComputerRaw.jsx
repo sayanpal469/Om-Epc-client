@@ -36,7 +36,7 @@ const AdminComputerRaw = ({ index, computer }) => {
             <td>{brand}</td>
             <td>{processor}</td>
             <td>{processorBrand}</td>
-            {/* <td>{processorFrequency}</td> */}
+            <td>{processorFrequency}</td>
             <td>{processorModel}</td>
             <td>{operatingSystem}</td>
             <td>{ram}</td>

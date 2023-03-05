@@ -1,37 +1,79 @@
 import React from 'react';
+import { FcCancel } from 'react-icons/fc';
 
-const ProductBuyRequestRaw = ({ index, request }) => {
-    const { _id, productName, modelNo, firstName, lastName, email, contact, quantity, responseStatus, createdAt } = request;
+const ProductBuyRequestRaw = ({ index, order }) => {
+    const { _id, Quantity, firstName, lastName, email, contact, createdAt, totalBill, address, city, postCode } = order;
+    const { brand, modelNumber, modelName } = order?.product;
+    const productImg = `http://localhost:5000/uploads/${order.product.image}`;
 
-    const handelDelevery = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/buy/update/${id}`, {
+    const handelShipped = (id) => {
+        fetch(`http://localhost:5000/api/omEpc/buy/shipped/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                responseStatus: true
+                isShipped: true
             })
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
+
+    const handelComplete = (id) => {
+        fetch(`http://localhost:5000/api/omEpc/buy/complete/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                isCompleted: true
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
     return (
         <tr>
             <th>{index + 1}</th>
-            <td>{productName}</td>
-            <td>{modelNo}</td>
+            <td>
+                <div className="avatar">
+                    <div className="w-14">
+                        <img src={productImg} alt='' />
+                    </div>
+                </div>
+                <div className='mt-3'>Quantity x {Quantity}</div>
+            </td>
+            <td>{brand}</td>
+            <td>{modelNumber ? modelNumber : modelName}</td>
             <td className='capitalize'>{firstName} {lastName}</td>
             <td>{email}</td>
             <td>{contact}</td>
-            <td>{quantity}</td>
-            <td>{
-                responseStatus == true ? <button className='btn btn-primary btn-disabled'>Delevered</button> : <button onClick={() => handelDelevery(_id)} className='btn btn-error'>Not Delevered</button>
-            }</td>
+            <td>{address}</td>
+            <td>{city}</td>
+            <td>{postCode}</td>
+            <td>₹{totalBill}</td>
             <td>{createdAt}</td>
+            {order.isCanceled ? <td className='w-28 mx-auto'><FcCancel className='text-5xl' /></td> : <td className='text-white'>{order.isCompleted ? <p className='bg-blue-500 p-2 rounded-lg w-20 mx-auto'>Paid</p> : <p className='bg-red-500 p-2 rounded-lg w-20 mx-auto'>Not paid</p>}</td>}
+
+            {order.isCanceled ? <td className='w-28 mx-auto'><FcCancel className='text-5xl' /></td> : order.isCompleted ? <td className='text-white'>
+                <p className='bg-blue-600 p-2 rounded-lg w-24 mx-auto'>Delivered</p>
+            </td>
+                :
+                <td className='text-white'>
+                    {order.isShipped ? <p className='bg-green-500 p-2 rounded-lg w-24 mx-auto'>Shipped</p>
+                        :
+                        <button onClick={() => handelShipped(_id)} className='rounded-lg btn btn-primary mx-auto'>Shipp Order</button>
+                    }
+                </td>}
+
+            <td>{order.isCanceled ? <p className='bg-red-500 p-2 rounded-lg w-36 mx-auto text-white'>Order Canceled</p> : order.isCompleted == true ? <button className='btn btn-disabled'>Completed</button> :
+                <button disabled={order.isShipped ? false : true} onClick={() => handelComplete(_id)} class="btn btn-primary">Complete Order</button>}</td>
         </tr>
     );
 };

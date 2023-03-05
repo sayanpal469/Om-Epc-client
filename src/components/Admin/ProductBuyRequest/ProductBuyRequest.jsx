@@ -1,22 +1,36 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import ProductBuyRequestRaw from './ProductBuyRequestRaw';
 
 const ProductBuyRequest = () => {
-    const [buyRequest, setBuyRequest] = useState([]);
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/omEpc/buy')
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                if (data.success == true) {
-                    setBuyRequest(data.allBuyRequest)
-                } else {
-                    alert(`Error : ${data.message}`)
+        fetchData()
+    }, [orders])
+
+    const fetchData = async () => {
+        // setLoading(true)
+        try {
+            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy`)
+            // console.log(data.data)
+            if (status == 200) {
+                // setVisible(true)
+                setOrders(data.data)
+                // setLoading(false)
+                // setError('')
+                if (orders) {
+                    // setVisible(true)
                 }
-            })
-    }, [buyRequest])
+            } else {
+                // setVisible(!visible)
+
+            }
+        } catch (error) {
+            // setLoading(false)
+        }
+    }
 
     return (
         <div>
@@ -25,22 +39,28 @@ const ProductBuyRequest = () => {
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Product Name</th>
-                            <th>Model</th>
+                            <th>Product</th>
+                            <th>Brand</th>
+                            <th>Model Number</th>
                             <th>Customer Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Quantity</th>
-                            <th>Responce</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Pin Code</th>
+                            <th>Total Bill</th>
                             <th>Order Time</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            buyRequest.map((request, index) => <ProductBuyRequestRaw
-                                key={request._id}
+                            orders.map((order, index) => <ProductBuyRequestRaw
+                                key={order._id}
                                 index={index}
-                                request={request}
+                                order={order}
                             ></ProductBuyRequestRaw>)
                         }
                     </tbody>

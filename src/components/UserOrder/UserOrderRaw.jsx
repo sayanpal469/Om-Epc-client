@@ -6,7 +6,7 @@ const UserOrderRaw = ({ index, order, setDeleteSuccess }) => {
     const productImg = `http://localhost:5000/uploads/${order.product.image}`;
     // console.log(order.responseStatus)
 
-    const { brand, modelName, price } = order.product
+    const { brand, modelName} = order.product
 
 
     const handelCancel = (id) => {
@@ -43,12 +43,15 @@ const UserOrderRaw = ({ index, order, setDeleteSuccess }) => {
                         <img src={productImg} alt='' />
                     </div>
                 </div>
+                <div className='mt-3'>Quantity x {order.Quantity}</div>
             </td>
 
             {order.isCanceled ? <td><del>{brand}</del></td> : <td>{brand}</td>}
 
             {order.isCanceled ? <td><del>{modelName}</del></td> : <td>{modelName}</td>}
-            {order.isCanceled ? <td className='font-bold'><del>₹{price}</del></td> : <td className='font-bold'>₹{price}</td>}
+
+            {order.isCanceled ? <td className='font-bold'><del>₹{order.totalBill}</del></td> : <td className='font-bold'>₹{order.totalBill}</td>}
+
             {order.isCanceled ? <td className='w-28 mx-auto'><FcCancel className='text-5xl'/></td> : <td className='text-white'>{order.isCompleted ? <p className='bg-blue-500 p-2 rounded-lg w-20 mx-auto'>Paid</p> : <p className='bg-red-500 p-2 rounded-lg w-20 mx-auto'>Not paid</p>}</td>}
 
             
