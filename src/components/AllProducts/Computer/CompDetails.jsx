@@ -42,7 +42,7 @@ const CompDetails = () => {
             navigate('/login')
         } else {
             localStorage.setItem('buyProduct', JSON.stringify(computer))
-            navigate(`/buy/${id}`)
+            navigate('/buy')
         }
     };
 

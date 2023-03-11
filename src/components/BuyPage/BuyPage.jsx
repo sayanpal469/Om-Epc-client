@@ -3,20 +3,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 // import './BuyPageStyle.css'
 import { HiPlusCircle } from 'react-icons/hi';
 import { AiFillMinusCircle } from 'react-icons/ai';
-import userAuth from '../userAuth';
 import axios from 'axios';
 import useUserEmail from '../hooks/useUserEmail';
 
 const BuyPage = () => {
-    const { buyId } = useParams();
     const buyRequestProduct = localStorage.getItem('buyProduct');
     const [buyProduct, setBuyProduct] = useState({})
     const [quantity, setQuantuty] = useState(1);
-    // const [userEmail, setUserEmail] = useState('');
     const [userEmail] = useUserEmail();
     const navigate = useNavigate();
     let deliveryCost = 100;
-    // console.log(buyId)
 
     useEffect(() => {
         // const auth = localStorage.getItem('user');
@@ -29,11 +25,11 @@ const BuyPage = () => {
     }, [])
 
 
-    // console.log(userEmail);
 
-    const { image, price, ram, modelName, brand, color } = buyProduct
+    const { image, price, ram, modelName, brand } = buyProduct
 
     const imgUrl = `http://localhost:5000/uploads/${image}`;
+
 
     const handelSubmit = (e) => {
         e.preventDefault()
@@ -47,9 +43,6 @@ const BuyPage = () => {
         const email = userEmail;
         const totalBill = (quantity * price) + deliveryCost;
         const product = buyProduct;
-        // const buyInfo = { firstName, lastName, city, post_code, phone, email, Quantity, totalBill, product }
-        // console.log(buyInfo)
-
 
         axios.post('http://localhost:5000/api/omEpc/buy/new', {
             firstName: firstName,
@@ -79,7 +72,7 @@ const BuyPage = () => {
     return (
         <form onSubmit={handelSubmit} className='grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 my-10 lg:px-14 gap-10 bg-gray-50 justify-center'>
             <div className='p-10'>
-                <div className='flex'>
+                <div className='flex mb-5'>
                     <div>
                         <span className="label-text text-lg">First Name</span>
                         <input type="text" name='first_name' required className="rounded-none input input-bordered  w-full max-w-xs" />
@@ -89,16 +82,6 @@ const BuyPage = () => {
                         <input type="text" name='last_name' required className="rounded-none input input-bordered w-full max-w-xs" />
                     </div>
                 </div>
-                {/* <div className='my-5'>
-                    <p className="label-text text-lg">Company name (optional)</p>
-                    <input type="text" name='company_name' className="rounded-none input input-bordered w-full" />
-                </div> */}
-                {/* <label for="country">Country / Region</label> */}
-                {/* <select value={getUserCountry} onChange={getCountry} className="input input-bordered w-full mb-5" id="cars" name="cars">
-                    {
-                        countries.map(one => <option>{one}</option>)
-                    }
-                </select> */}
                 <label className='' htmlFor="">Street address</label>
                 <input type="text" name='street_address' required placeholder="House number and street name" className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Town / City</label>

@@ -52,7 +52,7 @@ function App() {
           <Route path='/printer/:printId' element={<PrinterDetails/>} />
           <Route path='/surveillance' element={<Surveillance/>} />
           <Route path='/surveillance/:surveId' element={<SurveillanceDetails/>} />
-          <Route path='/buy/:buyId' element={<BuyPage/>}/>
+          <Route path='/buy' element={<BuyPage/>}/>
           <Route path='/myOrder' element={
             <RequireUser>
               <UserOrder/>

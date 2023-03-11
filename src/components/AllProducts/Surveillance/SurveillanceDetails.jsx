@@ -11,10 +11,14 @@ const SurveillanceDetails = () => {
     const [loading, setLoading] = useState(true);
     const [readmore, setReadmore] = useState(false);
     const navigate = useNavigate();
-    
+
     const handelBuyClick = (id) => {
-        localStorage.setItem('buyProduct', JSON.stringify(surveillance))
-        navigate(`/buy/${id}`)
+        if (!localStorage.getItem('user')) {
+            navigate('/login')
+        } else {
+            localStorage.setItem('buyProduct', JSON.stringify(surveillance))
+            navigate('/buy')
+        }
     };
 
     useEffect(() => {
