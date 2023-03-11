@@ -13,6 +13,9 @@ const BuyPage = () => {
     const [userEmail] = useUserEmail();
     const navigate = useNavigate();
     let deliveryCost = 100;
+    const [phoneNumber, setPhoneNumber] = useState('');
+
+    
 
     useEffect(() => {
         // const auth = localStorage.getItem('user');
@@ -22,7 +25,12 @@ const BuyPage = () => {
             // setUserEmail(userAuth?.email);
             // window.location.reload();
         }
-    }, [])
+    }, []);
+
+    const handlePhoneNumberChange = (event) => {
+        const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
+        setPhoneNumber(inputPhoneNumber);
+    }
 
 
 
@@ -38,7 +46,7 @@ const BuyPage = () => {
         const address = e.target.street_address.value;
         const city = e.target.city.value;
         const post_code = e.target.post_code.value;
-        const phone = e.target.phone.value;
+        const phone = phoneNumber;
         const Quantity = quantity;
         const email = userEmail;
         const totalBill = (quantity * price) + deliveryCost;
@@ -89,7 +97,15 @@ const BuyPage = () => {
                 <label className='' htmlFor="">Postcode</label>
                 <input type="text" name='post_code' required className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Phone</label>
-                <input type="text" name='phone' required className="rounded-none input input-bordered w-full mb-5" />
+                <input
+                 type="tel"
+                 id="phoneNumber"
+                 name="phoneNumber"
+                 value={phoneNumber}
+                 onChange={handlePhoneNumberChange}
+                 pattern="[0-9]{10}" // enforce 10-digit pattern
+                 required 
+                 className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Email address</label>
                 <input type="email" disabled value={userEmail} required className="rounded-none input input-bordered w-full" />
             </div>

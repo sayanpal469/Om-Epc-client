@@ -86,7 +86,8 @@ const Nav = ({ children }) => {
                         <li><Link to='/myService'>Service Request</Link></li>
                     </ul>
                 </li>
-                <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Career</Link></li>
+
+                <li className={`font-medium ${activeLink === '/career' ? 'active' : ''}`}><Link to='/career'>Career</Link></li>
 
                 {
                     loggedIn ? <li className='font-medium'><Link onClick={logout} to='/login'>Log out</Link></li>

@@ -36,6 +36,7 @@ import AdminUpses from './components/Admin/Products/Upses/AdminUpses';
 import AdminPrinter from './components/Admin/Products/Printer/AdminPrinter';
 import AdminSurveillance from './components/Admin/Products/Surveillance/AdminSurveillance';
 import ServiceRequests from './components/UserServiceRequest/ServiceRequests';
+import Career from './components/Career/Career';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
             </RequireUser>
           }/>
           <Route path='/about' element={<AboutPage/>}/>
+          <Route path='/career' element={<Career/>} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/checkEmail' element={<CheckEmail/>}/>
