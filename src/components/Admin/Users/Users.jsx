@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import UserRaw from './UserRaw';
 
 const Users = () => {
@@ -13,7 +14,12 @@ const Users = () => {
             if(data.success == true) {
                 setUsers(data.users)
             } else {
-                alert(`Server Error : ${data.message}`)
+                swal({
+                    title: "Error!",
+                    text: data.message,
+                    icon: "error",
+                    button: "Aww yiss!",
+                  });
             }
         })
     },[])

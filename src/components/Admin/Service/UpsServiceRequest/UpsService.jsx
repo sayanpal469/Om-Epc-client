@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import UpsServiceRaw from './UpsServiceRaw';
 
 const UpsService = () => {
@@ -21,7 +22,12 @@ const UpsService = () => {
                     setServiceRequest(data.allServiceRequests)
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
-                    alert(`Error : ${data.message}`)
+                    swal({
+                        title: "Error!",
+                        text: "data.message",
+                        icon: "error",
+                        button: "Aww!",
+                      });
                 }
             })
     }, [serviceRequest])

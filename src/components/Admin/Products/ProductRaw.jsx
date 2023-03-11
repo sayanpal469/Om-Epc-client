@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const ProductRaw = ({index, product}) => {
     const productImg = `http://localhost:5000/uploads/${product.image}`;
@@ -11,13 +12,18 @@ const ProductRaw = ({index, product}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            if(data.success == true) {
-                alert(data.message)
+            if(data.success === true) {
+                swal(data.message);
             } else {
-                alert(data.message)
+                swal(data.message);
             }
         }).catch(err => {
-            alert(err.message)
+            swal({
+                title: "Error",
+                text: err.message,
+                icon: "Error",
+                button: "Aww!",
+              });
         })
     }
 

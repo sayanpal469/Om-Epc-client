@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import userAuth from '../userAuth';
 import "./Quote.css"
 
@@ -30,7 +31,7 @@ const Quote = () => {
         });
         console.log(resp.data)
       } else {
-        alert('Please login')
+        swal("Please Login");
         navigate('/login')
       }
     } catch (err) {

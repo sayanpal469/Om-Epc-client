@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import PrinterServiceRaw from './PrinterServiceRaw';
 
 const PrinterService = () => {
@@ -17,11 +18,15 @@ const PrinterService = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.success == true) {
+                if (data.success === true) {
                     setServiceRequest(data.allServiceRequests)
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
-                    alert(`Error : ${data.message}`)
+                    swal({
+                        title: "Good job!",
+                        text: "Service completed!",
+                        icon: "success",
+                      });
                 }
             })
     }, [serviceRequest])

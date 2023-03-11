@@ -5,6 +5,7 @@ import { HiPlusCircle } from 'react-icons/hi';
 import { AiFillMinusCircle } from 'react-icons/ai';
 import userAuth from '../userAuth';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const BuyPage = () => {
     const { buyId } = useParams();
@@ -169,7 +170,12 @@ const BuyPage = () => {
                                                 if (quantity > 1) {
                                                     setQuantuty(quantity - 1)
                                                 } else {
-                                                    alert('not possible')
+                                                    swal({
+                                                        title: "Oh No!",
+                                                        text: "Not Possible",
+                                                        icon: "warning",
+                                                        button: "Okay",
+                                                      });
                                                 }
                                             }}>-</AiFillMinusCircle>
 

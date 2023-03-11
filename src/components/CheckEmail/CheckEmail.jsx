@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const CheckEmail = () => {
     const [forgetEmail, setForgetEmail] = useState()
@@ -20,10 +21,10 @@ const CheckEmail = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success == true) {
-                    alert(`${data.message}`)
+                     swal(`${data.message}`);
                     navigate(`/changePass/${forgetEmail}`)
                 } else {
-                    alert(`${data.message}`)
+                     swal(`${data.message}`);
                     
                 }
             })

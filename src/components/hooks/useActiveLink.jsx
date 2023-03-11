@@ -8,6 +8,7 @@ const useActiveLink = () => {
   useEffect(() => {
     const { pathname } = location;
     setActiveLink(pathname);
+    console.log(pathname);
   }, [location]);
 
   return activeLink;

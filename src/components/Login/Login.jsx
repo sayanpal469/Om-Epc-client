@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 import userAuth from "../userAuth";
 import "./Login.css"
 
@@ -30,7 +31,7 @@ const Login = () => {
           localStorage.setItem('user', JSON.stringify(data.user))
           navigate('/', { state:{isLoggedIn : true} })
         } else {
-          alert(`${data.message}`)
+          swal(`${data.message}`);
         }
       })
   };

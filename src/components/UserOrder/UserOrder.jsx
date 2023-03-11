@@ -26,36 +26,12 @@ const UserOrder = () => {
         }
     }, [deleteSuccess]);
 
-
-    // async function getDataUserLocalStorage(key) {
-    //     return new Promise((resolve, reject) => {
-    //         try {
-    //             const data = localStorage.getItem(key);
-    //             resolve(JSON.parse(data));
-    //         } catch (error) {
-    //             reject(error);
-    //         }
-    //     });
-    // }
-
-    // async function getUserEmail() {
-    //     try {
-    //         const data = await getDataUserLocalStorage('user');
-    //         if (data) {
-    //             setUserEmail(data?.email);
-    //             // console.log(data.email)
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
     const fetchData = async () => {
         setLoading(true)
         try {
             let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy/${email}`)
             // console.log(data.available)
-            if (status == 200) {
+            if (status === 200) {
                 setVisible(true)
                 setOrders(data.available)
                 setLoading(false)

@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const UpsServiceRaw = ({ index, request }) => {
     const { _id, collectionDate, category, brand, clientName, email, contact, address, city, pinCode, message, responseStatus } = request;
@@ -16,8 +17,13 @@ const UpsServiceRaw = ({ index, request }) => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
-                if (data.success == true) {
-                    alert('Service completed')
+                if (data.success === true) {
+                    swal({
+                        title: "Good job!",
+                        text: "Service Completed!",
+                        icon: "success",
+                        button: "Aww yiss!",
+                      });
                 }
             })
     }

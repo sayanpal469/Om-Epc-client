@@ -1,5 +1,6 @@
 import React from 'react';
 import { useReducer } from 'react';
+import swal from 'sweetalert';
 
 const ServiceRaw = ({index, service, setAlls, alls}) => {
     const {_id} = service;
@@ -13,14 +14,19 @@ const ServiceRaw = ({index, service, setAlls, alls}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            if(data.success == true) {
-                alert(data.message)
+            if(data.success === true) {
+                 swal(data.message);
                 setAlls(alls.filter(item => item._id !== _id))
             } else {
-                alert(data.message)
+                 swal(data.message);
             }
         }).catch(err => {
-            alert(err.message)
+            swal({
+                title: "Error",
+                text: err.message,
+                icon: "Error",
+                button: "Aww!",
+              });
         })
 
         // forceUpdate()

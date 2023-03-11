@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import swal from 'sweetalert';
 import ComputerServiceRaw from './ComputerServiceRaw';
 
 const ComputerService = () => {
@@ -15,11 +16,16 @@ const ComputerService = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
-                if (data.success == true) {
+                if (data.success === true) {
                     setServiceRequest(data.allServiceRequests)
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
-                    alert(`Error : ${data.message}`)
+                    swal({
+                        title: "Error",
+                        text: data.message,
+                        icon: "Error",
+                        button: "Aww!",
+                      });
                 }
             })
     }, [serviceRequest])

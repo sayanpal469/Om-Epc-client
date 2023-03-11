@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../style/orderStyle.css'
 import { FcCancel } from 'react-icons/fc';
+import swal from 'sweetalert';
 
 const UserOrderRaw = ({ index, order, setDeleteSuccess }) => {
     const productImg = `http://localhost:5000/uploads/${order.product.image}`;
@@ -22,14 +23,18 @@ const UserOrderRaw = ({ index, order, setDeleteSuccess }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.success == true) {
+                if (data.success === true) {
                     setDeleteSuccess(true)
-                    alert(data.message)
+                     swal(`${data.message}`);
                 } else {
-                    alert(data.message)
+                     swal(`${data.message}`);
                 }
             }).catch(err => {
-                alert(err.message)
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                  });
             })
     }
 
