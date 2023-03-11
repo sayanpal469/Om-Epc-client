@@ -23,17 +23,6 @@ const Products = () => {
         setValue(id)
     }
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/api/omEpc/product')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.success == true) {
-    //                 setProducts(data.products)
-    //             } else {
-    //                 alert(`Server error : ${data.message}`)
-    //             }
-    //         })
-    // }, [products])
 
     const postProduct = (e) => {
         e.preventDefault();

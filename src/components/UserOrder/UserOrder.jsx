@@ -9,7 +9,6 @@ const UserOrder = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [visible, setVisible] = useState(false);
-    const [userEmail, setUserEmail] = useState('');
     const [deleteSuccess, setDeleteSuccess] = useState(false);
     const email = userAuth?.email;
     // console.log(visible)
@@ -27,28 +26,6 @@ const UserOrder = () => {
     }, [deleteSuccess]);
 
 
-    // async function getDataUserLocalStorage(key) {
-    //     return new Promise((resolve, reject) => {
-    //         try {
-    //             const data = localStorage.getItem(key);
-    //             resolve(JSON.parse(data));
-    //         } catch (error) {
-    //             reject(error);
-    //         }
-    //     });
-    // }
-
-    // async function getUserEmail() {
-    //     try {
-    //         const data = await getDataUserLocalStorage('user');
-    //         if (data) {
-    //             setUserEmail(data?.email);
-    //             // console.log(data.email)
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
 
     const fetchData = async () => {
         setLoading(true)

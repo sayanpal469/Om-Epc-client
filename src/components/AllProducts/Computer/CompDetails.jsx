@@ -101,12 +101,12 @@ const CompDetails = () => {
                     </div>
                     <p className="leading-relaxed">{description}</p>
                     <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                        <div className="flex">
-                            <span className="mr-3">Color</span>
+                        <div className="flex items-center">
+                            <span className="mr-2">Color</span>
                             <p className={`rounded-full bg-${color} w-6 h-6 focus:outline-none`}></p>
                         </div>
                         <div className="flex ml-6 items-center">
-                            <span className="mr-3">Warranty</span>
+                            <span className="mr-2">Warranty</span>
                             <p className='font-bold'>{warranty} Year</p>
                         </div>
                     </div>

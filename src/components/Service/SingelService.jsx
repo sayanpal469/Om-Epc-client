@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ComingSoon from '../ComingSoon/ComingSoon';
 
 const SingelService = () => {
     const [serviceDetails, setServiceDetails] = useState({});
@@ -16,14 +17,10 @@ const SingelService = () => {
     }, [])
 
     return (
-        <div>
-            bla
-            bla
-            bla
-            bla
-            bla
-            bla
-            bla
+        <div className='bg-black text-white h-screen '>
+            <div className='flex justify-center h-screen'>
+                <ComingSoon/>
+            </div>
         </div>
     );
 };

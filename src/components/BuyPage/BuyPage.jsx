@@ -5,13 +5,15 @@ import { HiPlusCircle } from 'react-icons/hi';
 import { AiFillMinusCircle } from 'react-icons/ai';
 import userAuth from '../userAuth';
 import axios from 'axios';
+import useUserEmail from '../hooks/useUserEmail';
 
 const BuyPage = () => {
     const { buyId } = useParams();
     const buyRequestProduct = localStorage.getItem('buyProduct');
     const [buyProduct, setBuyProduct] = useState({})
     const [quantity, setQuantuty] = useState(1);
-    const [userEmail, setUserEmail] = useState('');
+    // const [userEmail, setUserEmail] = useState('');
+    const [userEmail] = useUserEmail();
     const navigate = useNavigate();
     let deliveryCost = 100;
     // console.log(buyId)
@@ -24,31 +26,8 @@ const BuyPage = () => {
             // setUserEmail(userAuth?.email);
             // window.location.reload();
         }
-        getUserEmail()
     }, [])
 
-    async function getDataUserLocalStorage(key) {
-        return new Promise((resolve, reject) => {
-            try {
-                const data = localStorage.getItem(key);
-                resolve(JSON.parse(data));
-            } catch (error) {
-                reject(error);
-            }
-        });
-    }
-
-    async function getUserEmail() {
-        try {
-            const data = await getDataUserLocalStorage('user');
-            if (data) {
-                setUserEmail(data?.email);
-                console.log(data.email)
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
     // console.log(userEmail);
 

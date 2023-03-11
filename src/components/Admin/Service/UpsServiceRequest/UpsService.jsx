@@ -7,8 +7,10 @@ const UpsService = () => {
     const [serviceRequest, setServiceRequest] = useState([]);
     // const [responce, setResponce] = useState()
 
-    let resStatus = serviceRequest.filter(service => service.responseStatus == true)
-    let pendingStatus = serviceRequest.filter(service => service.responseStatus == false)
+    let completedStatus = serviceRequest.filter(service => service.isCompleted == true);
+    let pendingStatus = serviceRequest.filter(service => service.isCompleted == false && service.isCanceled == false);
+    let canceledStatus = serviceRequest.filter(service => service.isCanceled == true);
+
 
     // console.log(resStatus)
 
@@ -31,8 +33,9 @@ const UpsService = () => {
             <p className='text-center lg:text-3xl mt-2 font-semibold text-orange-500'>Ups Service Requests</p>
 
             <div className='my-10'>
-                <p className='text-xl font-bold text-blue-500'>Total completed services- {resStatus.length}</p>
-                <p className='text-xl mt-2 font-bold text-red-500'>Total Pending services- {pendingStatus.length}</p>
+                <p className='text-xl font-bold text-blue-500'>Total completed services- {completedStatus.length}</p>
+                <p className='text-xl mt-2 font-bold text-pink-500'>Total Pending services- {pendingStatus.length}</p>
+                <p className='text-xl mt-2 font-bold text-red-500'>Total Canceled services- {canceledStatus.length}</p>
             </div>
 
 

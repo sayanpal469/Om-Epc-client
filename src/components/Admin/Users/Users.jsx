@@ -27,7 +27,7 @@ const Users = () => {
                             <th>No</th>
                             <th>User Name</th>
                             <th>Email</th>
-                            <th>Password</th>
+                            {/* <th>Password</th> */}
                             <th>Contact</th>
                             {/* <th>Image</th> */}
                             <th>Role</th>

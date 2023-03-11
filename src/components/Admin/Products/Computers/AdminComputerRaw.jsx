@@ -21,6 +21,7 @@ const AdminComputerRaw = ({ index, computer }) => {
                 alert(err.message)
             })
     }
+    
     return (
         <tr>
             <th>{index + 1}</th>

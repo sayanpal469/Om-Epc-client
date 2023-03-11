@@ -77,7 +77,15 @@ const Nav = ({ children }) => {
                 <li className={`font-medium ${activeLink === '/computer' ? 'active' : ''}`}><Link to='/computer'>Computer</Link></li>
                 <li className={`font-medium ${activeLink === '/printer' ? 'active' : ''}`}><Link to='/printer'>Printer</Link></li>
                 <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/surveillance'>Survillence</Link></li>
-                <li className={`font-medium ${activeLink === '/myOrder' ? 'active' : ''}`}><Link to='/myOrder'>Order</Link></li>
+                <li tabIndex={0} className={`font-medium ${activeLink === '/myOrder' ? 'active' : ''}`}>
+                    <a className="justify-between">
+                        Dashboard
+                    </a>
+                    <ul className="p-2 shadow menu bg-base-100 mt-2">
+                        <li><Link to='/myOrder'>Orders</Link></li>
+                        <li><Link to='/myService'>Service Request</Link></li>
+                    </ul>
+                </li>
                 <li className={`font-medium ${activeLink === '/survillence' ? 'active' : ''}`}><Link to='/Service'>Career</Link></li>
 
                 {

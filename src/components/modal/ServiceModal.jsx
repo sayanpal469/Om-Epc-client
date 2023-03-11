@@ -1,16 +1,169 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { MdOutlineMiscellaneousServices } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import useService from '../hooks/useService';
+import useUserEmail from '../hooks/useUserEmail';
 import './ModalStyle.css'
 const serviceItems = ['computer', 'ups', 'printer', 'survillence']
 
 const ServiceModal = () => {
     const [value, setValue] = useState(0)
     const [services, loading] = useService(serviceItems[value]);
+    const [clientName, setClientName] = useState('');
+    const [phone, setPhone] = useState(1);
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [pincode, setPincode] = useState(1);
+    const [computerCategory, setComputerCategory] = useState('battery replacemant');
+    const [upsCategory, setUpsCategory] = useState('battery faliure');
+    const [printerCategory, setPrinterCategory] = useState('paper jamming');
+    const [surveillanceCategory, setSurveillanceCategory] = useState('Check arp tables');
+    const [computerBrand, setComputerBrand] = useState('hp');
+    const [upsBrand, setUpsBrand] = useState('luminous');
+    const [printerBrand, setPrinterBrand] = useState('hp');
+    const [surveillanceBrand, setSurveillanceBrand] = useState('honeywell');
+    const [item, setItem] = useState('Desktop');
+    const [operating, setOperating] = useState('Ms-Windows');
+    const [date, setDate] = useState('');
+    const [message, setMessage] = useState('');
+    const [userEmail] = useUserEmail();
 
     const updateValue = (id) => {
         setValue(id)
+    };
+
+    const handelComputerService = (e) => {
+        e.preventDefault();
+        const computerRequest = {
+            collectionDate: date,
+            category: computerCategory,
+            item: item,
+            brand: computerBrand,
+            operating: operating,
+            clientName: clientName,
+            email: userEmail,
+            contact: phone,
+            address: address,
+            city: city,
+            pinCode: pincode,
+            message: message
+        }
+        fetch('http://localhost:5000/api/omEpc/serviceReq/computer/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(computerRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    e.target.reset();
+                    alert('Your Service request send, we will call you very soon')
+                }
+            });
+
+    };
+
+
+    const handelUpsService = (e) => {
+        e.preventDefault();
+
+        const upsRequest = {
+            collectionDate: date,
+            category: upsCategory,
+            brand: upsBrand,
+            clientName: clientName,
+            email: userEmail,
+            contact: phone,
+            address: address,
+            city: city,
+            pinCode: pincode,
+            message: message
+        }
+        fetch('http://localhost:5000/api/omEpc/serviceReq/ups/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(upsRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    e.target.reset();
+                    alert('Your Service request send, we will call you very soon')
+                }
+            });
+
+    }
+
+    const handelPrinterService = (e) => {
+        e.preventDefault();
+
+        const printerRequest = {
+            collectionDate: date,
+            category: printerCategory,
+            brand: printerBrand,
+            clientName: clientName,
+            email: userEmail,
+            contact: phone,
+            address: address,
+            city: city,
+            pinCode: pincode,
+            message: message
+        }
+        fetch('http://localhost:5000/api/omEpc/serviceReq/printer/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(printerRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    e.target.reset();
+                    alert('Your Service request send, we will call you very soon')
+                }
+            });
+
+    }
+    const handelSurveillanceService = (e) => {
+        e.preventDefault();
+
+        const surveillanceRequest = {
+            collectionDate: date,
+            category: surveillanceCategory,
+            brand: surveillanceBrand,
+            clientName: clientName,
+            email: userEmail,
+            contact: phone,
+            address: address,
+            city: city,
+            pinCode: pincode,
+            message: message
+        }
+        fetch('http://localhost:5000/api/omEpc/serviceReq/surveillance/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(surveillanceRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    e.target.reset();
+                    alert('Your Service request send, we will call you very soon')
+                }
+            });
+
     }
 
     return (
@@ -38,20 +191,24 @@ const ServiceModal = () => {
 
                     {/* Computer repair form */}
                     {
-                        value == 0 && <form className='form-control' action="">
-                            <input name='name' type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <div className='flex space-x-2 my-3'>
-                                <input name='email' type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                        value == 0 && <form onSubmit={handelComputerService} className='form-control' action="">
+                            <input name='clientName' onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" required className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                                <input name='contact' type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                            <div className='flex space-x-2 my-3'>
+                                <input name='email' type="email" disabled required value={userEmail} placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+
+                                <input name='contact' onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" required className="input input-bordered w-full max-w-lg rounded-none" />
                             </div>
-                            <input name='address' type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='city' type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='pinCode' type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='address' onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" required className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='city' onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" required className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='pinCode' onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" required className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
-                                <select name='category' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select required name='category' onChange={(e) => setComputerCategory(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     {
                                         services.map(service => <option className='capitalize' value={service.category}>{service.category}</option>)
                                     }
@@ -60,15 +217,15 @@ const ServiceModal = () => {
 
                             <div className='my-2'>
                                 <span className="ml-1">Item*</span>
-                                <select name='item' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select required name='item' onChange={(e) => setItem(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                    <option className='capitalize' value='Desktop'>Desktop</option>
                                     <option className='capitalize' value='Laptop'>Laptop</option>
-                                    <option className='capitalize' value='Laptop'>Desktop</option>
                                 </select>
                             </div>
 
                             <div className='my-2'>
                                 <span className="ml-1">Brand*</span>
-                                <select name='brand' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select required name='brand' onChange={(e) => setComputerBrand(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     <option className='capitalize' value='Laptop'>Apple</option>
                                     <option className='capitalize' value='Laptop'>Hp</option>
                                     <option className='capitalize' value='Laptop'>Dell</option>
@@ -84,7 +241,7 @@ const ServiceModal = () => {
 
                             <div className='my-2'>
                                 <span className="ml-1">Operating System*</span>
-                                <select name='operating' className=" select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select required name='operating' onChange={(e) => setOperating(e.target.value)} className=" select select-bordered w-full max-w-lg rounded-none mt-2">
                                     <option className='capitalize' value='Laptop'>MS-Windows</option>
                                     <option className='capitalize' value='Laptop'>Ubuntu</option>
                                     <option className='capitalize' value='Laptop'>Apple macOs</option>
@@ -95,9 +252,14 @@ const ServiceModal = () => {
                                 </select>
                             </div>
 
-                            <input name='collectionDate' type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input name='collectionDate' onChange={(e) => setDate(e.target.value)} type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <textarea name='message' placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+                            <textarea name='message' onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+
+                            <div className="modal-action justify-start">
+                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                            </div>
                         </form>
                     }
 
@@ -106,37 +268,33 @@ const ServiceModal = () => {
                     {/* UPS repair form */}
 
                     {
-                        value == 1 && <form className='form-control' action="">
-                            <input name='name' type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <div className='flex space-x-2 my-3'>
-                                <input name='email' type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                        value == 1 && <form onSubmit={handelUpsService} className='form-control' action="">
+                            <input name='name' onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                                <input name='contact' type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                            <div className='flex space-x-2 my-3'>
+                                <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+
+                                <input name='contact' onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
                             </div>
-                            <input name='address' type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='city' type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='pinCode' type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='address' onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='city' onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='pinCode' onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
-                                <select name='category' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='category' onChange={(e) => setUpsCategory(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     {
                                         services.map(service => <option className='capitalize' value={service.category}>{service.category}</option>)
                                     }
                                 </select>
                             </div>
 
-                            {/* <div className='my-2'>
-                                <span className="ml-1">Item*</span>
-                                <select name='item' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
-                                    <option className='capitalize' value='Laptop'>Laptop</option>
-                                    <option className='capitalize' value='Laptop'>Desktop</option>
-                                </select>
-                            </div> */}
-
                             <div className='my-2'>
                                 <span className="ml-1">Brand*</span>
-                                <select name='brand' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='brand' onChange={(e) => setUpsBrand(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     <option className='capitalize' value='Laptop'>Luminous</option>
                                     <option className='capitalize' value='Laptop'>Genus Power</option>
                                     <option className='capitalize' value='Laptop'>Microtek</option>
@@ -150,9 +308,16 @@ const ServiceModal = () => {
                                 </select>
                             </div>
 
-                            <input name='collectionDate' type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input name='collectionDate' onChange={(e) => setDate(e.target.value)} type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <textarea name='message' placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+                            <textarea name='message' onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+
+
+                            <div className="modal-action justify-start">
+                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                            </div>
+
                         </form>
                     }
 
@@ -160,20 +325,24 @@ const ServiceModal = () => {
                     {/* Printer repair form */}
 
                     {
-                        value == 2 && <form className='form-control' action="">
-                            <input name='name' type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <div className='flex space-x-2 my-3'>
-                                <input name='email' type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                        value == 2 && <form onSubmit={handelPrinterService} className='form-control' action="">
+                            <input name='name' required onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                                <input name='contact' type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                            <div className='flex space-x-2 my-3'>
+                                <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+
+                                <input name='contact' onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
                             </div>
-                            <input name='address' type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='city' type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='pinCode' type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='address' onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='city' onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='pinCode' onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
-                                <select name='category' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='category' onChange={(e) => setPrinterCategory(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     {
                                         services.map(service => <option className='capitalize' value={service.category}>{service.category}</option>)
                                     }
@@ -182,7 +351,7 @@ const ServiceModal = () => {
 
                             <div className='my-2'>
                                 <span className="ml-1">Brand*</span>
-                                <select name='brand' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='brand' onChange={(e) => setPrinterBrand(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     <option className='capitalize' value='Laptop'>HP</option>
                                     <option className='capitalize' value='Laptop'>Canon</option>
                                     <option className='capitalize' value='Laptop'>Xerox</option>
@@ -192,30 +361,40 @@ const ServiceModal = () => {
                                 </select>
                             </div>
 
-                            <input name='collectionDate' type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input name='collectionDate' onChange={(e) => setDate(e.target.value)} type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <textarea name='message' placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+                            <textarea name='message' onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+
+                            <div className="modal-action justify-start">
+                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                            </div>
+
                         </form>
                     }
 
 
+                    {/* Surveillance repair form */}
 
+                    {
+                        value == 3 && <form onSubmit={handelSurveillanceService} className='form-control' action="">
+                            <input name='name' required onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
-{
-                        value == 3 && <form className='form-control' action="">
-                            <input name='name' type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
                             <div className='flex space-x-2 my-3'>
-                                <input name='email' type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
 
-                                <input name='contact' type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <input name='contact' required onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
                             </div>
-                            <input name='address' type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='city' type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
-                            <input name='pinCode' type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='address' required onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='city' required onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input name='pinCode' required onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
-                                <select name='category' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='category' required onChange={(e) => setSurveillanceCategory(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     {
                                         services.map(service => <option className='capitalize' value={service.category}>{service.category}</option>)
                                     }
@@ -224,7 +403,7 @@ const ServiceModal = () => {
 
                             <div className='my-2'>
                                 <span className="ml-1">Brand*</span>
-                                <select name='brand' className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='brand' required onChange={(e) => setUpsBrand(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     <option className='capitalize' value='Laptop'>Honeywell</option>
                                     <option className='capitalize' value='Laptop'>Bosch</option>
                                     <option className='capitalize' value='Laptop'>Axis Communications</option>
@@ -236,17 +415,17 @@ const ServiceModal = () => {
                                 </select>
                             </div>
 
-                            <input name='collectionDate' type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input name='collectionDate' required onChangeCapture={(e) => setDate(e.target.value)} onChange={(e) => setDate(e.target.value)} type="Date" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <textarea name='message' placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+                            <textarea name='message' required onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
+
+                            <div className="modal-action justify-start">
+                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                            </div>
                         </form>
                     }
 
-
-
-                    <div className="modal-action justify-start">
-                        <label htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"> <MdOutlineMiscellaneousServices className='mr-1' /> Explore services</label>
-                    </div>
                 </div>
             </div>
         </div>
