@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const ChangePassword = () => {
     const [changePassword, setchangePassword] = useState()
@@ -19,11 +20,12 @@ const ChangePassword = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.success == true) {
-                    alert(`${data.message}`)
+                if (data.success === true) {
+                    swal(`${data.message}`);
                     navigate('/login')
                 } else {
-                    alert(`${data.message}`)
+                    swal(`${data.message}`);
+
                     
                 }
             })

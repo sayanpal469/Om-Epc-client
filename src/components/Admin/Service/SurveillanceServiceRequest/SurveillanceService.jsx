@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import SurveillanceRaw from './SurveillanceRaw';
 
 const SurveillanceService = () => {
@@ -18,11 +19,16 @@ const SurveillanceService = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
-                if (data.success == true) {
+                if (data.success === true) {
                     setServiceRequest(data.allServiceRequests)
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
-                    alert(`Error : ${data.message}`)
+                    swal({
+                        title: "Error!",
+                        text: "data.message",
+                        icon: "error",
+                        button: "Aww!",
+                      });
                 }
             })
     }, [serviceRequest])

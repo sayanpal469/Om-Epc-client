@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Register = () => {
 
@@ -36,7 +37,7 @@ const Register = () => {
                     }
                     // navigate('/')
                 } else {
-                    alert(`${data.message}`)
+                  swal(`${data.message}`);
                 }
             })
     }

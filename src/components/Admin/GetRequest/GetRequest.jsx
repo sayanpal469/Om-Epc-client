@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import GetRequestRaw from './GetRequestRaw';
+import swal from 'sweetalert';
 
 const GetRequest = () => {
     const [getRequest, setGetRequest] = useState([]);
@@ -10,10 +11,10 @@ const GetRequest = () => {
         fetch('http://localhost:5000/api/omEpc/getRequest')
         .then(res => res.json())
         .then(data => {
-            if(data.success == true) {
+            if(data.success === true) {
                 setGetRequest(data.allRequest)
             } else {
-                alert(`Server Error : ${data.message}`)
+                swal("Server Error  :", `${data.message}`, "error");
             }
         })
     },[])

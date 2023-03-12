@@ -4,7 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { HiPlusCircle } from 'react-icons/hi';
 import { AiFillMinusCircle } from 'react-icons/ai';
 import axios from 'axios';
+import swal from 'sweetalert';
 import useUserEmail from '../hooks/useUserEmail';
+
 
 const BuyPage = () => {
     const buyRequestProduct = localStorage.getItem('buyProduct');
@@ -147,7 +149,12 @@ const BuyPage = () => {
                                                 if (quantity > 1) {
                                                     setQuantuty(quantity - 1)
                                                 } else {
-                                                    alert('not possible')
+                                                    swal({
+                                                        title: "Oh No!",
+                                                        text: "Not Possible",
+                                                        icon: "warning",
+                                                        button: "Okay",
+                                                      });
                                                 }
                                             }}>-</AiFillMinusCircle>
 
