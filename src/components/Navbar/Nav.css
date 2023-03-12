@@ -1,0 +1,30 @@
+
+.logo{
+  /* border: 2px solid red; */
+  width: 120px;
+}
+.menu li:hover{
+  color: #0670da;
+
+}
+
+.menu li{
+  color: black;
+}
+
+.active{
+  color:  #0670da!important;
+  background-color: transparent;
+}
+.active.active{
+  color:  #0670da!important;
+  background-color: transparent;
+}
+
+.navbar{
+   height: 5rem;
+}
+
+li.active {
+  background-color: transparent;
+}

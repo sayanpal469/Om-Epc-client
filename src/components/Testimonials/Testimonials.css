@@ -1,0 +1,96 @@
+.review-container{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.left-review{
+    width: 50%;
+    height: 600px;
+    background-image: url('https://i.postimg.cc/qRrWH78M/pexels-elias-gamez-10558599-1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+}
+
+.review-card{
+    max-height: 400px;
+    max-width: 100%;
+}
+
+.right{
+    width: 60%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 8px;
+    margin-left: -150px;
+}
+
+ /* .mySwiper {
+    width: 100%;
+    height: 100%;
+  } 
+  */
+  /* .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  
+  /* .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }  */
+
+  @media only screen and (max-width: 767px){
+    .review-container{
+        flex-direction: column;
+    }
+    .left-review{
+        width: 100%;
+    height: 300px;
+    background-image: url('https://i.postimg.cc/qRrWH78M/pexels-elias-gamez-10558599-1.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 8px;
+    }
+    .right{
+        width: 100%;
+        margin: 0;
+        margin-top: -100px;
+        /* border: 1px solid red; */
+        /* height: auto; */
+        /* padding-top: 20px; */
+    }
+    .swiper-slide {
+        flex-direction: column;
+        /* padding: 20px; */
+    }
+    .man{
+        margin-top: 10px;
+    }
+    .review-card{
+        border-bottom-left-radius: 40px;
+        border-top-right-radius: 40px;
+        /* border: 1px solid red; */
+        padding-bottom: 15px;
+        height: 100%;
+        max-width: 100%;
+    }
+    .designation{
+        display: none;
+    }
+  }

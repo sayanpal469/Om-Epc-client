@@ -1,0 +1,63 @@
+.computer-banner{
+    background-image: linear-gradient(rgba(12, 110, 134, 0.945), rgba(24, 49, 189, 0.493)),url('https://i.postimg.cc/SR4FZdpM/hand-using-gadgets-laptop-top-view-blank-screen-with-copyspace-minimalistic-style-technologies-moder.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+};
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: inline-flex;
+  list-style: none;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
+  /* border: 11px solid red; */
+  margin-bottom: 20px;
+}
+
+.pagination li {
+  margin: 0;
+}
+
+.pagination li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease-in-out;
+}
+
+.pagination li.active a {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+}
+
+.pagination li.disabled a {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination li a:hover {
+  background-color: #eee;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    .computer-banner{
+        background-size:contain;
+    };
+}

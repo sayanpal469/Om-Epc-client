@@ -1,0 +1,149 @@
+.landing-animation {
+    background: linear-gradient(
+       72.12deg,
+      #0D4883 0%,
+      #0D4883 34.72%,
+      #0D4883 75.75%,
+      #0D4883 100%
+    );
+    height: fit-content;
+    overflow: hidden;
+    text-align:justify;
+    font-size:28px;
+    position: relative;
+  }
+  
+  /* Sine Wave Animation Effect */
+  
+  .svg-waves {
+      position: relative;
+      bottom: -80px;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 180px;
+    }
+    
+    @media (max-width: 767px) {
+      .svg-waves {
+        height: 80px;
+      }
+    }
+    
+  .svg-waves__parallax > use {
+      -webkit-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+              animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    }
+    
+    .svg-waves__parallax > use:nth-child(1) {
+      -webkit-animation-delay: -2s;
+              animation-delay: -2s;
+      -webkit-animation-duration: 7s;
+              animation-duration: 7s;
+      fill: rgba(255, 255, 255, 0.7);
+    }
+    
+    .svg-waves__parallax > use:nth-child(2) {
+      -webkit-animation-delay: -3s;
+              animation-delay: -3s;
+      -webkit-animation-duration: 10s;
+              animation-duration: 10s;
+      fill: rgba(255, 255, 255, 0.5);
+    }
+    
+    .svg-waves__parallax > use:nth-child(3) {
+      -webkit-animation-delay: -4s;
+              animation-delay: -4s;
+      -webkit-animation-duration: 13s;
+              animation-duration: 13s;
+      fill: rgba(255, 255, 255, 0.3);
+    }
+    
+    .svg-waves__parallax > use:nth-child(4) {
+      -webkit-animation-delay: -5s;
+              animation-delay: -5s;
+      -webkit-animation-duration: 20s;
+              animation-duration: 20s;
+      fill: white;
+    }
+
+
+
+    /* Header Animation */
+
+    .title-word {
+        animation: color-animation 4s linear infinite;
+      }
+      
+      .title-word-1 {
+        --color-1: #0981e4;
+        --color-2: #3D8DAE;
+        --color-3: #5ab2f0;
+      }
+      
+      .title-word-2 {
+        --color-1:#d411b6;
+        --color-3:  #ee4c4c;
+        --color-2: #43ed8f;
+      }
+      
+      .title-word-3 {
+        --color-1: #0981e4;
+        --color-2: #0ca5f2;
+        --color-3: #08b1ee;
+      }
+      
+      
+      @keyframes color-animation {
+        0%    {color: var(--color-1)}
+        32%   {color: var(--color-1)}
+        33%   {color: var(--color-2)}
+        65%   {color: var(--color-2)}
+        66%   {color: var(--color-3)}
+        99%   {color: var(--color-3)}
+        100%  {color: var(--color-1)}
+      }
+      
+      /* Here are just some visual styles. 🖌 */
+      
+      .container-about {
+        display: grid;
+        place-items: center;  
+        text-align: center;
+        height: 120px;
+      }
+      
+      .title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 70px;
+        text-transform: uppercase;
+      }
+    
+    @-webkit-keyframes move-forever {
+      0% {
+        transform: translate3d(-90px, 0, 0);
+      }
+      100% {
+        transform: translate3d(85px, 0, 0);
+      }
+    }
+    
+    @keyframes move-forever {
+      0% {
+        transform: translate3d(-90px, 0, 0);
+      }
+      100% {
+        transform: translate3d(85px, 0, 0);
+      }
+    }
+    
+    @media only screen and (max-width: 767px){
+      .title-word {
+        animation: color-animation 4s linear infinite;
+        font-size: 28px;
+      }
+      .landing-animation p{
+        font-size: 16px;
+      }
+    }

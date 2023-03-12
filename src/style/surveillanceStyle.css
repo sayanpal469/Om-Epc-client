@@ -1,0 +1,14 @@
+.surveillance-banner{
+    background-image: linear-gradient(rgba(12, 110, 134, 0.945), rgba(129, 131, 34, 0.493)),url('https://i.postimg.cc/CxGB9fdf/big-brother-colage-concept.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+};
+
+@media only screen and (max-width: 767px) {
+    .surveillance-banner{
+        background-size:contain;
+    };
+}

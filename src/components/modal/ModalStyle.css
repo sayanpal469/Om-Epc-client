@@ -1,0 +1,15 @@
+.mBox{
+    max-width: 36rem!;
+}
+
+/* .menu :where(li:not(.disabled):not(.menu-title)) > :where(*:not(ul)) {
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+.menu > :where(li > *:not(ul):focus) {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+} */
