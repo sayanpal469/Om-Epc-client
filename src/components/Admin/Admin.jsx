@@ -17,8 +17,11 @@ const Admin = () => {
                         <FaUserAlt className='text-2xl'></FaUserAlt>
                     </Link></li>
                     <li><Link className='my-3' to='/admin/getRequest'>Customer Get Request</Link></li>
+                    <li><Link className='my-3' to='/admin/ups'>Upses</Link></li>
                     <li><Link className='my-3' to='/admin/computer'>Computers</Link></li>
-                    <li><Link className='my-3' to='/admin/buyRequest'>Product Buy Request</Link></li>
+                    <li><Link className='my-3' to='/admin/printer'>Printers</Link></li>
+                    <li><Link className='my-3' to='/admin/surveillance'>Surveillances</Link></li>
+                    <li><Link className='my-3' to='/admin/orders'>Orders</Link></li>
                     <li><Link className='my-3' to='/admin/service'>Services</Link></li>
                     <li><Link className='my-3' to='/admin/computerServiceReq'>Computer Service Requests</Link></li>
                     <li><Link className='my-3' to='/admin/upsServiceReq'>Ups Service Requests</Link></li>

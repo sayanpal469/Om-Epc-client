@@ -2,16 +2,16 @@ import React from 'react';
 import swal from 'sweetalert';
 
 const UpsServiceRaw = ({ index, request }) => {
-    const { _id, collectionDate, category, brand, clientName, email, contact, address, city, pinCode, message, responseStatus } = request;
+    const { _id, collectionDate, category, brand, clientName, email, contact, address, city, pinCode, message, isCompleted, isCanceled } = request;
 
-    const handelDelevery = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/serviceReq/ups/status/${id}`, {
+    const handelComplete = (id) => {
+        fetch(`http://localhost:5000/api/omEpc/serviceReq/ups/complete/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                responseStatus: true
+                isCompleted: true
             })
         })
             .then(res => res.json())
@@ -26,7 +26,8 @@ const UpsServiceRaw = ({ index, request }) => {
                       });
                 }
             })
-    }
+    };
+
     return (
         <tr>
             <td>{index + 1}</td>
@@ -40,8 +41,11 @@ const UpsServiceRaw = ({ index, request }) => {
             <td className='capitalize'>{brand}</td>
             <td>{collectionDate}</td>
             <td className='capitalize'>{message}</td>
+
+            <td className='capitalize'>{isCanceled ? <p className='bg-red-500 p-2 text-white'>Canceled</p> : isCompleted ? <p className='bg-green-500 p-2'>Completed</p> : <p className='bg-pink-500 p-2 text-white'>Pending</p>}</td>
+
             <td>{
-                responseStatus == true ? <button className='btn btn-disabled'>Complete</button> : <button onClick={() => handelDelevery(_id)} className='btn btn-error'>Pending</button>
+                isCanceled ? <p className='bg-red-500 p-2 text-white'>Canceled</p> : isCompleted == true ? <button className='btn btn-disabled'>Completed</button> : <button onClick={() => handelComplete(_id)} className='btn btn-primary'>Complete Service</button>
             }</td>
         </tr>
     );

@@ -73,7 +73,7 @@ const ProductBuyRequestRaw = ({ index, order }) => {
                 </td>}
 
             <td>{order.isCanceled ? <p className='bg-red-500 p-2 rounded-lg w-36 mx-auto text-white'>Order Canceled</p> : order.isCompleted == true ? <button className='btn btn-disabled'>Completed</button> :
-                <button disabled={order.isShipped ? false : true} onClick={() => handelComplete(_id)} class="btn btn-primary">Complete Order</button>}</td>
+                <button disabled={order.isShipped ? false : true} onClick={() => handelComplete(_id)} className="btn btn-primary">Complete Order</button>}</td>
         </tr>
     );
 };

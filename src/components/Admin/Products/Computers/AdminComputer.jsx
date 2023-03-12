@@ -77,7 +77,7 @@ const AdminComputer = () => {
                     <input type="checkbox" id="addModal" className="modal-toggle" />
                     <div className="modal modal-bottom sm:modal-middle ">
                         <div className="modal-box text-center">
-                            <label htmlFor="addModal" className="btn btn-sm btn-circle bg-red-500 border-0 absolute right-2 top-2">✕</label>
+                            <label htmlFor="addModal" className="btn btn-md btn-circle bg-red-500 border-0 absolute right-2 top-2 text-xl mt-2">✕</label>
                             <h3 className="font-bold text-3xl">Add a product</h3>
                             <form onSubmit={postProduct} className='form-control mt-5' action="" enctype="multipart/form-data">
 
@@ -124,7 +124,7 @@ const AdminComputer = () => {
                                     <option className='capitalize' value='laptop'>Laptop</option>
                                 </select>
 
-                                <input name='productDescription' onChange={(e) => setProductDescription(e.target.value)} type="text" placeholder="Description*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                                <textarea name='productDescription' onChange={(e) => setProductDescription(e.target.value)} type="text" placeholder="Description*" className="my-2 textarea textarea-bordered textarea-lg w-full max-w-lg" />
 
                                 <input className="btn capitalize bg-orange-500 border-none rounded-none" type="submit" value="Submit" />
                             </form>

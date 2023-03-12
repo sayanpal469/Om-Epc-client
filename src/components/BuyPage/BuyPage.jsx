@@ -3,19 +3,21 @@ import { useNavigate, useParams } from 'react-router-dom';
 // import './BuyPageStyle.css'
 import { HiPlusCircle } from 'react-icons/hi';
 import { AiFillMinusCircle } from 'react-icons/ai';
-import userAuth from '../userAuth';
 import axios from 'axios';
 import swal from 'sweetalert';
+import useUserEmail from '../hooks/useUserEmail';
+
 
 const BuyPage = () => {
-    const { buyId } = useParams();
     const buyRequestProduct = localStorage.getItem('buyProduct');
     const [buyProduct, setBuyProduct] = useState({})
     const [quantity, setQuantuty] = useState(1);
-    const [userEmail, setUserEmail] = useState('');
+    const [userEmail] = useUserEmail();
     const navigate = useNavigate();
     let deliveryCost = 100;
-    // console.log(buyId)
+    const [phoneNumber, setPhoneNumber] = useState('');
+
+    
 
     useEffect(() => {
         // const auth = localStorage.getItem('user');
@@ -25,37 +27,19 @@ const BuyPage = () => {
             // setUserEmail(userAuth?.email);
             // window.location.reload();
         }
-        getUserEmail()
-    }, [])
+    }, []);
 
-    async function getDataUserLocalStorage(key) {
-        return new Promise((resolve, reject) => {
-            try {
-                const data = localStorage.getItem(key);
-                resolve(JSON.parse(data));
-            } catch (error) {
-                reject(error);
-            }
-        });
+    const handlePhoneNumberChange = (event) => {
+        const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
+        setPhoneNumber(inputPhoneNumber);
     }
 
-    async function getUserEmail() {
-        try {
-            const data = await getDataUserLocalStorage('user');
-            if (data) {
-                setUserEmail(data?.email);
-                console.log(data.email)
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
-    // console.log(userEmail);
 
-    const { image, price, ram, modelName, brand, color } = buyProduct
+    const { image, price, ram, modelName, brand } = buyProduct
 
     const imgUrl = `http://localhost:5000/uploads/${image}`;
+
 
     const handelSubmit = (e) => {
         e.preventDefault()
@@ -64,14 +48,11 @@ const BuyPage = () => {
         const address = e.target.street_address.value;
         const city = e.target.city.value;
         const post_code = e.target.post_code.value;
-        const phone = e.target.phone.value;
+        const phone = phoneNumber;
         const Quantity = quantity;
         const email = userEmail;
         const totalBill = (quantity * price) + deliveryCost;
         const product = buyProduct;
-        // const buyInfo = { firstName, lastName, city, post_code, phone, email, Quantity, totalBill, product }
-        // console.log(buyInfo)
-
 
         axios.post('http://localhost:5000/api/omEpc/buy/new', {
             firstName: firstName,
@@ -101,7 +82,7 @@ const BuyPage = () => {
     return (
         <form onSubmit={handelSubmit} className='grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 my-10 lg:px-14 gap-10 bg-gray-50 justify-center'>
             <div className='p-10'>
-                <div className='flex'>
+                <div className='flex mb-5'>
                     <div>
                         <span className="label-text text-lg">First Name</span>
                         <input type="text" name='first_name' required className="rounded-none input input-bordered  w-full max-w-xs" />
@@ -111,16 +92,6 @@ const BuyPage = () => {
                         <input type="text" name='last_name' required className="rounded-none input input-bordered w-full max-w-xs" />
                     </div>
                 </div>
-                {/* <div className='my-5'>
-                    <p className="label-text text-lg">Company name (optional)</p>
-                    <input type="text" name='company_name' className="rounded-none input input-bordered w-full" />
-                </div> */}
-                {/* <label for="country">Country / Region</label> */}
-                {/* <select value={getUserCountry} onChange={getCountry} className="input input-bordered w-full mb-5" id="cars" name="cars">
-                    {
-                        countries.map(one => <option>{one}</option>)
-                    }
-                </select> */}
                 <label className='' htmlFor="">Street address</label>
                 <input type="text" name='street_address' required placeholder="House number and street name" className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Town / City</label>
@@ -128,7 +99,15 @@ const BuyPage = () => {
                 <label className='' htmlFor="">Postcode</label>
                 <input type="text" name='post_code' required className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Phone</label>
-                <input type="text" name='phone' required className="rounded-none input input-bordered w-full mb-5" />
+                <input
+                 type="tel"
+                 id="phoneNumber"
+                 name="phoneNumber"
+                 value={phoneNumber}
+                 onChange={handlePhoneNumberChange}
+                 pattern="[0-9]{10}" // enforce 10-digit pattern
+                 required 
+                 className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Email address</label>
                 <input type="email" disabled value={userEmail} required className="rounded-none input input-bordered w-full" />
             </div>

@@ -1,0 +1,15 @@
+.carrer-banner{
+    background-image: linear-gradient(rgba(17, 44, 51, 0.945), rgba(81, 82, 90, 0.493)),url('https://i.postimg.cc/br2vDKQP/male-technician-working-broken-computer.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 80vh;
+};
+
+
+@media only screen and (max-width: 767px) {
+    .carrer-banner{
+        background-size:contain;
+    };
+}
