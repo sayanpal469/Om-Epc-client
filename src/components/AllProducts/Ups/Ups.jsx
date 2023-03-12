@@ -1,11 +1,32 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import useUps from '../../hooks/useUps';
 import '../../../style/upsStyle.css'
 import UpsCart from './UpsCart';
+import ReactPaginate from 'react-paginate';
+
 
 const Ups = () => {
-    const [upses, loading] = useUps()
+    const [upses, loading] = useUps();
+    const [pageNumber, setPageNumber] = useState(0);
+
+    const upsPerPage = 8;
+    const pagesVisited = pageNumber * upsPerPage;
+  
+    const displayupses = upses
+      .slice(pagesVisited, pagesVisited + upsPerPage)
+      .map((ups) => (
+        <UpsCart
+        key={ups._id}
+        ups={ups}
+    />
+      ));
+  
+    const pageCount = Math.ceil(upses.length / upsPerPage);
+  
+    const changePage = ({ selected }) => {
+      setPageNumber(selected);
+    };
     return (
         <div>
 
@@ -30,13 +51,19 @@ const Ups = () => {
 
             {/* Products section area */}
             <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
-                {
-                    upses.map(ups => <UpsCart
-                        key={ups._id}
-                        ups={ups}
-                    />)
-                }
+                { displayupses}
             </section>
+            <ReactPaginate
+        previousLabel={'Previous'}
+        nextLabel={'Next'}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={'pagination'}
+        previousLinkClassName={'previous-page'}
+        nextLinkClassName={'next-page'}
+        disabledClassName={'pagination-disabled'}
+        activeClassName={'pagination-active'}
+      />
         </div>
     );
 };

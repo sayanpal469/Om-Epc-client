@@ -7,6 +7,55 @@
     height: 100vh;
 };
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: inline-flex;
+  list-style: none;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
+  /* border: 11px solid red; */
+  margin-bottom: 20px;
+}
+
+.pagination li {
+  margin: 0;
+}
+
+.pagination li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease-in-out;
+}
+
+.pagination li.active a {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+}
+
+.pagination li.disabled a {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination li a:hover {
+  background-color: #eee;
+}
+
+
+
 @media only screen and (max-width: 767px) {
     .computer-banner{
         background-size:contain;
