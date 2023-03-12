@@ -5,18 +5,46 @@ import { HiOutlineLightBulb } from 'react-icons/hi';
 import { MdSecurity } from 'react-icons/md';
 import { TbBusinessplan } from 'react-icons/tb';
 import Footer from '../Footer/Footer';
+import axios from 'axios';
 
 const Career = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [cv, setCv] = useState(null);
 
     const handlePhoneNumberChange = (event) => {
         const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
         setPhoneNumber(inputPhoneNumber);
+    };
+
+    const handelCarrer = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('firstName', e.target.fName.value);
+        formData.append('lastName', e.target.lName.value);
+        formData.append('email', e.target.email.value);
+        formData.append('contact', phoneNumber);
+        formData.append('image', cv);
+
+        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/carrer/new'
+
+        axios.post(UPLOAD_URL, formData)
+            .then(response => {
+                const { data, status } = response;
+                if (status == 200) {
+                    alert('Thank you, Our company will call you soon')
+                    e.target.reset();
+                }
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+
     }
 
     return (
-        <div>
-            <div className='computer-banner bg-fixed'>
+        <div >
+            <div className='carrer-banner bg-fixed'>
                 <div className='Heading text-4xl md:text-5xl text-center lg:text-7xl text-white font-mono'>
                     <p className=''>Start your career in</p>
                     <h2 className='text-red-600 font-bold mt-5'>Om EPC Group</h2>
@@ -78,31 +106,38 @@ const Career = () => {
             </div>
 
 
-            <div className='mx-auto my-10 py-10 px-14 shadow-2xl lg:max-w-lg md:max-w-md rounded-md'>
-                <div>
-                    <h4 className='text-3xl font-bold text-center'>Apply now</h4>
-                    <form action="" className='mt-8 flex flex-col gap-5'>
-                        <input type="text" required placeholder="First Name*" className="input input-bordered w-full max-w-lg rounded-none" />
-                        <input type="text" required placeholder="Last Name*" className="input input-bordered w-full max-w-lg rounded-none" />
-                        <input type="email" required placeholder="Email*" className="input input-bordered w-full max-w-lg rounded-none" />
-                        <input
-                            type="tel"
-                            id="phoneNumber"
-                            name="phoneNumber"
-                            value={phoneNumber}
-                            onChange={handlePhoneNumberChange}
-                            pattern="[0-9]{10}" // enforce 10-digit pattern
-                            required
-                            placeholder="Contact*"
-                            className="input input-bordered w-full max-w-lg rounded-none" />
-                        <input type="file" required placeholder="Upload your cv*" />
-                        <input type="submit" className='btn btn-warning rounded-none mt-2' />
-                    </form>
+            <div className='bg-gradient-to-r from-blue-500 to-purple-500 bg-opacity-50 py-14 px-14'>
+                <div className='mx-auto bg-gradient-to-r from-blue-500 to-purple-500 bg-opacity-50 my-10 py-10 px-14 shadow-2xl lg:max-w-lg md:max-w-md rounded-md'>
+                    <div>
+                        <h4 className='text-3xl font-bold  text-center'>Apply now</h4>
+                        <form onSubmit={handelCarrer} action="" className='mt-8 flex flex-col gap-5'>
+                            <input type="text" name='fName' required placeholder="First Name*" className="input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input type="text" name='lName' required placeholder="Last Name*" className="input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input type="email" name='email' required placeholder="Email*" className="input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input
+                                type="tel"
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                value={phoneNumber}
+                                onChange={handlePhoneNumberChange}
+                                pattern="[0-9]{10}" // enforce 10-digit pattern
+                                required
+                                placeholder="Contact*"
+                                className="input input-bordered w-full max-w-lg rounded-none" />
+
+                            <input type="file" onChange={(e) => setCv(e.target.files[0])} required placeholder="Upload your cv*" />
+
+                            <input type="submit" className='btn btn-warning rounded-none mt-2' />
+                        </form>
+                    </div>
                 </div>
             </div>
 
 
-            <Footer/>
+            <Footer />
 
         </div>
     );
