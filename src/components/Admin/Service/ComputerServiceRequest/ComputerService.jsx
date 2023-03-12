@@ -6,8 +6,9 @@ const ComputerService = () => {
     const [serviceRequest, setServiceRequest] = useState([]);
     // const [responce, setResponce] = useState()
 
-    let resStatus = serviceRequest.filter(service => service.responseStatus == true)
-    let pendingStatus = serviceRequest.filter(service => service.responseStatus == false)
+    let completedStatus = serviceRequest.filter(service => service.isCompleted == true);
+    let pendingStatus = serviceRequest.filter(service => service.isCompleted == false && service.isCanceled == false);
+    let canceledStatus = serviceRequest.filter(service => service.isCanceled == true);
 
     // console.log(resStatus)
 
@@ -16,8 +17,10 @@ const ComputerService = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
-                if (data.success === true) {
-                    setServiceRequest(data.allServiceRequests)
+
+                if (data.success == true) {
+                    setServiceRequest(data.data)
+
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
                     swal({
@@ -34,13 +37,14 @@ const ComputerService = () => {
         <div>
             <p className='text-center lg:text-3xl mt-2 font-semibold text-orange-500'>Computer Service Requests</p>
             <div className='my-10'>
-                <p className='text-xl font-bold text-blue-500'>Total completed services- {resStatus.length}</p>
-                <p className='text-xl mt-2 font-bold text-red-500'>Total Pending services- {pendingStatus.length}</p>
+                <p className='text-xl font-bold text-blue-500'>Total completed services- {completedStatus.length}</p>
+                <p className='text-xl mt-2 font-bold text-pink-500'>Total Pending services- {pendingStatus.length}</p>
+                <p className='text-xl mt-2 font-bold text-red-500'>Total Canceled services- {canceledStatus.length}</p>
             </div>
 
 
             <div>
-                <div className="overflow-x-auto mt-5">
+                <div className="overflow-x-auto my-5">
                     <table className="table w-full text-center">
                         <thead>
                             <tr>
@@ -58,6 +62,7 @@ const ComputerService = () => {
                                 <th>Date</th>
                                 <th>Message</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>

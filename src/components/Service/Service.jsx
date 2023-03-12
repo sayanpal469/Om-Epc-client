@@ -7,7 +7,7 @@ import WhyUs from './WhyUs';
 import ServiceModal from '../modal/ServiceModal';
 import Footer from '../Footer/Footer';
 import useService from '../hooks/useService';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import '../../style/scrollMouse.css'
 
@@ -16,10 +16,20 @@ const serviceItems = ['computer', 'ups', 'printer', 'survillence']
 const Service = () => {
     const [value, setValue] = useState(0)
     const [services, loading] = useService(serviceItems[value]);
+    const navigate = useNavigate();
+    const [openModal, setOpennModal] = useState(false);
 
     const updateValue = (id) => {
         setValue(id)
     }
+
+    const handelModal = (id) => {
+        if (!localStorage.getItem('user')) {
+            navigate('/login')
+        } else {
+            setOpennModal(true);
+        }
+    };
 
 
     return (
@@ -88,7 +98,7 @@ const Service = () => {
 
 
             <div className='flex justify-center'>
-                <label label htmlFor="serviceModal" className='rounded-sm btn bg-orange-500 hover:bg-white capitalize text-white hover:text-orange-500 font-semibold border-0 px-6 text-lg hover:border hover:border-orange-500'><MdOutlineMiscellaneousServices className='mr-1' /> Shedule for service</label>
+                <label onClick={handelModal} label htmlFor={openModal ? 'serviceModal' : ''} className='rounded-sm btn bg-orange-500 hover:bg-white capitalize text-white hover:text-orange-500 font-semibold border-0 px-6 text-lg hover:border hover:border-orange-500'><MdOutlineMiscellaneousServices className='mr-1' /> Shedule for service</label>
             </div>
 
             <WhyUs />

@@ -119,20 +119,17 @@ const Nav = ({ children }) => {
           >
             <Link to="/surveillance">Survillence</Link>
           </li>
-          <li
-            className={`font-medium ${
-              activeLink === "/myOrder" ? "active" : ""
-            }`}
-          >
-            <Link to="/myOrder">Order</Link>
-          </li>
-          <li
-            className={`font-medium ${
-              activeLink === "/survillence" ? "active" : ""
-            }`}
-          >
-            <Link to="/Service">Career</Link>
-          </li>
+          <li tabIndex={0} className={`font-medium ${activeLink === '/myOrder' ? 'active' : ''}`}>
+                    <a className="justify-between">
+                        Dashboard
+                    </a>
+                    <ul className="p-2 shadow menu bg-base-100 mt-2">
+                        <li><Link to='/myOrder'>Orders</Link></li>
+                        <li><Link to='/myService'>Service Request</Link></li>
+                    </ul>
+                </li>
+
+           <li className={`font-medium ${activeLink === '/career' ? 'active' : ''}`}><Link to='/career'>Career</Link></li>
 
           {loggedIn ? (
             <li className="font-medium">
@@ -217,4 +214,4 @@ const Nav = ({ children }) => {
   );
 };
 
-export default Nav;
+export default Nav;

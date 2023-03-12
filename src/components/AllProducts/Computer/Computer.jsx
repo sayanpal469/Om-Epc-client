@@ -4,7 +4,6 @@ import ComputerCart from './ComputerCart';
 import '../../../style/computerStyle.css';
 import '../../../style/scrollMouse.css';
 import useComputer from '../../hooks/useComputer';
-import Footer from '../../Footer/Footer';
 
 
 const Computer = () => {

@@ -9,7 +9,6 @@ const UserOrder = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [visible, setVisible] = useState(false);
-    const [userEmail, setUserEmail] = useState('');
     const [deleteSuccess, setDeleteSuccess] = useState(false);
     const email = userAuth?.email;
     // console.log(visible)
@@ -25,6 +24,7 @@ const UserOrder = () => {
             window.location.reload();
         }
     }, [deleteSuccess]);
+
 
     const fetchData = async () => {
         setLoading(true)

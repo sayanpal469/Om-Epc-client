@@ -27,6 +27,7 @@ const AdminComputerRaw = ({ index, computer }) => {
                   });
             })
     }
+    
     return (
         <tr>
             <th>{index + 1}</th>

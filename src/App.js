@@ -4,7 +4,6 @@ import Admin from './components/Admin/Admin';
 import GetRequest from './components/Admin/GetRequest/GetRequest';
 import ProductBuyRequest from './components/Admin/ProductBuyRequest/ProductBuyRequest';
 // import AddProduct from './components/Admin/Products/AddProduct';
-import Products from './components/Admin/Products/Products';
 import ComputerService from './components/Admin/Service/ComputerServiceRequest/ComputerService';
 import PrinterService from './components/Admin/Service/PrinterServiceRequest/PrinterService';
 import ServiceAdmin from './components/Admin/Service/ServiceAdmin';
@@ -33,6 +32,11 @@ import BuyPage from './components/BuyPage/BuyPage';
 import UserOrder from './components/UserOrder/UserOrder';
 import RequireUser from './components/RequireAdmin/RequireUser';
 import AdminComputer from './components/Admin/Products/Computers/AdminComputer';
+import AdminUpses from './components/Admin/Products/Upses/AdminUpses';
+import AdminPrinter from './components/Admin/Products/Printer/AdminPrinter';
+import AdminSurveillance from './components/Admin/Products/Surveillance/AdminSurveillance';
+import ServiceRequests from './components/UserServiceRequest/ServiceRequests';
+import Career from './components/Career/Career';
 
 function App() {
   return (
@@ -49,13 +53,19 @@ function App() {
           <Route path='/printer/:printId' element={<PrinterDetails/>} />
           <Route path='/surveillance' element={<Surveillance/>} />
           <Route path='/surveillance/:surveId' element={<SurveillanceDetails/>} />
-          <Route path='/buy/:buyId' element={<BuyPage/>}/>
+          <Route path='/buy' element={<BuyPage/>}/>
           <Route path='/myOrder' element={
             <RequireUser>
               <UserOrder/>
             </RequireUser>
           }/>
+          <Route path='/myService' element={
+            <RequireUser>
+              <ServiceRequests/>
+            </RequireUser>
+          }/>
           <Route path='/about' element={<AboutPage/>}/>
+          <Route path='/career' element={<Career/>} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/checkEmail' element={<CheckEmail/>}/>
@@ -65,9 +75,12 @@ function App() {
           <Route path='/admin' element={<RequireAdmin>
             <Admin/>
           </RequireAdmin>}>
-            <Route path='getRequest' element={<GetRequest/>}/>
-            <Route path='computer' element={<AdminComputer/>}/>
-            <Route path='buyRequest' element={<ProductBuyRequest/>}/>
+            <Route path='getRequest' element={ <GetRequest/> }/>
+            <Route path='ups' element={ <AdminUpses/> }/>
+            <Route path='computer' element={ <AdminComputer/> }/>
+            <Route path='printer' element={ <AdminPrinter/> }/>
+            <Route path='surveillance' element={ <AdminSurveillance/> }/>
+            <Route path='orders' element={<ProductBuyRequest/>}/>
             <Route path='service' element={<ServiceAdmin/>}/>
             <Route path='computerServiceReq' element={<ComputerService/>}/>
             <Route path='upsServiceReq' element={<UpsService/>}/>

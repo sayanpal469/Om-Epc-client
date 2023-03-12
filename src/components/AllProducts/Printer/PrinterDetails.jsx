@@ -9,10 +9,14 @@ const PrinterDetails = () => {
     const [loading, setLoading] = useState(true);
     const [readmore, setReadmore] = useState(false);
     const navigate = useNavigate();
-    
+
     const handelBuyClick = (id) => {
-        localStorage.setItem('buyProduct', JSON.stringify(printer))
-        navigate(`/buy/${id}`)
+        if (!localStorage.getItem('user')) {
+            navigate('/login')
+        } else {
+            localStorage.setItem('buyProduct', JSON.stringify(printer))
+            navigate('/buy')
+        }
     };
 
     useEffect(() => {
@@ -40,7 +44,7 @@ const PrinterDetails = () => {
     const { modelName, printingMethod, brand, type, refilType, warranty, image, price, wrongPrice, color, description } = printer;
     const imgUrl = `http://localhost:5000/uploads/${image}`;
 
-    
+
 
     return (
         <div className="container px-14 py-24 mx-auto">
