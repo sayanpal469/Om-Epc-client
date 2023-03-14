@@ -31,7 +31,7 @@ const Nav = ({ children }) => {
   useEffect(() => {
     const { pathname } = location;
     setActiveLink(pathname);
-    console.log(pathname);
+    // console.log(pathname);
   }, [location]);
 
   const logout = () => {

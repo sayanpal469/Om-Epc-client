@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const AdminPrinterRaw = ({ index, printer }) => {
     const { _id, color, brand, image, modelName, refilType, type, warranty, price, wrongPrice, printingMethod
@@ -13,12 +14,12 @@ const AdminPrinterRaw = ({ index, printer }) => {
             .then(data => {
                 // console.log(data)
                 if (data.success == true) {
-                    alert(data.message)
+                    swal(data.message)
                 } else {
-                    alert(data.message)
+                    swal(data.message)
                 }
             }).catch(err => {
-                alert(err.message)
+                swal(err.message)
             })
     };
 

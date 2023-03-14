@@ -4,10 +4,11 @@ import { MdOutlineMiscellaneousServices } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import useService from '../hooks/useService';
 import useUserEmail from '../hooks/useUserEmail';
-import './ModalStyle.css'
+import './ModalStyle.css';
+import swal from 'sweetalert';
 const serviceItems = ['computer', 'ups', 'printer', 'survillence']
 
-const ServiceModal = () => {
+const ServiceModal = ({ openModal, setOpennModal }) => {
     const [value, setValue] = useState(0)
     const [services, loading] = useService(serviceItems[value]);
     const [clientName, setClientName] = useState('');
@@ -49,6 +50,7 @@ const ServiceModal = () => {
             pinCode: pincode,
             message: message
         }
+
         fetch('http://localhost:5000/api/omEpc/serviceReq/computer/new', {
             method: 'POST',
             headers: {
@@ -60,10 +62,19 @@ const ServiceModal = () => {
             .then(res => res.json())
             .then(res => {
                 if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
                     e.target.reset();
-                    alert('Your Service request send, we will call you very soon')
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
                 }
-            });
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
 
     };
 
@@ -94,10 +105,19 @@ const ServiceModal = () => {
             .then(res => res.json())
             .then(res => {
                 if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
                     e.target.reset();
-                    alert('Your Service request send, we will call you very soon')
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
                 }
-            });
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
 
     }
 
@@ -127,10 +147,19 @@ const ServiceModal = () => {
             .then(res => res.json())
             .then(res => {
                 if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
                     e.target.reset();
-                    alert('Your Service request send, we will call you very soon')
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
                 }
-            });
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
 
     }
     const handelSurveillanceService = (e) => {
@@ -159,10 +188,19 @@ const ServiceModal = () => {
             .then(res => res.json())
             .then(res => {
                 if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
                     e.target.reset();
-                    alert('Your Service request send, we will call you very soon')
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
                 }
-            });
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
 
     }
 
@@ -172,7 +210,7 @@ const ServiceModal = () => {
             {/* <lable label htmlFor="serviceModal" className="btn" > open modal</lable> */}
 
             {/* Put this part before </body> tag */}
-            < input type="checkbox" id="serviceModal" className="modal-toggle" />
+            {openModal && <input type="checkbox" id="serviceModal" className="modal-toggle" />}
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box ">
                     <label htmlFor="serviceModal" className="btn btn-sm btn-circle bg-red-500 border-0 absolute right-2 top-2">✕</label>
@@ -257,8 +295,10 @@ const ServiceModal = () => {
                             <textarea name='message' onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
 
                             <div className="modal-action justify-start">
-                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
-                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                                <button className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices>
+                                    <input type="submit" value='Explore services' />
+                                </button>
                             </div>
                         </form>
                     }
@@ -314,8 +354,10 @@ const ServiceModal = () => {
 
 
                             <div className="modal-action justify-start">
-                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
-                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                                <button className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices>
+                                    <input type="submit" value='Explore services' />
+                                </button>
                             </div>
 
                         </form>
@@ -366,8 +408,10 @@ const ServiceModal = () => {
                             <textarea name='message' onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
 
                             <div className="modal-action justify-start">
-                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
-                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                                <button className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices>
+                                    <input type="submit" value='Explore services' />
+                                </button>
                             </div>
 
                         </form>
@@ -403,7 +447,7 @@ const ServiceModal = () => {
 
                             <div className='my-2'>
                                 <span className="ml-1">Brand*</span>
-                                <select name='brand' required onChange={(e) => setUpsBrand(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
+                                <select name='brand' required onChange={(e) => setSurveillanceBrand(e.target.value)} className="capitalize select select-bordered w-full max-w-lg rounded-none mt-2">
                                     <option className='capitalize' value='Laptop'>Honeywell</option>
                                     <option className='capitalize' value='Laptop'>Bosch</option>
                                     <option className='capitalize' value='Laptop'>Axis Communications</option>
@@ -420,8 +464,10 @@ const ServiceModal = () => {
                             <textarea name='message' required onChange={(e) => setMessage(e.target.value)} placeholder="Your message*" className="textarea textarea-bordered textarea-lg w-full max-w-lg my-2 rounded-none" ></textarea>
 
                             <div className="modal-action justify-start">
-                                <button htmlFor="serviceModal" className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
-                                </MdOutlineMiscellaneousServices> <input type='submit' value='Explore services' /> </button>
+                                <button className="btn capitalize bg-orange-500 border-none rounded-none"><MdOutlineMiscellaneousServices className='mr-1'>
+                                </MdOutlineMiscellaneousServices>
+                                    <input type="submit" value='Explore services' />
+                                </button>
                             </div>
                         </form>
                     }

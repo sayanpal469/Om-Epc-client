@@ -94,7 +94,7 @@ const Service = () => {
                 </div>
             </div>
 
-            <ServiceModal />
+            <ServiceModal openModal={openModal} setOpennModal={setOpennModal} />
 
 
             <div className='flex justify-center'>

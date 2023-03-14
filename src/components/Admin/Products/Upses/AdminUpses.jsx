@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import useUps from '../../../hooks/useUps';
 import AdminUpsesRaw from './AdminUpsesRaw';
 
@@ -20,7 +21,11 @@ const AdminUpses = () => {
     const [warranty, setWarranty] = useState(1);
     const [productBrand, setProductBrand] = useState('');
     const [productDescription, setProductDescription] = useState('');
-    // console.log(upses)
+    const [openModal, setOpennModal] = useState(false);
+
+    const handelModal = (id) => {
+        setOpennModal(true);
+    };
 
     const postProduct = (e) => {
         e.preventDefault();
@@ -49,12 +54,17 @@ const AdminUpses = () => {
             .then(response => {
                 const { data, status } = response
                 if (status == 200) {
-                    alert('Product added')
-                    e.target.reset()
+                    swal('Product added');
+                    e.target.reset();
+                    setOpennModal(false)
                 }
             })
             .catch((err) => {
-                console.log(err.message)
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                  });
             })
     }
     return (
@@ -65,10 +75,10 @@ const AdminUpses = () => {
                 {/* <button className='btn'>Add</button> */}
                 {/* The button to open modal */}
                 <div>
-                    <label htmlFor="addModal" className="btn">Add Product</label>
+                    <label onClick={handelModal} label htmlFor={openModal ? 'addModal' : ''}  className="btn">Add Product</label>
 
                     {/* Put this part before </body> tag */}
-                    <input type="checkbox" id="addModal" className="modal-toggle" />
+                    {openModal && <input type="checkbox" id="addModal" className="modal-toggle" />}
                     <div className="modal modal-bottom sm:modal-middle ">
                         <div className="modal-box text-center">
                             <label htmlFor="addModal" className="btn btn-md btn-circle bg-red-500 border-0 absolute right-2 top-2 text-xl mt-2">✕</label>
@@ -101,7 +111,7 @@ const AdminUpses = () => {
 
                                 <input name='warranty' onChange={(e) => setWarranty(e.target.value)} type="number" required placeholder="Warranty*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                                <textarea name='productDescription' onChange={(e) => setProductDescription(e.target.value)} type="text" placeholder="Description*" className="my-2 textarea textarea-bordered textarea-lg w-full max-w-lg" />
+                                <textarea required name='productDescription' onChange={(e) => setProductDescription(e.target.value)} type="text" placeholder="Description*" className="my-2 textarea textarea-bordered textarea-lg w-full max-w-lg" />
 
                                 <input className="btn capitalize bg-orange-500 border-none rounded-none" type="submit" value="Submit" />
 
