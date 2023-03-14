@@ -21,7 +21,7 @@ const UpsService = () => {
             .then(data => {
                 // console.log(data)
                 if (data.success == true) {
-                    setServiceRequest(data.allServiceRequests)
+                    setServiceRequest(data.allServiceRequests.reverse())
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
                     swal({
