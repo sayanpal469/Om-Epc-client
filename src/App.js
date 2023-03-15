@@ -37,6 +37,7 @@ import AdminPrinter from './components/Admin/Products/Printer/AdminPrinter';
 import AdminSurveillance from './components/Admin/Products/Surveillance/AdminSurveillance';
 import ServiceRequests from './components/UserServiceRequest/ServiceRequests';
 import Career from './components/Career/Career';
+import UserOrderDetails from './components/UserOrder/UserOrderDetails';
 
 function App() {
   return (
@@ -57,6 +58,11 @@ function App() {
           <Route path='/myOrder' element={
             <RequireUser>
               <UserOrder/>
+            </RequireUser>
+          }/>
+          <Route path='/myOrderDetails/:orderId' element={
+            <RequireUser>
+              <UserOrderDetails/>
             </RequireUser>
           }/>
           <Route path='/myService' element={

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import NotFound from '../404NotFound/NotFound';
 import userAuth from '../userAuth';
-import UserOrderRaw from './UserOrderRaw';
+import UserOrderCart from './UserOrderCart';
 
 const UserOrder = () => {
     const [orders, setOrders] = useState([]);
@@ -29,7 +29,7 @@ const UserOrder = () => {
     const fetchData = async () => {
         setLoading(true)
         try {
-            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy/${email}`)
+            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy/order/${email}`)
             // console.log(data.available)
             if (status === 200) {
                 setVisible(true)
@@ -49,34 +49,18 @@ const UserOrder = () => {
     }
 
     return (
-        <div className='px-14'>
-            {!visible && <NotFound/>}
+        <div className='px-5 lg:px-14 md:px-10 bg-base-200'>
+            {!visible && <NotFound />}
 
-
-            {visible && <div className="overflow-x-auto mt-10">
-                <table className="table w-full text-center">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>Price</th>
-                            <th>Payment</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className=''>
-                        {
-                            orders?.map((order, index) => <UserOrderRaw
-                                key={order._id}
-                                index={index}
-                                order={order}
-                                setDeleteSuccess={setDeleteSuccess}
-                            ></UserOrderRaw>)
-                        }
-                    </tbody>
-                </table>
+            {visible && <div className='max-w-6xl mx-auto space-y-5 my-5'>
+                {
+                    orders.map((order, index) => <UserOrderCart
+                        key={order._id}
+                        index={index}
+                        order={order}
+                        setDeleteSuccess={setDeleteSuccess}
+                    />)
+                }
             </div>}
         </div>
     );
