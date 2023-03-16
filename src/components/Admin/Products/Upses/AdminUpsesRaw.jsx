@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const AdminUpsesRaw = ({ index, ups }) => {
     const { _id, batteriesNumber, brand, color, image, inputVoltage, modelName, modelNumber, outputPlugsNumber, outputVoltage, phase, price, wrongPrice, warranty } = ups;
@@ -12,12 +13,12 @@ const AdminUpsesRaw = ({ index, ups }) => {
             .then(data => {
                 // console.log(data)
                 if (data.success == true) {
-                    alert(data.message)
+                    swal(data.message)
                 } else {
-                    alert(data.message)
+                    swal(data.message)
                 }
             }).catch(err => {
-                alert(err.message)
+                swal(err.message)
             })
     }
 

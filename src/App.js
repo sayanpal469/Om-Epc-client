@@ -37,6 +37,13 @@ import AdminPrinter from './components/Admin/Products/Printer/AdminPrinter';
 import AdminSurveillance from './components/Admin/Products/Surveillance/AdminSurveillance';
 import ServiceRequests from './components/UserServiceRequest/ServiceRequests';
 import Career from './components/Career/Career';
+import UserOrderDetails from './components/UserOrder/UserOrderDetails';
+import Refurbished from './components/AllProducts/Refurbished/Refurbished';
+import RefurbishedDetails from './components/AllProducts/Refurbished/RefurbishedDetails';
+import Accesories from './components/AllProducts/Accesories/Accesories';
+import AccesoriesDetails from './components/AllProducts/Accesories/AccesoriesDetails';
+import AdminRefurbished from './components/Admin/Products/RefurbishedProduct/AdminRefurbished';
+import AdminAccesories from './components/Admin/Products/Accesories/AdminAccesories';
 
 function App() {
   return (
@@ -53,10 +60,19 @@ function App() {
           <Route path='/printer/:printId' element={<PrinterDetails/>} />
           <Route path='/surveillance' element={<Surveillance/>} />
           <Route path='/surveillance/:surveId' element={<SurveillanceDetails/>} />
+          <Route path='/refurbished' element={<Refurbished/>} />
+          <Route path='/refurbished/:refurId' element={<RefurbishedDetails/>} />
+          <Route path='/accesories' element={<Accesories/>} />
+          <Route path='/accesories/:acceId' element={<AccesoriesDetails/>} />
           <Route path='/buy' element={<BuyPage/>}/>
           <Route path='/myOrder' element={
             <RequireUser>
               <UserOrder/>
+            </RequireUser>
+          }/>
+          <Route path='/myOrderDetails/:orderId' element={
+            <RequireUser>
+              <UserOrderDetails/>
             </RequireUser>
           }/>
           <Route path='/myService' element={
@@ -80,6 +96,8 @@ function App() {
             <Route path='computer' element={ <AdminComputer/> }/>
             <Route path='printer' element={ <AdminPrinter/> }/>
             <Route path='surveillance' element={ <AdminSurveillance/> }/>
+            <Route path='refurbished' element={ <AdminRefurbished/> }/>
+            <Route path='accesories' element={ <AdminAccesories/> }/>
             <Route path='orders' element={<ProductBuyRequest/>}/>
             <Route path='service' element={<ServiceAdmin/>}/>
             <Route path='computerServiceReq' element={<ComputerService/>}/>

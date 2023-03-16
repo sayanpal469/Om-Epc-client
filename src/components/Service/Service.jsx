@@ -133,6 +133,7 @@ const Service = () => {
       </div>
 
       <ServiceModal />
+            <ServiceModal openModal={openModal} setOpennModal={setOpennModal} />
 
       <WhyUs />
 

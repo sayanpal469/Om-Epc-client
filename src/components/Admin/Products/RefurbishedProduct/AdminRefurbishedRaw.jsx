@@ -1,13 +1,13 @@
 import React from 'react';
 import swal from 'sweetalert';
 
-const AdminPrinterRaw = ({ index, printer }) => {
-    const { _id, color, brand, image, modelName, refilType, type, warranty, price, wrongPrice, printingMethod
-    } = printer;
+const AdminRefurbishedRaw = ({ index, product }) => {
+    const { _id, brand, type, image, modelName, price, wrongPrice, warranty } = product;
     const productImg = `http://localhost:5000/uploads/${image}`;
+    // console.log(product)
 
     const handelDelete = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/product/printer/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/product/refurbished/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -21,7 +21,7 @@ const AdminPrinterRaw = ({ index, printer }) => {
             }).catch(err => {
                 swal(err.message)
             })
-    };
+    }
 
     return (
         <tr>
@@ -33,15 +33,11 @@ const AdminPrinterRaw = ({ index, printer }) => {
                     </div>
                 </div>
             </td>
-            <td>{brand}</td>
-            <td>{printingMethod}</td>
-            <td>{refilType}</td>
             <td>{type}</td>
-            <td>{price}</td>
-            <td>{wrongPrice}</td>
-            <td>{warranty}</td>
-            <td>{color}</td>
-            <td>{warranty}</td>
+            <td>{brand}</td>
+            <td>{modelName}</td>
+            <td>₹{price}</td>
+            <td>₹{wrongPrice}</td>
             <td>
                 <button onClick={() => handelDelete(_id)} className='btn btn-error'>Delete</button>
             </td>
@@ -49,4 +45,4 @@ const AdminPrinterRaw = ({ index, printer }) => {
     );
 };
 
-export default AdminPrinterRaw;
+export default AdminRefurbishedRaw;

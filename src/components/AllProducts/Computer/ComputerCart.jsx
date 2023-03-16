@@ -7,7 +7,7 @@ const ComputerCart = ({ computer }) => {
   const imgUrl = `http://localhost:5000/uploads/${image}`;
 
   const getDetails = (id) => {
-    navigate(`/computer/${id}`);
+    navigate(`/refurbished/${id}`);
   };
 
   return (
