@@ -98,6 +98,9 @@ const Computer = () => {
   const handelFilterApply = () => {
     console.log(computers);
     const NumValue = Number(value);
+    if(NumValue === 0) {
+      setValue(0)
+    }
     if (NumValue > 0 || selectedCheckboxes) {
       // console.log((value));
       const filterObject = { price: value, brands: selectedCheckboxes };
@@ -133,7 +136,7 @@ const Computer = () => {
     } else if (NumValue <= 0) {
       console.log(value);
       setComputersFilterList([]);
-    } else {
+    } else if (NumValue <= 0 && selectedCheckboxes ) {
       setComputersFilterList([]);
     }
   };
@@ -199,11 +202,11 @@ const Computer = () => {
               </div>
 
               <div className="w-full flex justify-between text-xs px-2 mt-2">
-                <span>$0</span>
-                <span>$200000</span>
+                <span>₹0</span>
+                <span>₹200000</span>
               </div>
               <p className="font-semibold my-5">
-                Your Price : ${value ? value : 0}
+                Your Price : ₹{value ? value : 0}
               </p>
             </div>
             <div className="w-full  flex justify-center  items-center">
