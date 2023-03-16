@@ -3,7 +3,7 @@ import useRefurbished from '../../hooks/useRefurbished';
 import RefurbishedCart from './RefurbishedCart';
 
 const Refurbished = () => {
-    const [refurbished] = useRefurbished()
+    const [refurbished] = useRefurbished();
     return (
         <div className='flex flex-col lg:flex-row md:flex-col lg:justify-between md:justify-between justify-center px-14 gap-6'>
             <div className='w-full lg:w-[30%] md:w-[50%] h-28 mt-10 lg:h-1/4 shadow-xl bg-primary lg:mt-24 md:mt-20 mx-auto'>

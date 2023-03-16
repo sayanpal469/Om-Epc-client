@@ -42,6 +42,8 @@ import Refurbished from './components/AllProducts/Refurbished/Refurbished';
 import RefurbishedDetails from './components/AllProducts/Refurbished/RefurbishedDetails';
 import Accesories from './components/AllProducts/Accesories/Accesories';
 import AccesoriesDetails from './components/AllProducts/Accesories/AccesoriesDetails';
+import AdminRefurbished from './components/Admin/Products/RefurbishedProduct/AdminRefurbished';
+import AdminAccesories from './components/Admin/Products/Accesories/AdminAccesories';
 
 function App() {
   return (
@@ -94,6 +96,8 @@ function App() {
             <Route path='computer' element={ <AdminComputer/> }/>
             <Route path='printer' element={ <AdminPrinter/> }/>
             <Route path='surveillance' element={ <AdminSurveillance/> }/>
+            <Route path='refurbished' element={ <AdminRefurbished/> }/>
+            <Route path='accesories' element={ <AdminAccesories/> }/>
             <Route path='orders' element={<ProductBuyRequest/>}/>
             <Route path='service' element={<ServiceAdmin/>}/>
             <Route path='computerServiceReq' element={<ComputerService/>}/>

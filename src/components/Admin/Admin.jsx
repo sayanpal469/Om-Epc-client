@@ -21,6 +21,8 @@ const Admin = () => {
                     <li><Link className='my-3' to='/admin/computer'>Computers</Link></li>
                     <li><Link className='my-3' to='/admin/printer'>Printers</Link></li>
                     <li><Link className='my-3' to='/admin/surveillance'>Surveillances</Link></li>
+                    <li><Link className='my-3' to='/admin/refurbished'>Refurbished</Link></li>
+                    <li><Link className='my-3' to='/admin/accesories'>Accesories</Link></li>
                     <li><Link className='my-3' to='/admin/orders'>Orders</Link></li>
                     <li><Link className='my-3' to='/admin/service'>Services</Link></li>
                     <li><Link className='my-3' to='/admin/computerServiceReq'>Computer Service Requests</Link></li>
