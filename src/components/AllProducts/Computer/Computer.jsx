@@ -51,7 +51,7 @@ const Computer = () => {
       </div>
 
       {/* Products section area */}
-      <section className="w-fitmx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
+      <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-20 mb-5 px-14">
         {displayComputers}
       </section>
       <div className='mt-16'>

@@ -7,6 +7,7 @@ import UserOrderCart from './UserOrderCart';
 
 const UserOrder = () => {
     const [orders, setOrders] = useState([]);
+    const reversedData = [...orders].reverse();
     const [loading, setLoading] = useState(true);
     const [visible, setVisible] = useState(false);
     const [deleteSuccess, setDeleteSuccess] = useState(false);
@@ -54,7 +55,7 @@ const UserOrder = () => {
 
             {visible && <div className='max-w-6xl mx-auto space-y-5 my-5'>
                 {
-                    orders.map((order, index) => <UserOrderCart
+                    reversedData.map((order, index) => <UserOrderCart
                         key={order._id}
                         index={index}
                         order={order}

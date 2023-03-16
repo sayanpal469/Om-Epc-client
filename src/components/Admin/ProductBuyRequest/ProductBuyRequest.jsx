@@ -5,6 +5,8 @@ import ProductBuyRequestRaw from './ProductBuyRequestRaw';
 
 const ProductBuyRequest = () => {
     const [orders, setOrders] = useState([]);
+    const reversedData = [...orders].reverse();
+
 
     useEffect(() => {
         fetchData()
@@ -38,7 +40,7 @@ const ProductBuyRequest = () => {
                 <table className="table w-full text-center">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            {/* <th>No</th> */}
                             <th>Product</th>
                             <th>Brand</th>
                             <th>Model Number</th>
@@ -57,7 +59,7 @@ const ProductBuyRequest = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) => <ProductBuyRequestRaw
+                            reversedData.map((order, index) => <ProductBuyRequestRaw
                                 key={order._id}
                                 index={index}
                                 order={order}

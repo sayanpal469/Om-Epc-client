@@ -38,6 +38,10 @@ import AdminSurveillance from './components/Admin/Products/Surveillance/AdminSur
 import ServiceRequests from './components/UserServiceRequest/ServiceRequests';
 import Career from './components/Career/Career';
 import UserOrderDetails from './components/UserOrder/UserOrderDetails';
+import Refurbished from './components/AllProducts/Refurbished/Refurbished';
+import RefurbishedDetails from './components/AllProducts/Refurbished/RefurbishedDetails';
+import Accesories from './components/AllProducts/Accesories/Accesories';
+import AccesoriesDetails from './components/AllProducts/Accesories/AccesoriesDetails';
 
 function App() {
   return (
@@ -54,6 +58,10 @@ function App() {
           <Route path='/printer/:printId' element={<PrinterDetails/>} />
           <Route path='/surveillance' element={<Surveillance/>} />
           <Route path='/surveillance/:surveId' element={<SurveillanceDetails/>} />
+          <Route path='/refurbished' element={<Refurbished/>} />
+          <Route path='/refurbished/:refurId' element={<RefurbishedDetails/>} />
+          <Route path='/accesories' element={<Accesories/>} />
+          <Route path='/accesories/:acceId' element={<AccesoriesDetails/>} />
           <Route path='/buy' element={<BuyPage/>}/>
           <Route path='/myOrder' element={
             <RequireUser>

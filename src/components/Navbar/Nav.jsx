@@ -119,6 +119,20 @@ const Nav = ({ children }) => {
           >
             <Link to="/surveillance">Survillence</Link>
           </li>
+          <li
+            className={`font-medium ${
+              activeLink === "/refurbished" ? "active" : ""
+            }`}
+          >
+            <Link to="/refurbished">Refurbished</Link>
+          </li>
+          <li
+            className={`font-medium ${
+              activeLink === "/accesories" ? "active" : ""
+            }`}
+          >
+            <Link to="/accesories">Accesories</Link>
+          </li>
           <li tabIndex={0} className={`font-medium ${activeLink === '/myOrder' ? 'active' : ''}`}>
                     <a className="justify-between">
                         Dashboard
