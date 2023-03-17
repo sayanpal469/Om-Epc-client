@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const RefurbishedCart = ({ product }) => {
   const navigate = useNavigate();
-    const { _id, modelName, image, price, brand, wrongPrice } = product;
+    const { _id, modelName, image, price, brand, wrongPrice,type } = product;
     const imgUrl = `http://localhost:5000/uploads/${image}`;
+    console.log(product);
 
     const getDetails = (id) => {
         navigate(`/refurbished/${id}`);
@@ -20,13 +21,10 @@ const RefurbishedCart = ({ product }) => {
                 />
                 <div className="px-4 py-3 w-72">
                     <span className="text-gray-400 mr-3 uppercase text-xs">
-                        Brand- <span className="text-orange-500">{brand}</span>
+                        Brand- <span className="text-orange-500 font-semibold">{brand}</span>
                     </span>
-                    <p
-                        title={modelName}
-                        className="text-lg font-semibold text-black truncate block capitalize"
-                    >
-                        {modelName}
+                    <p className="text-gray-400 font-semibold mr-3 uppercase text-xs">
+                        Type - <span className="text-orange-500 font-semibold">{type}</span>
                     </p>
                     <div className="flex items-center">
                         <p className="text-lg font-semibold text-black cursor-auto my-3">

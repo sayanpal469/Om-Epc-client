@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./service.css";
 import { IoMdCall } from "react-icons/io";
+import { RiWhatsappFill } from "react-icons/ri";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
 import ServiceCart from "./ServiceCart";
 import WhyUs from "./WhyUs";
@@ -69,15 +70,17 @@ const Service = () => {
             of energy into every project we take on
           </p>
           <div className="mt-10">
-            <p className="lg:text-lg font-bold">Call us today</p>
+            <p className="lg:text-lg font-bold"> Reach us at</p>
             <div className="flex items-center mt-2 space-x-2">
               <IoMdCall className="text-orange-500 font-bold lg:text-3xl" />
               <h2
                 onClick={() => (window.location.href = 'tel:917981413743')}
                 className="lg:text-2xl cursor-pointer text-orange-500"
               >
-                91 7981413743
+                91 7981413743 
               </h2>
+              <p className="text-lg font-semibold"> OR </p>
+              <a href="https://wa.me/7981413743"><RiWhatsappFill  className="text-green-500 cursor-pointer font-bold lg:text-3xl" /></a>
             </div>
           </div>
         </div>
