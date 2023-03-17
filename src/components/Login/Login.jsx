@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import userAuth from "../userAuth";
 import "./Login.css"
 
 const Login = () => {
