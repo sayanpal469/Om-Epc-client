@@ -26,7 +26,7 @@ const Career = () => {
         formData.append('contact', phoneNumber);
         formData.append('image', cv);
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/carrer/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/carrer/new'
 
         axios.post(UPLOAD_URL, formData)
             .then(response => {

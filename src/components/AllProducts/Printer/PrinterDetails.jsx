@@ -23,7 +23,7 @@ const PrinterDetails = () => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/printer/${printId}`)
+                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/product/printer/${printId}`)
                 // console.log(data)
                 if (status == 200) {
                     setPrinter(data.printer)
@@ -42,7 +42,7 @@ const PrinterDetails = () => {
     }, [])
 
     const { modelName, printingMethod, brand, type, refilType, warranty, image, price, wrongPrice, color, description } = printer;
-    const imgUrl = `http://localhost:5000/uploads/${image}`;
+    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
 
 
 

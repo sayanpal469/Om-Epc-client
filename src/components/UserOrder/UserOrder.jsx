@@ -30,7 +30,7 @@ const UserOrder = () => {
     const fetchData = async () => {
         setLoading(true)
         try {
-            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy/order/${email}`)
+            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy/order/${email}`)
             // console.log(data.available)
             if (status === 200) {
                 setVisible(true)

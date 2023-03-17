@@ -9,7 +9,7 @@ const CheckEmail = () => {
 
 
     const handelPass = () => {
-        fetch('http://localhost:5000/api/omEpc/checkEmail', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/checkEmail', {
             method: "POST",
             body: JSON.stringify({
                 email: forgetEmail
