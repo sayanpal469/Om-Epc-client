@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import background from '../../Assets/bg.png';
 import { useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 
@@ -32,7 +33,7 @@ const ChangePassword = () => {
     }
 
     return (
-        <div className='flex justify-center items-center w-full h-full border' style={{backgroundImage: "url('https://i.ibb.co/6vP9sFs/Tech-Tech-Website-in-Midnight-Blue-Pastel-Purple-Cyan-Gradients-Style-1.png')"}}>
+        <div className='flex justify-center items-center w-full h-full border' style={{backgroundImage: `url(${require('../../Assets/bg.png').default})`}}>
             <div>
                 <h1 className='text-2xl text-white'>Change your password</h1>
                 <input onChange={(e) => setchangePassword(e.target.value)} type="password" placeholder="Write a password" className="input input-bordered input-primary w-full max-w-xs my-5" /> <br />
