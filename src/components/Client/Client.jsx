@@ -9,7 +9,7 @@ import { Pagination, Autoplay } from "swiper";
 
 const Client = () => {
   return (
-    <div className="my-20 mx-10">
+    <div className="my-20 mx-0">
       <h2 className="text-6xl mb-10 text-blue-400 text-center">Our Client's</h2>
       <div className="mt-5 ">
         <Swiper
@@ -51,6 +51,14 @@ const Client = () => {
           <SwiperSlide>
             <img
               className="max-w-fit h-fit"
+              
+              src="https://content.jdmagicbox.com/comp/birbhum/j9/9999p3462.3462.140514051850.a7j9/catalogue/paschim-banga-gramin-bank-rampurhat-birbhum-banks-287ch.jpg"
+              alt=""
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              className="max-w-fit h-fit"
               src="https://cdn.payrup.com/images/operators/electricity-bill-payment/wbsedcl_logo.png"
               alt=""
             />
@@ -62,6 +70,7 @@ const Client = () => {
               alt=""
             />
           </SwiperSlide>
+          
         </Swiper>
       </div>
     </div>
