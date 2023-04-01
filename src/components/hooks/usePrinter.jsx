@@ -10,7 +10,7 @@ const usePrinter = () => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get('http://localhost:5000/api/omEpc/product/printer')
+                let { data, status } = await axios.get('https://omepcserver.up.railway.app/api/omEpc/product/printer')
                 // let data = await res.json
                 // console.log(data.printers)
                 if (status == 200) {

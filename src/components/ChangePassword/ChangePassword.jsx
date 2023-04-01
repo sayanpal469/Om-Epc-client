@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import background from '../../Assets/bg.png';
 import { useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 
@@ -9,7 +10,7 @@ const ChangePassword = () => {
     const navigate = useNavigate();
 
     const handelChangePass = () => {
-        fetch(`http://localhost:5000/api/omEpc/forget/${email}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/forget/${email}`, {
             method: "PUT",
             body: JSON.stringify({
                 password: changePassword
@@ -32,11 +33,11 @@ const ChangePassword = () => {
     }
 
     return (
-        <div className='flex justify-center mt-20'>
+        <div className='flex justify-center items-center w-full h-full border' style={{backgroundImage: `url("https://i.ibb.co/XzMdW3L/bg.png")`}}>
             <div>
-                <h1 className='text-2xl'>Change your password</h1>
+                <h1 className='text-2xl text-white'>Change your password</h1>
                 <input onChange={(e) => setchangePassword(e.target.value)} type="password" placeholder="Write a password" className="input input-bordered input-primary w-full max-w-xs my-5" /> <br />
-                <button onClick={handelChangePass} className='btn'>Submit</button>
+                <button onClick={handelChangePass} className='btn btn-primary'>Sujhbmit</button>
             </div>
         </div>
     );

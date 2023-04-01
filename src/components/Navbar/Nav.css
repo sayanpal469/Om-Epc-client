@@ -22,9 +22,21 @@
 }
 
 .navbar{
-   height: 5rem;
+   height: fit-content;
 }
 
 li.active {
   background-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    top: 100%;
+    left: 20px;
+  }
+  .menu-drop{
+    position: absolute;
+    z-index: 100000;
+    /* background: red; */
+  }
 }

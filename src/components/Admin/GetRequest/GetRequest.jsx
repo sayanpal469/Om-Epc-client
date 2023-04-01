@@ -8,18 +8,20 @@ const GetRequest = () => {
     const [getRequest, setGetRequest] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/omEpc/getRequest')
+        fetch('https://omepcserver.up.railway.app/api/omEpc/getRequest')
         .then(res => res.json())
         .then(data => {
             if(data.success === true) {
+                // console.log(data.allRequest);
                 setGetRequest(data.allRequest)
+                
             } else {
                 swal("Server Error  :", `${data.message}`, "error");
             }
         })
     },[])
 
-
+    console.log("set",getRequest);
     return (
         <div>
             <div className="overflow-x-auto mt-5">

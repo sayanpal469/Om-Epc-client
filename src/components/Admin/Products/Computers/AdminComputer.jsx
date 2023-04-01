@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import useComputer from '../../../hooks/useComputer';
 import AdminComputerRaw from './AdminComputerRaw';
 
@@ -27,6 +28,11 @@ const AdminComputer = () => {
     const [productCategory, setProductCategory] = useState('computer');
     const [productColor, setProductColor] = useState('');
     const [productDescription, setProductDescription] = useState('');
+    const [openModal, setOpennModal] = useState(false);
+
+    const handelModal = (id) => {
+        setOpennModal(true);
+    };
 
     const postProduct = (e) => {
         e.preventDefault();
@@ -57,12 +63,23 @@ const AdminComputer = () => {
 
         // console.log(formData, modelName)
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/product/computer/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/product/computer/new'
 
         axios.post(UPLOAD_URL, formData)
-            .then(response => console.log(response))
+            .then(response => {
+                const { data, status } = response;
+                if (status == 200) {
+                    swal('Product added');
+                    e.target.reset();
+                    setOpennModal(false)
+                }
+            })
             .catch((err) => {
-                console.log(err.message)
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
             })
     }
     return (
@@ -70,11 +87,11 @@ const AdminComputer = () => {
             <div className='flex justify-center mt-2'>
                 {/* <button className='btn'>Add</button> */}
                 {/* The button to open modal */}
-                <div>
-                    <label htmlFor="addModal" className="btn">Add Product</label>
+                <div className='z-50'>
+                    <label onClick={handelModal} label htmlFor={openModal ? 'addModal' : ''} className="btn">Add Product</label>
 
                     {/* Put this part before </body> tag */}
-                    <input type="checkbox" id="addModal" className="modal-toggle" />
+                    {openModal && <input type="checkbox" id="addModal" className="modal-toggle" />}
                     <div className="modal modal-bottom sm:modal-middle ">
                         <div className="modal-box text-center">
                             <label htmlFor="addModal" className="btn btn-md btn-circle bg-red-500 border-0 absolute right-2 top-2 text-xl mt-2">✕</label>

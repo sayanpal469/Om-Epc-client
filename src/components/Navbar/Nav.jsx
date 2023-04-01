@@ -31,7 +31,7 @@ const Nav = ({ children }) => {
   useEffect(() => {
     const { pathname } = location;
     setActiveLink(pathname);
-    console.log(pathname);
+    // console.log(pathname);
   }, [location]);
 
   const logout = () => {
@@ -114,17 +114,31 @@ const Nav = ({ children }) => {
           </li>
           <li
             className={`font-medium ${
-              activeLink === "/survillence" ? "active" : ""
+              activeLink === "/surveillance" ? "active" : ""
             }`}
           >
             <Link to="/surveillance">Survillence</Link>
           </li>
+          <li
+            className={`font-medium ${
+              activeLink === "/refurbished" ? "active" : ""
+            }`}
+          >
+            <Link to="/refurbished">Refurbished</Link>
+          </li>
+          <li
+            className={`font-medium ${
+              activeLink === "/accesories" ? "active" : ""
+            }`}
+          >
+            <Link to="/accesories">Accesories</Link>
+          </li>
           <li tabIndex={0} className={`font-medium ${activeLink === '/myOrder' ? 'active' : ''}`}>
                     <a className="justify-between">
-                        Dashboard
+                        My Account
                     </a>
-                    <ul className="p-2 shadow menu bg-base-100 mt-2">
-                        <li><Link to='/myOrder'>Orders</Link></li>
+                    <ul className="p-2 shadow menu menu-drop bg-base-100 mt-2">
+                        <li><Link to='/myOrder'> My Orders</Link></li>
                         <li><Link to='/myService'>Service Request</Link></li>
                     </ul>
                 </li>
@@ -165,7 +179,7 @@ const Nav = ({ children }) => {
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content  flex flex-col">
           {/* <!-- Navbar --> */}
-          <div className="w-full navbar lg:px-20 sticky transition-colors duration-500 bg-opacity-30 z-50 backdrop-filter backdrop-blur-lg bg-white">
+          <div className="w-full navbar lg:px-20 sticky transition-colors duration-500 bg-opacity-30  backdrop-filter backdrop-blur-lg bg-white">
             <div className="flex-none lg:hidden">
               <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                 <svg

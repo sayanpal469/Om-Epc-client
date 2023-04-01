@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import usePrinter from '../../../hooks/usePrinter';
 import AdminPrinterRaw from './AdminPrinterRaw';
 
@@ -17,7 +18,11 @@ const AdminPrinter = () => {
     const [wrongPrice, setWrongPrice] = useState(0);
     const [warranty, setWarranty] = useState(1);
     const [productDescription, setProductDescription] = useState('');
-    // console.log(printers)
+    const [openModal, setOpennModal] = useState(false);
+
+    const handelModal = (id) => {
+        setOpennModal(true);
+    };
 
     const postProduct = (e) => {
         e.preventDefault();
@@ -37,18 +42,23 @@ const AdminPrinter = () => {
 
         // console.log(outputVoltage)
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/product/printer/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/product/printer/new'
 
         axios.post(UPLOAD_URL, formData)
             .then(response => {
                 const { data, status } = response
                 if (status == 200) {
-                    alert('Product added')
-                    e.target.reset()
+                    swal('Product added');
+                    e.target.reset();
+                    setOpennModal(false)
                 }
             })
             .catch((err) => {
-                console.log(err.message)
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                  });
             })
     }
     return (
@@ -59,10 +69,10 @@ const AdminPrinter = () => {
                 {/* <button className='btn'>Add</button> */}
                 {/* The button to open modal */}
                 <div>
-                    <label htmlFor="addModal" className="btn">Add Product</label>
+                <label onClick={handelModal} label htmlFor={openModal ? 'addModal' : ''}  className="btn">Add Product</label>
 
                     {/* Put this part before </body> tag */}
-                    <input type="checkbox" id="addModal" className="modal-toggle" />
+                    {openModal && <input type="checkbox" id="addModal" className="modal-toggle" />}
                     <div className="modal modal-bottom sm:modal-middle ">
                         <div className="modal-box text-center">
                             <label htmlFor="addModal" className="btn btn-md btn-circle bg-red-500 border-0 absolute right-2 top-2 text-xl mt-2">✕</label>

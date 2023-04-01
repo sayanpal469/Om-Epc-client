@@ -16,12 +16,12 @@ const UpsService = () => {
     // console.log(resStatus)
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/omEpc/serviceReq/ups')
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/ups')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
                 if (data.success == true) {
-                    setServiceRequest(data.allServiceRequests)
+                    setServiceRequest(data.allServiceRequests.reverse())
                     // setResponce( serviceRequest.filter(service => service.responseStatus == true))
                 } else {
                     swal({

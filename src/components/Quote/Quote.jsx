@@ -8,7 +8,7 @@ import "./Quote.css"
 const Quote = () => {
   const navigate = useNavigate()
 
-  const URL = 'http://localhost:5000/api/omEpc/getRequest/new'
+  const URL = 'https://omepcserver.up.railway.app/api/omEpc/getRequest/new'
 
   const handelSubmit = async (e) => {
     e.preventDefault();

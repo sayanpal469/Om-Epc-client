@@ -9,7 +9,7 @@ const CheckEmail = () => {
 
 
     const handelPass = () => {
-        fetch('http://localhost:5000/api/omEpc/checkEmail', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/checkEmail', {
             method: "POST",
             body: JSON.stringify({
                 email: forgetEmail
@@ -31,11 +31,11 @@ const CheckEmail = () => {
     }
 
     return (
-        <div className='flex justify-center mt-20'>
+        <div className='flex justify-center items-center w-full h-full border' style={{backgroundImage: `url("https://i.ibb.co/XzMdW3L/bg.png")`}}>
             <div>
-                <h1 className='text-2xl'>Enter your email</h1>
+                <h1 className='text-2xl text-white'>Enter your email</h1>
                 <input onChange={(e) => setForgetEmail(e.target.value)} type="text" placeholder="abc@gmail.com" className="input input-bordered input-primary w-full max-w-xs my-5" /> <br />
-                <button onClick={handelPass} className='btn'>Submit</button>
+                <button onClick={handelPass} className='btn btn-primary'>Submit</button>
             </div>
         </div>
     );

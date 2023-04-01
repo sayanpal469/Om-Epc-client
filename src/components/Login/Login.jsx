@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import userAuth from "../userAuth";
 import "./Login.css"
 
 const Login = () => {
@@ -13,7 +12,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch('http://localhost:5000/api/omEpc/login', {
+    fetch('https://omepcserver.up.railway.app/api/omEpc/login', {
       method: "POST",
       body: JSON.stringify({
         email: email,

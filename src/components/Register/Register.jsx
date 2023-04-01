@@ -14,7 +14,7 @@ const Register = () => {
         const password = e.target.password.value;
         const contact = e.target.contact.value;
 
-        fetch('http://localhost:5000/api/omEpc/signUp/new', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/signUp/new', {
             method: "POST",
             body: JSON.stringify({
                 userName: userName,

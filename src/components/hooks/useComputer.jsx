@@ -11,10 +11,10 @@ const useComputer = () => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get('http://localhost:5000/api/omEpc/product/computer')
+                let { data, status } = await axios.get('https://omepcserver.up.railway.app/api/omEpc/product/computer')
                 // let data = await res.json
                 // console.log(data.data)
-                if (status == 200) {
+                if (status === 200) {
                     setComputers(data.data)
                     setLoading(false)
                     // setError('')
