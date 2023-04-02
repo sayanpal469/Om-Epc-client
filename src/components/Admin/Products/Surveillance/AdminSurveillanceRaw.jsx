@@ -2,10 +2,10 @@ import React from 'react';
 
 const AdminSurveillanceRaw = ({ index, surveillance }) => {
     const { _id, brand, color, image, modelName, modelNumber, recordResolution, price, wrongPrice, warranty } = surveillance;
-    const productImg = `https://omepcserver.up.railway.app/uploads/${image}`;
+    const productImg = `http://localhost:5000/uploads/${image}`;
 
     const handelDelete = (id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/product/surveillance/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/product/surveillance/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

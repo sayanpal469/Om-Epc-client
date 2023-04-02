@@ -8,7 +8,7 @@ const SingelService = () => {
     const {serviceId} = useParams()
     
     useEffect(() => {
-        axios.get(`https://omepcserver.up.railway.app/api/omEpc/service/${serviceId}`)
+        axios.get(`http://localhost:5000/api/omEpc/service/${serviceId}`)
             .then((res) => {
                 console.log(res.data.service)
                 // setServiceData(res.data.services)

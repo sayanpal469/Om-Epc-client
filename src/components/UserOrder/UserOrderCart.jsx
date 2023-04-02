@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const UserOrderCart = ({ index, order, setDeleteSuccess }) => {
-    const productImg = `https://omepcserver.up.railway.app/uploads/${order.product.image}`;
+    const productImg = `http://localhost:5000/uploads/${order.product.image}`;
     // console.log(order)
 
     const { brand, modelName } = order.product;

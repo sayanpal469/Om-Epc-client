@@ -44,6 +44,7 @@ import Accesories from './components/AllProducts/Accesories/Accesories';
 import AccesoriesDetails from './components/AllProducts/Accesories/AccesoriesDetails';
 import AdminRefurbished from './components/Admin/Products/RefurbishedProduct/AdminRefurbished';
 import AdminAccesories from './components/Admin/Products/Accesories/AdminAccesories';
+import AdminCareer from './components/Admin/AdminCareer/AdminCareer';
 
 function App() {
   return (
@@ -91,6 +92,7 @@ function App() {
           <Route path='/admin' element={<RequireAdmin>
             <Admin/>
           </RequireAdmin>}>
+            <Route path='users' element={<Users/>}/>
             <Route path='getRequest' element={ <GetRequest/> }/>
             <Route path='ups' element={ <AdminUpses/> }/>
             <Route path='computer' element={ <AdminComputer/> }/>
@@ -104,7 +106,7 @@ function App() {
             <Route path='upsServiceReq' element={<UpsService/>}/>
             <Route path='printerServiceReq' element={<PrinterService/>}/>
             <Route path='surveillanceServiceReq' element={<SurveillanceService/>}/>
-            <Route path='users' element={<Users/>}/>
+            <Route path='career' element={<AdminCareer/>}/>
           </Route>
           {/* Admin routes end here */}
 

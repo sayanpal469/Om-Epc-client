@@ -8,7 +8,7 @@ const Users = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('https://omepcserver.up.railway.app/api/omEpc/getUser')
+        fetch('http://localhost:5000/api/omEpc/getUser')
         .then(res => res.json())
         .then(data => {
             if(data.success == true) {

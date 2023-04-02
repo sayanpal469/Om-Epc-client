@@ -2,11 +2,11 @@ import React from 'react';
 import swal from 'sweetalert';
 
 const ProductRaw = ({index, product}) => {
-    const productImg = `https://omepcserver.up.railway.app/uploads/${product.image}`;
+    const productImg = `http://localhost:5000/uploads/${product.image}`;
 
 
     const handelDelete = (id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/product/delete/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/product/delete/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

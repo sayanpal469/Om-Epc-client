@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch('https://omepcserver.up.railway.app/api/omEpc/login', {
+    fetch('http://localhost:5000/api/omEpc/login', {
       method: "POST",
       body: JSON.stringify({
         email: email,
@@ -25,7 +25,7 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         if (data.success == true) {
           // console.log(data)
           localStorage.setItem('user', JSON.stringify(data.user))

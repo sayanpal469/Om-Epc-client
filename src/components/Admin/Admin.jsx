@@ -13,7 +13,7 @@ const Admin = () => {
             <div className="drawer-side shadow-xl rounded-2xl">
                 <label for="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 text-white bg-orange-400 pl-8">
-                    <li><Link className='' to='/admin'>
+                    <li><Link className='' to='/admin/users'>
                         <FaUserAlt className='text-2xl'></FaUserAlt>
                     </Link></li>
                     <li><Link className='my-3' to='/admin/getRequest'>Customer Get Request</Link></li>
@@ -29,7 +29,7 @@ const Admin = () => {
                     <li><Link className='my-3' to='/admin/upsServiceReq'>Ups Service Requests</Link></li>
                     <li><Link className='my-3' to='/admin/printerServiceReq'>Printer Service Requests</Link></li>
                     <li><Link className='my-3' to='/admin/surveillanceServiceReq'>Surveillance Service Requests</Link></li>
-                    <li><Link className='my-3' to='/admin/users'>Users</Link></li>
+                    <li><Link className='my-3' to='/admin/career'>Career</Link></li>
                 </ul>
             </div>
         </div>

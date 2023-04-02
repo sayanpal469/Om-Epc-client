@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import NotFound from '../404NotFound/NotFound';
+import Loading from '../Loading/Loading';
+import OrderNotFound from '../OrderNotFound/OrderNotFound';
 import userAuth from '../userAuth';
 import UserOrderCart from './UserOrderCart';
 
@@ -30,10 +32,10 @@ const UserOrder = () => {
     const fetchData = async () => {
         setLoading(true)
         try {
-            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy/order/${email}`)
+            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy/order/${email}`)
             // console.log(data.available)
             if (status === 200) {
-                setVisible(true)
+                // setVisible(true)
                 setOrders(data.available)
                 setLoading(false)
                 // setError('')
@@ -51,18 +53,31 @@ const UserOrder = () => {
 
     return (
         <div className='px-5 lg:px-14 md:px-10 bg-base-200'>
-            {!visible && <NotFound />}
+            <>
 
-            {visible && <div className='max-w-6xl mx-auto space-y-5 my-5'>
                 {
-                    reversedData.map((order, index) => <UserOrderCart
-                        key={order._id}
-                        index={index}
-                        order={order}
-                        setDeleteSuccess={setDeleteSuccess}
-                    />)
+                    loading && <Loading />
                 }
-            </div>}
+
+                {
+                    !loading && <>
+                        {!visible && <OrderNotFound />}
+
+                        {visible && <div className='max-w-6xl mx-auto space-y-5 my-5'>
+                            {
+                                reversedData.map((order, index) => <UserOrderCart
+                                    key={order._id}
+                                    index={index}
+                                    order={order}
+                                    setDeleteSuccess={setDeleteSuccess}
+                                />)
+                            }
+                        </div>}
+
+                    </>
+                }
+
+            </>
         </div>
     );
 };

@@ -13,7 +13,7 @@ const ComputerService = () => {
     // console.log(resStatus)
 
     useEffect(() => {
-        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/computer')
+        fetch('http://localhost:5000/api/omEpc/serviceReq/computer')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

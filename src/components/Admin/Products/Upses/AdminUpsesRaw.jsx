@@ -3,10 +3,10 @@ import swal from 'sweetalert';
 
 const AdminUpsesRaw = ({ index, ups }) => {
     const { _id, batteriesNumber, brand, color, image, inputVoltage, modelName, modelNumber, outputPlugsNumber, outputVoltage, phase, price, wrongPrice, warranty } = ups;
-    const productImg = `https://omepcserver.up.railway.app/uploads/${image}`;
+    const productImg = `http://localhost:5000/uploads/${image}`;
 
     const handelDelete = (id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/product/ups/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/product/ups/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -63,7 +63,7 @@ const AdminComputer = () => {
 
         // console.log(formData, modelName)
 
-        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/product/computer/new'
+        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/product/computer/new'
 
         axios.post(UPLOAD_URL, formData)
             .then(response => {

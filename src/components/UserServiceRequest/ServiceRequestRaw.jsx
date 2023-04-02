@@ -4,7 +4,7 @@ const ServiceRequestRaw = ({ index, request, setDeleteSuccess }) => {
     const { _id, type, item, brand, category, isCompleted, isCanceled } = request;
 
     const handelCancel = (serviceType,id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/serviceReq/${serviceType}/cancel/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/serviceReq/${serviceType}/cancel/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

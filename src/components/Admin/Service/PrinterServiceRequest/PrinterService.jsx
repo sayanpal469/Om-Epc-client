@@ -15,7 +15,7 @@ const PrinterService = () => {
     // console.log(resStatus)
 
     useEffect(() => {
-        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/printer')
+        fetch('http://localhost:5000/api/omEpc/serviceReq/printer')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

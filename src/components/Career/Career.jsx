@@ -6,10 +6,30 @@ import { MdSecurity } from 'react-icons/md';
 import { TbBusinessplan } from 'react-icons/tb';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const Career = () => {
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [cv, setCv] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phError, setPhError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(false);
+
+    const handleEmailChange = (event) => {
+        const { value } = event.target;
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        const isEmailValid = emailRegex.test(value);
+        setEmail(value);
+        setIsValid(isEmailValid);
+    };
+
+
+    function validatePhoneNumber(phoneNumber) {
+        const indianPhoneNumberRegex = /^[789]\d{9}$/;
+        return indianPhoneNumberRegex.test(phoneNumber);
+    };
+
 
     const handlePhoneNumberChange = (event) => {
         const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
@@ -22,24 +42,31 @@ const Career = () => {
         const formData = new FormData();
         formData.append('firstName', e.target.fName.value);
         formData.append('lastName', e.target.lName.value);
-        formData.append('email', e.target.email.value);
+        formData.append('email', email);
         formData.append('contact', phoneNumber);
         formData.append('image', cv);
 
-        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/carrer/new'
+        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/carrer/new'
 
-        axios.post(UPLOAD_URL, formData)
-            .then(response => {
-                const { data, status } = response;
-                if (status == 200) {
-                    alert('Thank you, Our company will call you soon')
-                    e.target.reset();
-                }
-            })
-            .catch((err) => {
-                console.log(err.message)
-            })
-
+        if (validatePhoneNumber(phoneNumber) && isValid) {
+            axios.post(UPLOAD_URL, formData)
+                .then(response => {
+                    const { data, status } = response;
+                    if (status == 200) {
+                        swal('Thank you, We will call you soon')
+                        e.target.reset();
+                    }
+                })
+                .catch((err) => {
+                    swal(err.message)
+                })
+        } else {
+            if (!isValid) {
+                setEmailError('Please enter a valid email address.');
+            } else {
+                setPhError('Please enter a valid Indian phone number');
+            }
+        }
     }
 
     return (
@@ -115,7 +142,16 @@ const Career = () => {
 
                             <input type="text" name='lName' required placeholder="Last Name*" className="input input-bordered w-full max-w-lg rounded-none" />
 
-                            <input type="email" name='email' required placeholder="Email*" className="input input-bordered w-full max-w-lg rounded-none" />
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={handleEmailChange}
+                                placeholder="Email*" className="input input-bordered w-full max-w-lg rounded-none" />
+                            {!isValid && (
+                                <p className='text-red-500'>{emailError}</p>
+                            )}
 
                             <input
                                 type="tel"
@@ -127,6 +163,7 @@ const Career = () => {
                                 required
                                 placeholder="Contact*"
                                 className="input input-bordered w-full max-w-lg rounded-none" />
+                            {phError && <div className='text-white'>{phError}</div>}
 
                             <input type="file" onChange={(e) => setCv(e.target.files[0])} required placeholder="Upload your cv*" />
 

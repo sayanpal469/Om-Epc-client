@@ -1,61 +1,91 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phError, setPhError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [email, setEmail] = useState('');
+  const [isValid, setIsValid] = useState(false);
 
-    const navigate = useNavigate()
- 
-    const handelSubmit = (e) => {
-        e.preventDefault()
+  const handleEmailChange = (event) => {
+    const { value } = event.target;
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    const isEmailValid = emailRegex.test(value);
+    setEmail(value);
+    setIsValid(isEmailValid);
+  };
 
-        const userName = e.target.userName.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const contact = e.target.contact.value;
+  function validatePhoneNumber(phoneNumber) {
+    const indianPhoneNumberRegex = /^[789]\d{9}$/;
+    return indianPhoneNumberRegex.test(phoneNumber);
+  };
 
-        fetch('https://omepcserver.up.railway.app/api/omEpc/signUp/new', {
-            method: "POST",
-            body: JSON.stringify({
-                userName: userName,
-                email: email,
-                password: password,
-                contact: contact,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
+
+  const handlePhoneNumberChange = (event) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
+    setPhoneNumber(inputPhoneNumber);
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault()
+
+    const userName = e.target.userName.value;
+    const password = e.target.password.value;
+
+    if (validatePhoneNumber(phoneNumber) && isValid) {
+      fetch('http://localhost:5000/api/omEpc/signUp/new', {
+        method: "POST",
+        body: JSON.stringify({
+          userName: userName,
+          email: email,
+          password: password,
+          contact: phoneNumber
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          // console.log(data)
+          if (data.success === true) {
+            // console.log(data)
+            localStorage.setItem('user', JSON.stringify(data.userData))
+            if (data.userData.role === "user" || data.userData.role === "admin") {
+              navigate('/', { state: { isLoggedIn: true } })
             }
+            // navigate('/')
+          } else {
+            swal(`${data.message}`);
+          }
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                if (data.success === true) {
-                    console.log(data)
-                    localStorage.setItem('user', JSON.stringify(data.userData))
-                    if(data.userData.role === "user" || data.userData.role === "admin"){
-                        navigate('/', { state:{isLoggedIn : true} })
-                    }
-                    // navigate('/')
-                } else {
-                  swal(`${data.message}`);
-                }
-            })
+    } else {
+      if (!isValid) {
+        setEmailError('Please enter a valid email address.');
+      } else {
+        setPhError('Please enter a valid Indian phone number');
+      }
     }
+  }
 
 
-    return (
-        <div className='login-container '>
-            <div className="flex items-center justify-center h-[100%]">
-            <div className="w-full lg:w-[550px]">
-                <form onSubmit={handelSubmit} className=" form-container  rounded-lg p-8">
+  return (
+    <div className='login-container '>
+      <div className="flex items-center justify-center h-[100%]">
+        <div className="w-full lg:w-[550px]">
+          <form onSubmit={handelSubmit} className=" form-container  rounded-lg p-8">
             <div className="mb-4">
               <label
                 className="block text-white font-medium mb-2"
                 htmlFor="name"
               >
-                Name
+                Full Name
               </label>
-              <input type="text" name='userName' placeholder="John Dexter" className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" required /> 
+              <input type="text" name='userName' placeholder="John Dexter" className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" required />
             </div>
             <div className="mb-4">
               <label
@@ -64,7 +94,17 @@ const Register = () => {
               >
                 Email
               </label>
-              <input type="text" name='email' placeholder="abc@gmail.com" className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required /> 
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="abc@gmail.com"
+                className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" required />
+              {!isValid && (
+                <p className='text-red-500'>{emailError}</p>
+              )}
             </div>
             <div className="mb-4">
               <label
@@ -73,7 +113,16 @@ const Register = () => {
               >
                 Phone Number
               </label>
-              <input type="number" name='contact'  className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg"  required /> 
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                pattern="[0-9]{10}" // enforce 10-digit pattern
+                required
+                className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" />
+              {phError && <div className='text-red-500'>{phError}</div>}
             </div>
             <div className="mb-4">
               <label
@@ -82,7 +131,7 @@ const Register = () => {
               >
                 password
               </label>
-              <input type="text" name='password'  className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg"  required /> 
+              <input type="password" name='password' className="w-full border border-gray-400 bg-transparent font-semibold text-white p-2 rounded-lg" required />
             </div>
             {/* <div className="mb-4">
               <label
@@ -105,14 +154,14 @@ const Register = () => {
                 to="/login"
                 className="bg-transparent  hover:text-sky-600 text-white font-medium"
               >
-               Already Registered?
+                Already Registered?
               </Link>
             </div>
           </form>
-          </div>
-            </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Register;

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AccesoriesCart = ({ product }) => {
   const navigate = useNavigate();
   const { _id, modelName, image, type, price, brand, wrongPrice } = product;
-  const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
+  const imgUrl = `http://localhost:5000/uploads/${image}`;
 
   const getDetails = (id) => {
     navigate(`/accesories/${id}`);

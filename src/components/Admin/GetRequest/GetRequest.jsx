@@ -8,7 +8,7 @@ const GetRequest = () => {
     const [getRequest, setGetRequest] = useState([]);
 
     useEffect(() => {
-        fetch('https://omepcserver.up.railway.app/api/omEpc/getRequest')
+        fetch('http://localhost:5000/api/omEpc/getRequest')
         .then(res => res.json())
         .then(data => {
             if(data.success === true) {

@@ -15,7 +15,7 @@ const ProductBuyRequest = () => {
     const fetchData = async () => {
         // setLoading(true)
         try {
-            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy`)
+            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy`)
             // console.log(data.data)
             if (status == 200) {
                 // setVisible(true)

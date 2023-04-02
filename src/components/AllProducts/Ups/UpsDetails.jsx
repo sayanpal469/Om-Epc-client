@@ -25,7 +25,7 @@ const UpsDetails = () => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/product/ups/${upsId}`)
+                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/ups/${upsId}`)
                 // console.log(data.ups)
                 if (status == 200) {
                     setUps(data.ups)
@@ -44,7 +44,7 @@ const UpsDetails = () => {
     }, [])
 
     const { modelName, modelNumber, brand, inputVoltage, outputVoltage, outputPlugsNumber, phase, batteriesNumber, warranty, image, price, wrongPrice, category, color, description } = ups;
-    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
+    const imgUrl = `http://localhost:5000/uploads/${image}`;
 
     return (
         <div className="container px-14 py-24 mx-auto">

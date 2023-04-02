@@ -5,7 +5,7 @@ const ComputerServiceRaw = ({index, request}) => {
     const {_id, collectionDate, category, item, brand, operating, clientName, email, contact, address, city, pinCode, message, isCompleted, isCanceled} = request;
 
     const handelComplete = (id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/serviceReq/computer/complete/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/serviceReq/computer/complete/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

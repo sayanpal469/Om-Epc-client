@@ -12,10 +12,10 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
     const [value, setValue] = useState(0)
     const [services, loading] = useService(serviceItems[value]);
     const [clientName, setClientName] = useState('');
-    const [phone, setPhone] = useState(1);
+    // const [phone, setPhone] = useState(1);
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
-    const [pincode, setPincode] = useState(1);
+    // const [pincode, setPincode] = useState(1);
     const [computerCategory, setComputerCategory] = useState('battery replacemant');
     const [upsCategory, setUpsCategory] = useState('battery faliure');
     const [printerCategory, setPrinterCategory] = useState('paper jamming');
@@ -29,9 +29,60 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
     const [date, setDate] = useState('');
     const [message, setMessage] = useState('');
     const [userEmail] = useUserEmail();
+    const [zero, setZero] = useState(true);
+    const [one, setOne] = useState(false);
+    const [two, setTwo] = useState();
+    const [three, setThree] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [pin, setPin] = useState('');
+    const [isValidPin, setIsValidPin] = useState(false);
+    const [phError, setPhError] = useState('');
+    const [pinError, setPinError] = useState('');
+
+
+    function validatePhoneNumber(phoneNumber) {
+        const indianPhoneNumberRegex = /^[789]\d{9}$/;
+        return indianPhoneNumberRegex.test(phoneNumber);
+    };
+
+
+    const handlePhoneNumberChange = (event) => {
+        const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
+        setPhoneNumber(inputPhoneNumber);
+    };
+
+    const handlePinChange = (event) => {
+        const { value } = event.target;
+        const pinRegex = /^\d{6}$/;
+        const isPinValid = pinRegex.test(value);
+        setPin(value);
+        setIsValidPin(isPinValid);
+    };
 
     const updateValue = (id) => {
-        setValue(id)
+        setValue(id);
+        if (id == 0) {
+            setZero(true);
+            setOne(false);
+            setTwo(false);
+            setThree(false)
+        } else if (id == 1) {
+            setOne(true);
+            setZero(false);
+            setTwo(false);
+            setThree(false);
+        } else if (id == 2) {
+            setTwo(true);
+            setZero(false);
+            setOne(false);
+            setThree(false);
+        } else {
+            setThree(true);
+            setTwo(false);
+            setOne(false);
+            setZero(false);
+        }
+
     };
 
     const handelComputerService = (e) => {
@@ -44,38 +95,45 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
             operating: operating,
             clientName: clientName,
             email: userEmail,
-            contact: phone,
+            contact: phoneNumber,
             address: address,
             city: city,
-            pinCode: pincode,
+            pinCode: pin,
             message: message
         }
 
-        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/computer/new', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(computerRequest)
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.success == true) {
-                    swal('Your Service request send, we will call you very soon')
-                    e.target.reset();
-                    setOpennModal(false)
-                } else {
-                    swal('Not possible')
-                }
-            }).catch(err => {
-                swal({
-                    title: "Error!",
-                    text: err.message,
-                    icon: "error",
-                });
+        if (validatePhoneNumber(phoneNumber) && isValidPin) {
+            fetch('http://localhost:5000/api/omEpc/serviceReq/computer/new', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(computerRequest)
             })
-
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success == true) {
+                        swal('Your Service request send, we will call you very soon')
+                        e.target.reset();
+                        setOpennModal(false)
+                    } else {
+                        swal('Not possible')
+                    }
+                }).catch(err => {
+                    swal({
+                        title: "Error!",
+                        text: err.message,
+                        icon: "error",
+                    });
+                })
+        } else {
+            if (!isValidPin) {
+                setPinError('Please enter a valid 6-digit PIN code.');
+            } else {
+                setPhError('Please enter a valid Indian phone number');
+            }
+        }
     };
 
 
@@ -88,36 +146,46 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
             brand: upsBrand,
             clientName: clientName,
             email: userEmail,
-            contact: phone,
+            contact: phoneNumber,
             address: address,
             city: city,
-            pinCode: pincode,
+            pinCode: pin,
             message: message
-        }
-        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/ups/new', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(upsRequest)
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.success == true) {
-                    swal('Your Service request send, we will call you very soon')
-                    e.target.reset();
-                    setOpennModal(false)
-                } else {
-                    swal('Not possible')
-                }
-            }).catch(err => {
-                swal({
-                    title: "Error!",
-                    text: err.message,
-                    icon: "error",
-                });
+        };
+
+
+        if (validatePhoneNumber(phoneNumber) && isValidPin) {
+            fetch('http://localhost:5000/api/omEpc/serviceReq/ups/new', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(upsRequest)
             })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success == true) {
+                        swal('Your Service request send, we will call you very soon')
+                        e.target.reset();
+                        setOpennModal(false)
+                    } else {
+                        swal('Not possible')
+                    }
+                }).catch(err => {
+                    swal({
+                        title: "Error!",
+                        text: err.message,
+                        icon: "error",
+                    });
+                })
+        } else {
+            if (!isValidPin) {
+                setPinError('Please enter a valid 6-digit PIN code.');
+            } else {
+                setPhError('Please enter a valid Indian phone number');
+            }
+        }
 
     }
 
@@ -130,38 +198,48 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
             brand: printerBrand,
             clientName: clientName,
             email: userEmail,
-            contact: phone,
+            contact: phoneNumber,
             address: address,
             city: city,
-            pinCode: pincode,
+            pinCode: pin,
             message: message
-        }
-        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/printer/new', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(printerRequest)
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.success == true) {
-                    swal('Your Service request send, we will call you very soon')
-                    e.target.reset();
-                    setOpennModal(false)
-                } else {
-                    swal('Not possible')
-                }
-            }).catch(err => {
-                swal({
-                    title: "Error!",
-                    text: err.message,
-                    icon: "error",
-                });
-            })
+        };
 
-    }
+        if (validatePhoneNumber(phoneNumber) && isValidPin) {
+            fetch('http://localhost:5000/api/omEpc/serviceReq/printer/new', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(printerRequest)
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success == true) {
+                        swal('Your Service request send, we will call you very soon')
+                        e.target.reset();
+                        setOpennModal(false)
+                    } else {
+                        swal('Not possible')
+                    }
+                }).catch(err => {
+                    swal({
+                        title: "Error!",
+                        text: err.message,
+                        icon: "error",
+                    });
+                })
+        } else {
+            if (!isValidPin) {
+                setPinError('Please enter a valid 6-digit PIN code.');
+            } else {
+                setPhError('Please enter a valid Indian phone number');
+            }
+        }
+    };
+
+
     const handelSurveillanceService = (e) => {
         e.preventDefault();
 
@@ -171,38 +249,47 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
             brand: surveillanceBrand,
             clientName: clientName,
             email: userEmail,
-            contact: phone,
+            contact: phoneNumber,
             address: address,
             city: city,
-            pinCode: pincode,
+            pinCode: pin,
             message: message
-        }
-        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/surveillance/new', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(surveillanceRequest)
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.success == true) {
-                    swal('Your Service request send, we will call you very soon')
-                    e.target.reset();
-                    setOpennModal(false)
-                } else {
-                    swal('Not possible')
-                }
-            }).catch(err => {
-                swal({
-                    title: "Error!",
-                    text: err.message,
-                    icon: "error",
-                });
-            })
+        };
 
-    }
+        if (validatePhoneNumber(phoneNumber) && isValidPin) {
+            fetch('http://localhost:5000/api/omEpc/serviceReq/surveillance/new', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(surveillanceRequest)
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success == true) {
+                        swal('Your Service request send, we will call you very soon')
+                        e.target.reset();
+                        setOpennModal(false)
+                    } else {
+                        swal('Not possible')
+                    }
+                }).catch(err => {
+                    swal({
+                        title: "Error!",
+                        text: err.message,
+                        icon: "error",
+                    });
+                })
+        } else {
+            if (!isValidPin) {
+                setPinError('Please enter a valid 6-digit PIN code.');
+            } else {
+                setPhError('Please enter a valid Indian phone number');
+            }
+        }
+
+    };
 
     return (
         <div className=''>
@@ -219,10 +306,13 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
 
                     <div className='mt-8 mb-3'>
                         <ul className="menu menu-horizontal space-x-1 lg:space-x-5 border-orange-500 text-xs lg:text-sm">
-                            <li><Link to='#' className="border" onClick={() => updateValue(0)} >Computer or Laptop</Link></li>
-                            <li><Link to='#' className="border" onClick={() => updateValue(1)} >Ups</Link></li>
-                            <li><Link to='#' className="border" onClick={() => updateValue(2)} >Printer</Link></li>
-                            <li><Link to='#' className="border" onClick={() => updateValue(3)} >Survillence</Link></li>
+                            <li><Link to='#' className={zero ? "border bg-primary text-white" : "border"} onClick={() => updateValue(0)} >Computer or Laptop</Link></li>
+
+                            <li><Link to='#' className={one ? "border bg-primary text-white" : "border"} onClick={() => updateValue(1)} >Ups</Link></li>
+
+                            <li><Link to='#' className={two ? "border bg-primary text-white" : "border"} onClick={() => updateValue(2)} >Printer</Link></li>
+
+                            <li><Link to='#' className={three ? "border bg-primary text-white" : "border"} onClick={() => updateValue(3)} >Survillence</Link></li>
                         </ul>
                     </div>
 
@@ -233,16 +323,41 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
                             <input name='clientName' onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" required className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='flex space-x-2 my-3'>
-                                <input name='email' type="email" disabled required value={userEmail} placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input name='email' type="email" disabled required value={userEmail} placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                </div>
 
-                                <input name='contact' onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" required className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input
+                                        type="tel"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        value={phoneNumber}
+                                        onChange={handlePhoneNumberChange}
+                                        pattern="[0-9]{10}" // enforce 10-digit pattern
+                                        placeholder='Your phone number*'
+                                        required
+                                        className="input input-bordered w-full max-w-lg rounded-none" />
+                                    {phError && <div className='text-red-500 mt-2'>{phError}</div>}
+                                </div>
                             </div>
 
                             <input name='address' onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" required className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <input name='city' onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" required className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <input name='pinCode' onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" required className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input
+                                type="text"
+                                id="pin"
+                                name="pin"
+                                value={pin}
+                                onChange={handlePinChange}
+                                placeholder="Pin code*"
+                                required
+                                className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            {!isValidPin && (
+                                <p className='text-red-500'>{pinError}</p>
+                            )}
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
@@ -312,16 +427,41 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
                             <input name='name' onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='flex space-x-2 my-3'>
-                                <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                </div>
 
-                                <input name='contact' onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input
+                                        type="tel"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        value={phoneNumber}
+                                        onChange={handlePhoneNumberChange}
+                                        pattern="[0-9]{10}" // enforce 10-digit pattern
+                                        placeholder='Your phone number*'
+                                        required
+                                        className="input input-bordered w-full max-w-lg rounded-none" />
+                                    {phError && <div className='text-red-500 mt-2'>{phError}</div>}
+                                </div>
                             </div>
 
                             <input name='address' onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <input name='city' onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <input name='pinCode' onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input
+                                type="text"
+                                id="pin"
+                                name="pin"
+                                value={pin}
+                                onChange={handlePinChange}
+                                placeholder="Pin code*"
+                                required
+                                className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            {!isValidPin && (
+                                <p className='text-red-500'>{pinError}</p>
+                            )}
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
@@ -371,16 +511,41 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
                             <input name='name' required onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='flex space-x-2 my-3'>
-                                <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                </div>
 
-                                <input name='contact' onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input
+                                        type="tel"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        value={phoneNumber}
+                                        onChange={handlePhoneNumberChange}
+                                        pattern="[0-9]{10}" // enforce 10-digit pattern
+                                        placeholder='Your phone number*'
+                                        required
+                                        className="input input-bordered w-full max-w-lg rounded-none" />
+                                    {phError && <div className='text-red-500 mt-2'>{phError}</div>}
+                                </div>
                             </div>
 
                             <input name='address' onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <input name='city' onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <input name='pinCode' onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input
+                                type="text"
+                                id="pin"
+                                name="pin"
+                                value={pin}
+                                onChange={handlePinChange}
+                                placeholder="Pin code*"
+                                required
+                                className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            {!isValidPin && (
+                                <p className='text-red-500'>{pinError}</p>
+                            )}
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>
@@ -425,16 +590,41 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
                             <input name='name' required onChange={(e) => setClientName(e.target.value)} type="text" placeholder="Your Name*" className="mt-5 mb-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <div className='flex space-x-2 my-3'>
-                                <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input name='email' value={userEmail} type="email" placeholder="Your e-mail address*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                </div>
 
-                                <input name='contact' required onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Your phone number*" className="input input-bordered w-full max-w-lg rounded-none" />
+                                <div>
+                                    <input
+                                        type="tel"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        value={phoneNumber}
+                                        onChange={handlePhoneNumberChange}
+                                        pattern="[0-9]{10}" // enforce 10-digit pattern
+                                        placeholder='Your phone number*'
+                                        required
+                                        className="input input-bordered w-full max-w-lg rounded-none" />
+                                    {phError && <div className='text-red-500 mt-2'>{phError}</div>}
+                                </div>
                             </div>
 
                             <input name='address' required onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Address*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
                             <input name='city' required onChange={(e) => setCity(e.target.value)} type="text" placeholder="City*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
 
-                            <input name='pinCode' required onChange={(e) => setPincode(e.target.value)} type="number" placeholder="Pin code*" className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            <input
+                                type="text"
+                                id="pin"
+                                name="pin"
+                                value={pin}
+                                onChange={handlePinChange}
+                                placeholder="Pin code*"
+                                required
+                                className="my-2 input input-bordered w-full max-w-lg rounded-none" />
+                            {!isValidPin && (
+                                <p className='text-red-500'>{pinError}</p>
+                            )}
 
                             <div className='my-2'>
                                 <span className="ml-1">Category*</span>

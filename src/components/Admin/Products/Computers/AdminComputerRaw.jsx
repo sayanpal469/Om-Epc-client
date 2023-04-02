@@ -2,12 +2,12 @@ import React from 'react';
 import swal from 'sweetalert';
 
 const AdminComputerRaw = ({ index, computer }) => {
-    const productImg = `https://omepcserver.up.railway.app/uploads/${computer.image}`;
+    const productImg = `http://localhost:5000/uploads/${computer.image}`;
     const {_id, modelName, series, brand, processor, processorBrand, processorFrequency, operatingSystem, processorModel, ram, displaySize, graphics, hardDrive, ssdCapacity, warranty, price, wrongPrice, category, color} = computer;
 
 
     const handelDelete = (id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/product/computer/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/product/computer/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

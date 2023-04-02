@@ -16,8 +16,32 @@ const BuyPage = () => {
     const navigate = useNavigate();
     let deliveryCost = 100;
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [phError, setPhError] = useState('');
+    const [pinError, setPinError] = useState('');
+    const [pin, setPin] = useState('');
+    const [isValidPin, setIsValidPin] = useState(false);
 
-    
+
+    function validatePhoneNumber(phoneNumber) {
+        const indianPhoneNumberRegex = /^[789]\d{9}$/;
+        return indianPhoneNumberRegex.test(phoneNumber);
+    };
+
+
+    const handlePhoneNumberChange = (event) => {
+        const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
+        setPhoneNumber(inputPhoneNumber);
+    };
+
+    const handlePinChange = (event) => {
+        const { value } = event.target;
+        const pinRegex = /^\d{6}$/;
+        const isPinValid = pinRegex.test(value);
+        setPin(value);
+        setIsValidPin(isPinValid);
+    }
+
+
 
     useEffect(() => {
         // const auth = localStorage.getItem('user');
@@ -29,16 +53,10 @@ const BuyPage = () => {
         }
     }, []);
 
-    const handlePhoneNumberChange = (event) => {
-        const inputPhoneNumber = event.target.value.replace(/\D/g, '').slice(0, 10); // remove all non-digit characters and limit to 10 digits
-        setPhoneNumber(inputPhoneNumber);
-    }
-
-
 
     const { image, price, ram, modelName, brand } = buyProduct
 
-    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
+    const imgUrl = `http://localhost:5000/uploads/${image}`;
 
 
     const handelSubmit = (e) => {
@@ -47,35 +65,44 @@ const BuyPage = () => {
         const lastName = e.target.last_name.value;
         const address = e.target.street_address.value;
         const city = e.target.city.value;
-        const post_code = e.target.post_code.value;
+        const post_code = pin;
         const phone = phoneNumber;
         const Quantity = quantity;
         const email = userEmail;
         const totalBill = (quantity * price) + deliveryCost;
         const product = buyProduct;
 
-        axios.post('https://omepcserver.up.railway.app/api/omEpc/buy/new', {
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            city: city,
-            email: email,
-            contact: phone,
-            postCode: post_code,
-            Quantity: Quantity,
-            totalBill: totalBill,
-            product: product
-        })
-            .then(function (response) {
-                console.log(response);
-                if (response.status == 200) {
-                    navigate('/myOrder')
-                    window.location.reload();
-                }
+        if (validatePhoneNumber(phoneNumber) && isValidPin) {
+            axios.post('http://localhost:5000/api/omEpc/buy/new', {
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                city: city,
+                email: email,
+                contact: phone,
+                postCode: post_code,
+                Quantity: Quantity,
+                totalBill: totalBill,
+                product: product
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(function (response) {
+                    console.log(response);
+                    if (response.status == 200) {
+                        swal('Order Successfull')
+                        navigate('/myOrder')
+                        window.location.reload();
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } else {
+            if (!isValidPin) {
+                setPinError('Please enter a valid 6-digit PIN code.');
+            } else {
+                setPhError('Please enter a valid Indian phone number');
+            }
+        }
     }
 
 
@@ -97,17 +124,27 @@ const BuyPage = () => {
                 <label className='' htmlFor="">Town / City</label>
                 <input type="text" name='city' required className="rounded-none input input-bordered w-full mb-5" />
                 <label className='' htmlFor="">Postcode</label>
-                <input type="text" name='post_code' required className="rounded-none input input-bordered w-full mb-5" />
+                <input
+                    type="text"
+                    id="pin"
+                    name="pin"
+                    value={pin}
+                    onChange={handlePinChange}
+                    className="rounded-none input input-bordered w-full mb-5" />
+                {!isValidPin && (
+                    <p className='text-red-500'>{pinError}</p>
+                )}
                 <label className='' htmlFor="">Phone</label>
                 <input
-                 type="tel"
-                 id="phoneNumber"
-                 name="phoneNumber"
-                 value={phoneNumber}
-                 onChange={handlePhoneNumberChange}
-                 pattern="[0-9]{10}" // enforce 10-digit pattern
-                 required 
-                 className="rounded-none input input-bordered w-full mb-5" />
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
+                    pattern="[0-9]{10}" // enforce 10-digit pattern
+                    required
+                    className="rounded-none input input-bordered w-full mb-2" />
+                {phError && <p className='text-red-500 mb-5'>{phError}</p>}
                 <label className='' htmlFor="">Email address</label>
                 <input type="email" disabled value={userEmail} required className="rounded-none input input-bordered w-full" />
             </div>
@@ -154,7 +191,7 @@ const BuyPage = () => {
                                                         text: "Not Possible",
                                                         icon: "warning",
                                                         button: "Okay",
-                                                      });
+                                                    });
                                                 }
                                             }}>-</AiFillMinusCircle>
 

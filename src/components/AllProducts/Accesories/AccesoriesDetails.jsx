@@ -9,13 +9,13 @@ const AccesoriesDetails = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const { modelName, image, price, brand, description, wrongPrice } = product;
-    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
+    const imgUrl = `http://localhost:5000/uploads/${image}`;
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/product/accesories/${acceId}`)
+                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/accesories/${acceId}`)
                 // let data = await res.json
                 // console.log(data.computer)
                 if (status == 200) {

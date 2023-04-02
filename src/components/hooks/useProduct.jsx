@@ -11,7 +11,7 @@ const useProduct = (category) => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/product/${category}`)
+                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/${category}`)
                 // let data = await res.json
                 // console.log(data)
                 if (status == 200) {

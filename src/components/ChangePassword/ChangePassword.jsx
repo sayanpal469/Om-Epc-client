@@ -9,7 +9,7 @@ const ChangePassword = () => {
     const navigate = useNavigate();
 
     const handelChangePass = () => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/forget/${email}`, {
+        fetch(`http://localhost:5000/api/omEpc/forget/${email}`, {
             method: "PUT",
             body: JSON.stringify({
                 password: changePassword

@@ -17,7 +17,7 @@ const CompDetails = () => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/product/computer/${compId}`)
+                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/computer/${compId}`)
                 // let data = await res.json
                 // console.log(data.computer)
                 if (status == 200) {
@@ -47,7 +47,7 @@ const CompDetails = () => {
     };
 
     const { modelName, series, brand, processor, processorBrand, processorFrequency, operatingSystem, processorModel, ram, displaySize, graphics, hardDrive, ssdCapacity, warranty, image, price, wrongPrice, category, color, description } = computer;
-    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
+    const imgUrl = `http://localhost:5000/uploads/${image}`;
 
 
     return (

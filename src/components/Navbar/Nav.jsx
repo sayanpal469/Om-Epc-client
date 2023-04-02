@@ -43,7 +43,7 @@ const Nav = ({ children }) => {
     if (localStorage.getItem("user") || location.state?.isLoggedIn) {
       setLoggedIn(true);
       const user = JSON.parse(localStorage.getItem("user"));
-     if(user.role === "admin"){
+     if(user.isAdmin){
         setIsAdmin(true)
      }
     } else {

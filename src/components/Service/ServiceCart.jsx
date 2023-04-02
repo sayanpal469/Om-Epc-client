@@ -4,7 +4,7 @@ import '../../style/serviceCart.css'
 
 const ServiceCart = ({ service }) => {
     const navigate = useNavigate();
-    const imgUrl = `https://omepcserver.up.railway.app/uploads/${service.image}`;
+    const imgUrl = `http://localhost:5000/uploads/${service.image}`;
 
     const learnMore = () => {
         navigate(`/service/${service._id}`)

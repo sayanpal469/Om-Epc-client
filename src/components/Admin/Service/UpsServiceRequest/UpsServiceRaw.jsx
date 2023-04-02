@@ -5,7 +5,7 @@ const UpsServiceRaw = ({ index, request }) => {
     const { _id, collectionDate, category, brand, clientName, email, contact, address, city, pinCode, message, isCompleted, isCanceled } = request;
 
     const handelComplete = (id) => {
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/serviceReq/ups/complete/${id}`, {
+        fetch(`http://localhost:5000/api/omEpc/serviceReq/ups/complete/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
