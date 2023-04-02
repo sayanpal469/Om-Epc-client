@@ -35,7 +35,7 @@ const ServiceAdmin = () => {
 
         // console.log(name, productImg, model)
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/service/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/service/new'
 
         axios.post(UPLOAD_URL, formData)
             .then(response => {

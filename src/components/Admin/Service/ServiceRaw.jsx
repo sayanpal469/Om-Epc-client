@@ -5,10 +5,10 @@ import swal from 'sweetalert';
 const ServiceRaw = ({index, service, setAlls, alls}) => {
     const {_id} = service;
     // const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-    const serviceImg = `http://localhost:5000/uploads/${service.image}`;
+    const serviceImg = `https://omepcserver.up.railway.app/uploads/${service.image}`;
 
     const handelDelete = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/service/${id}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/service/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

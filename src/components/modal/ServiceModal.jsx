@@ -49,7 +49,7 @@ const ServiceModal = () => {
             pinCode: pincode,
             message: message
         }
-        fetch('http://localhost:5000/api/omEpc/serviceReq/computer/new', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/computer/new', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -83,7 +83,7 @@ const ServiceModal = () => {
             pinCode: pincode,
             message: message
         }
-        fetch('http://localhost:5000/api/omEpc/serviceReq/ups/new', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/ups/new', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -116,7 +116,7 @@ const ServiceModal = () => {
             pinCode: pincode,
             message: message
         }
-        fetch('http://localhost:5000/api/omEpc/serviceReq/printer/new', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/printer/new', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -148,7 +148,7 @@ const ServiceModal = () => {
             pinCode: pincode,
             message: message
         }
-        fetch('http://localhost:5000/api/omEpc/serviceReq/surveillance/new', {
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/surveillance/new', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

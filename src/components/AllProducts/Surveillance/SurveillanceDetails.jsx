@@ -25,7 +25,7 @@ const SurveillanceDetails = () => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/product/surveillance/${surveId}`)
+                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/product/surveillance/${surveId}`)
                 // console.log(data.ups)
                 if (status == 200) {
                     setSurveillance(data.surveillance)
@@ -44,7 +44,7 @@ const SurveillanceDetails = () => {
     }, [])
 
     const { modelName, modelNumber, brand, recordResolution, warranty, image, price, wrongPrice, category, color, description } = surveillance;
-    const imgUrl = `http://localhost:5000/uploads/${image}`;
+    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
     return (
         <div className="container px-14 py-24 mx-auto">
             {loading && <Loading />}

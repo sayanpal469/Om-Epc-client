@@ -4,14 +4,14 @@ import { FcCancel } from 'react-icons/fc';
 import swal from 'sweetalert';
 
 const UserOrderRaw = ({ index, order, setDeleteSuccess }) => {
-    const productImg = `http://localhost:5000/uploads/${order.product.image}`;
+    const productImg = `https://omepcserver.up.railway.app/uploads/${order.product.image}`;
     // console.log(order.responseStatus)
 
     const { brand, modelName} = order.product
 
 
     const handelCancel = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/buy/cancel/${id}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/cancel/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

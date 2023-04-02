@@ -35,7 +35,7 @@ const AdminSurveillance = () => {
 
         // console.log(outputVoltage)
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/product/surveillance/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/product/surveillance/new'
 
         axios.post(UPLOAD_URL, formData)
             .then(response => {

@@ -15,7 +15,7 @@ const SurveillanceService = () => {
     // console.log(resStatus)
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/omEpc/serviceReq/surveillance')
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/surveillance')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

@@ -4,10 +4,10 @@ import { FcCancel } from 'react-icons/fc';
 const ProductBuyRequestRaw = ({ index, order }) => {
     const { _id, Quantity, firstName, lastName, email, contact, createdAt, totalBill, address, city, postCode } = order;
     const { brand, modelNumber, modelName } = order?.product;
-    const productImg = `http://localhost:5000/uploads/${order.product.image}`;
+    const productImg = `https://omepcserver.up.railway.app/uploads/${order.product.image}`;
 
     const handelShipped = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/buy/shipped/${id}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/shipped/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ const ProductBuyRequestRaw = ({ index, order }) => {
     }
 
     const handelComplete = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/buy/complete/${id}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/complete/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
