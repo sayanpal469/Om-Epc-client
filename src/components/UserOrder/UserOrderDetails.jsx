@@ -13,7 +13,7 @@ const UserOrderDetails = () => {
     const [visible, setVisible] = useState(false);
     const { _id, address, city, postCode, firstName, lastName, contact, isApproved, isCanceled, isCompleted, isShipped, outOfDelivery, email, totalBill } = order;
     // const { brand, modelName, image } = product;
-    const productImg = `http://localhost:5000/uploads/${order?.product?.image}`;
+    const productImg = `https://omepcserver.up.railway.app/uploads/${order?.product?.image}`;
     // console.log(order.product?.brand)
 
 
@@ -25,7 +25,11 @@ const UserOrderDetails = () => {
     const fetchData = async () => {
         setLoading(true)
         try {
-            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/buy/${orderId}`)
+<<<<<<< HEAD
+            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy/${orderId}`)
+=======
+            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy/${orderId}`)
+>>>>>>> origin/final_version
             // console.log(data.data)
             if (status === 200) {
                 setVisible(true)
@@ -45,7 +49,11 @@ const UserOrderDetails = () => {
     }
 
     const handelCancel = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/buy/cancel/${id}`, {
+<<<<<<< HEAD
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/cancel/${id}`, {
+=======
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/cancel/${id}`, {
+>>>>>>> origin/final_version
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +80,11 @@ const UserOrderDetails = () => {
                     icon: "error",
                 });
             })
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> origin/final_version
 
     return (
         <div className='px-5 lg:px-14 md:px-10'>

@@ -4,10 +4,10 @@ import swal from 'sweetalert';
 const AdminPrinterRaw = ({ index, printer }) => {
     const { _id, color, brand, image, modelName, refilType, type, warranty, price, wrongPrice, printingMethod
     } = printer;
-    const productImg = `http://localhost:5000/uploads/${image}`;
+    const productImg = `https://omepcserver.up.railway.app/uploads/${image}`;
 
     const handelDelete = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/product/printer/${id}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/product/printer/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

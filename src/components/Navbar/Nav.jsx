@@ -137,7 +137,7 @@ const Nav = ({ children }) => {
                     <a className="justify-between">
                         My Account
                     </a>
-                    <ul className="p-2 shadow menu bg-base-100 mt-2">
+                    <ul className="p-2 shadow menu menu-drop bg-base-100 mt-2">
                         <li><Link to='/myOrder'> My Orders</Link></li>
                         <li><Link to='/myService'>Service Request</Link></li>
                     </ul>
@@ -179,7 +179,7 @@ const Nav = ({ children }) => {
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content  flex flex-col">
           {/* <!-- Navbar --> */}
-          <div className="w-full navbar lg:px-20 sticky transition-colors duration-500 bg-opacity-30 z-50 backdrop-filter backdrop-blur-lg bg-white">
+          <div className="w-full navbar lg:px-20 sticky transition-colors duration-500 bg-opacity-30  backdrop-filter backdrop-blur-lg bg-white">
             <div className="flex-none lg:hidden">
               <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                 <svg

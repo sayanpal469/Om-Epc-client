@@ -37,7 +37,7 @@ const Register = () => {
     const password = e.target.password.value;
 
     if (validatePhoneNumber(phoneNumber) && isValid) {
-      fetch('http://localhost:5000/api/omEpc/signUp/new', {
+      fetch('https://omepcserver.up.railway.app/api/omEpc/signUp/new', {
         method: "POST",
         body: JSON.stringify({
           userName: userName,

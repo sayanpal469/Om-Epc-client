@@ -48,7 +48,7 @@ const AdminUpses = () => {
 
         console.log(outputVoltage)
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/product/ups/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/product/ups/new'
 
         axios.post(UPLOAD_URL, formData)
             .then(response => {

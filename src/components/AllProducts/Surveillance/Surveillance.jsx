@@ -147,7 +147,18 @@ const Surveillance = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <div className="surveillance-banner bg-fixed">
+=======
+      <div className="surveillance-banner bg-fixed" style={{
+          backgroundImage: `linear-gradient(rgba(12, 110, 134, 0.945), rgba(129, 131, 34, 0.493)), url("https://i.ibb.co/FmKKrZp/cctv.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "100%",
+          height: "100vh",
+        }}>
+>>>>>>> origin/final_version
         <div className="Heading text-4xl md:text-5xl lg:text-6xl text-white font-mono">
           Our Surveillances
           <div className="flex text-2xl justify-center mt-2 space-x-2 mb-10">

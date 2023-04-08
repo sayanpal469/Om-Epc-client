@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SurveillanceCart = ({ surveillance }) => {
     const { _id, modelName, modelNumber, image, price, brand } = surveillance;
-    const imgUrl = `http://localhost:5000/uploads/${image}`;
+    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
     const navigate = useNavigate();
     const getDetails = (id) => {
         navigate(`/surveillance/${id}`)

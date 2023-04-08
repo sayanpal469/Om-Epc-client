@@ -46,7 +46,7 @@ const Career = () => {
         formData.append('contact', phoneNumber);
         formData.append('image', cv);
 
-        const UPLOAD_URL = 'http://localhost:5000/api/omEpc/carrer/new'
+        const UPLOAD_URL = 'https://omepcserver.up.railway.app/api/omEpc/carrer/new'
 
         if (validatePhoneNumber(phoneNumber) && isValid) {
             axios.post(UPLOAD_URL, formData)
@@ -96,7 +96,7 @@ const Career = () => {
                         </div>
                         <div>
                             <h2 className='text-lg font-semibold'>Developing Technical Skills</h2>
-                            <p className='text-sm'>Working in a computer repair website can provide an opportunity to develop and improve technical skills related to troubleshooting and fixing computer hardware and software issues. As technology continues to advance, having up-to-date skills in this field can be beneficial for personal and professional growth.</p>
+                            <p className='text-sm'>Working in Om Epc Solution can provide an opportunity to develop and improve technical skills related to troubleshooting and fixing computer hardware and software issues. As technology continues to advance, having up-to-date skills in this field can be beneficial for personal and professional growth.</p>
                         </div>
                     </div>
 
@@ -106,7 +106,7 @@ const Career = () => {
                         </div>
                         <div>
                             <h2 className='text-lg font-semibold'>Increased Demand for Services</h2>
-                            <p className='text-sm'>With the increased reliance on technology, the demand for repair services has grown considerably. By working in a website that provides repair services for a range of devices, you will be exposed to a large customer base and have a higher chance of getting more work.</p>
+                            <p className='text-sm'>With the increased reliance on technology, the demand for repair services has grown considerably. By working in Om Epc Solution that provides repair services for a range of devices, you will be exposed to a large customer base and have a higher chance of getting more work.</p>
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@ const Career = () => {
                         </div>
                         <div>
                             <h2 className='text-lg font-semibold'>Job Security</h2>
-                            <p className='text-sm'>Similar to working in a computer repair website, working in a website that provides repair services for multiple devices can provide job security and stability. This is because these devices are essential in our daily lives, and their breakdown can significantly disrupt our work or personal life.</p>
+                            <p className='text-sm'>Similar to working in Om Epc Solution, working in a website that provides repair services for multiple devices can provide job security and stability. This is because these devices are essential in our daily lives, and their breakdown can significantly disrupt our work or personal life.</p>
                         </div>
                     </div>
 

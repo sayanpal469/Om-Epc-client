@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const ComputerCart = ({ computer }) => {
   const navigate = useNavigate();
   const { _id, modelName, image, price, brand, wrongPrice } = computer;
-  const imgUrl = `http://localhost:5000/uploads/${image}`;
+  const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
 
   const getDetails = (id) => {
     navigate(`/computer/${id}`);

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AccesoriesCart = ({ product }) => {
   const navigate = useNavigate();
   const { _id, modelName, image, type, price, brand, wrongPrice } = product;
-  const imgUrl = `http://localhost:5000/uploads/${image}`;
+  const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
 
   const getDetails = (id) => {
     navigate(`/accesories/${id}`);
@@ -21,7 +21,7 @@ const AccesoriesCart = ({ product }) => {
           <span className="text-gray-400 mr-3 uppercase text-xs">
             Brand- <span className="text-orange-500 font-semibold">{brand}</span>
           </span>
-          <p className="text-gray-400 mr-3 uppercase text-xs"> Brand- <span className="text-orange-500 font-semibold">{type}</span></p>
+          <p className="text-gray-400 mr-3 uppercase text-xs"> Type- <span className="text-orange-500 font-semibold">{type}</span></p>
           <div className="flex items-center">
             <p className="text-lg font-semibold text-black cursor-auto my-3">
               ₹{price}

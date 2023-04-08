@@ -10,6 +10,25 @@ const useServiceRequests = (category, email) => {
 
 
     useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true)
+            try {
+                let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/serviceReq/${category}/${email}`)
+                // let data = await res.json
+                // console.log(data)
+                if (status == 200) {
+                    setRequests(data.data)
+                    setLoading(false)
+                    // setError('')
+                }
+                // console.log(data)
+            } catch (error) {
+                // setError(error.message)
+                setLoading(false)
+                console.log(error.message)
+            }
+        }
+
         fetchData()
     }, [category, email])
 
@@ -22,7 +41,7 @@ const useServiceRequests = (category, email) => {
     const fetchData = async () => {
         setLoading(true)
         try {
-            let { data, status } = await axios.get(`http://localhost:5000/api/omEpc/serviceReq/${category}/${email}`)
+            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/serviceReq/${category}/${email}`)
             // let data = await res.json
             // console.log(data.data)
             if (status == 200) {

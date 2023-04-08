@@ -56,7 +56,7 @@ const BuyPage = () => {
 
     const { image, price, ram, modelName, brand } = buyProduct
 
-    const imgUrl = `http://localhost:5000/uploads/${image}`;
+    const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
 
 
     const handelSubmit = (e) => {
@@ -73,7 +73,7 @@ const BuyPage = () => {
         const product = buyProduct;
 
         if (validatePhoneNumber(phoneNumber) && isValidPin) {
-            axios.post('http://localhost:5000/api/omEpc/buy/new', {
+            axios.post('https://omepcserver.up.railway.app/api/omEpc/buy/new', {
                 firstName: firstName,
                 lastName: lastName,
                 address: address,

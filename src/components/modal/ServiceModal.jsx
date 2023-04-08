@@ -102,6 +102,31 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
             message: message
         }
 
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/computer/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(computerRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
+                    e.target.reset();
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
+                }
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+
         if (validatePhoneNumber(phoneNumber) && isValidPin) {
             fetch('http://localhost:5000/api/omEpc/serviceReq/computer/new', {
                 method: 'POST',
@@ -186,6 +211,33 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
                 setPhError('Please enter a valid Indian phone number');
             }
         }
+<<<<<<< HEAD
+=======
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/ups/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(upsRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
+                    e.target.reset();
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
+                }
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+>>>>>>> origin/final_version
 
     }
 
@@ -206,7 +258,7 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
         };
 
         if (validatePhoneNumber(phoneNumber) && isValidPin) {
-            fetch('http://localhost:5000/api/omEpc/serviceReq/printer/new', {
+            fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/printer/new', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
@@ -254,7 +306,31 @@ const ServiceModal = ({ openModal, setOpennModal }) => {
             city: city,
             pinCode: pin,
             message: message
-        };
+        }
+        fetch('https://omepcserver.up.railway.app/api/omEpc/serviceReq/surveillance/new', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(surveillanceRequest)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success == true) {
+                    swal('Your Service request send, we will call you very soon')
+                    e.target.reset();
+                    setOpennModal(false)
+                } else {
+                    swal('Not possible')
+                }
+            }).catch(err => {
+                swal({
+                    title: "Error!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
 
         if (validatePhoneNumber(phoneNumber) && isValidPin) {
             fetch('http://localhost:5000/api/omEpc/serviceReq/surveillance/new', {

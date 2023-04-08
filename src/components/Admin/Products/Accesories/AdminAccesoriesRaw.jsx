@@ -3,11 +3,11 @@ import swal from 'sweetalert';
 
 const AdminAccesoriesRaw = ({ index, product }) => {
     const { _id, brand, type, image, modelName, price, wrongPrice, warranty } = product;
-    const productImg = `http://localhost:5000/uploads/${image}`;
+    const productImg = `https://omepcserver.up.railway.app/uploads/${image}`;
     // console.log(product)
 
     const handelDelete = (id) => {
-        fetch(`http://localhost:5000/api/omEpc/product/accesories/delete/${id}`, {
+        fetch(`https://omepcserver.up.railway.app/api/omEpc/product/accesories/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

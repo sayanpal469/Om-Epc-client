@@ -19,35 +19,9 @@ const Service = () => {
   const [services, loading] = useService(serviceItems[value]);
   const navigate = useNavigate();
   const [openModal, setOpennModal] = useState(false);
-  const [zero, setZero] = useState(true);
-  const [one, setOne] = useState(false);
-  const [two, setTwo] = useState();
-  const [three, setThree] = useState(false);
 
   const updateValue = (id) => {
     setValue(id);
-    if (id == 0) {
-      setZero(true);
-      setOne(false);
-      setTwo(false);
-      setThree(false)
-    } else if (id == 1) {
-      setOne(true);
-      setZero(false);
-      setTwo(false);
-      setThree(false);
-    } else if (id == 2) {
-      setTwo(true);
-      setZero(false);
-      setOne(false);
-      setThree(false);
-    } else {
-      setThree(true);
-      setTwo(false);
-      setOne(false);
-      setZero(false);
-    }
-
   };
 
   const handelModal = (id) => {
@@ -103,10 +77,10 @@ const Service = () => {
                 onClick={() => (window.location.href = 'tel:917981413743')}
                 className="lg:text-2xl cursor-pointer text-orange-500"
               >
-                91 7981413743
+                91 7981413743 
               </h2>
               <p className="text-lg font-semibold"> OR </p>
-              <a href="https://wa.me/7981413743"><RiWhatsappFill className="text-green-500 cursor-pointer font-bold text-3xl lg:text-4xl ml-3" /></a>
+              <a href="https://wa.me/7981413743"><RiWhatsappFill  className="text-green-500 cursor-pointer font-bold lg:text-3xl" /></a>
             </div>
           </div>
         </div>
@@ -129,22 +103,22 @@ const Service = () => {
       <div className="flex justify-center mb-10 ">
         <ul className="menu menu-horizontal space-x-2 gap-3 md:space-x-5 flex justify-center lg:space-x-10 border-orange-500">
           <li>
-            <Link to="#" className={zero ? "border bg-primary text-white" : "border"} onClick={() => updateValue(0)}>
+            <Link to="#" className="border" onClick={() => updateValue(0)}>
               Computer or Laptop
             </Link>
           </li>
           <li>
-            <Link to="#" className={one ? "border bg-primary text-white" : "border"} onClick={() => updateValue(1)}>
+            <Link to="#" className="border" onClick={() => updateValue(1)}>
               Ups
             </Link>
           </li>
           <li>
-            <Link to="#" className={two ? "border bg-primary text-white" : "border"} onClick={() => updateValue(2)}>
+            <Link to="#" className="border" onClick={() => updateValue(2)}>
               Printer
             </Link>
           </li>
           <li>
-            <Link to="#" className={three ? "border bg-primary text-white" : "border"} onClick={() => updateValue(3)}>
+            <Link to="#" className="border" onClick={() => updateValue(3)}>
               Survillence
             </Link>
           </li>
@@ -162,7 +136,7 @@ const Service = () => {
       </div>
 
       <ServiceModal />
-      <ServiceModal openModal={openModal} setOpennModal={setOpennModal} />
+            <ServiceModal openModal={openModal} setOpennModal={setOpennModal} />
 
       <WhyUs />
 
