@@ -67,7 +67,7 @@ const Service = () => {
             We go the extra mile on every project. The value we provide clients
             comes from our level of skill and performance, as well as our
             knowledge and professionalism. Rest assured, we put the same level
-            of energy into every project we take on
+            of energy into every project we take on.
           </p>
           <div className="mt-10">
             <p className="lg:text-lg font-bold"> Reach us at</p>

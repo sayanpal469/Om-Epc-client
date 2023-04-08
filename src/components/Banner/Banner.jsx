@@ -44,11 +44,7 @@ const Banner = () => {
               <div className="container mt-5">
                 <div className="button-container">
                   <span className="mask">Buy Now</span>
-<<<<<<< HEAD
-                  <button className="" type="button" name="Hover">
-=======
                   <button className="" type="button" onClick={()=>{navigate("/ups")}} name="Hover">
->>>>>>> origin/final_version
                     Buy Now
                   </button>
                 </div>
@@ -67,11 +63,7 @@ const Banner = () => {
               <div className="container mt-5">
                 <div className="button-container">
                   <span className="mask">Buy Now</span>
-<<<<<<< HEAD
-                  <button type="button" name="Hover">
-=======
                   <button type="button" onClick={()=>{navigate("/computer")}} name="Hover">
->>>>>>> origin/final_version
                     Buy Now
                   </button>
                 </div>
@@ -90,11 +82,7 @@ const Banner = () => {
               <div className="container mt-5">
                 <div className="button-container">
                   <span className="mask">Buy Now</span>
-<<<<<<< HEAD
-                  <button type="button" name="Hover">
-=======
                   <button type="button" onClick={()=>{navigate("/surveillance")}} name="Hover">
->>>>>>> origin/final_version
                     Buy Now
                   </button>
                 </div>
@@ -113,11 +101,7 @@ const Banner = () => {
               <div className="container mt-5">
                 <div className="button-container">
                   <span className="mask">Buy Now</span>
-<<<<<<< HEAD
-                  <button type="button" name="Hover">
-=======
                   <button type="button" onClick={()=>{navigate("/accesories")}} name="Hover">
->>>>>>> origin/final_version
                     Buy Now
                   </button>
                 </div>
@@ -136,11 +120,7 @@ const Banner = () => {
               <div className="container mt-5">
                 <div className="button-container">
                   <span className="mask">Buy Now</span>
-<<<<<<< HEAD
-                  <button type="button" name="Hover">
-=======
                   <button type="button" onClick={()=>{navigate("/printer")}} name="Hover">
->>>>>>> origin/final_version
                     Buy Now
                   </button>
                 </div>
@@ -160,11 +140,7 @@ const Banner = () => {
               <div className="container mt-5">
                 <div className="button-container">
                   <span className="mask">Buy Now</span>
-<<<<<<< HEAD
-                  <button type="button" name="Hover">
-=======
                   <button type="button" onClick={()=>{navigate("/ups")}} name="Hover">
->>>>>>> origin/final_version
                     Buy Now
                   </button>
                 </div>

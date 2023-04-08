@@ -6,7 +6,7 @@ const AboutPage = () => {
     return (
         <div>
          <div className="top-banner-about">
-         <img src="https://i.ibb.co/wYhtXhk/Home-1.png" alt="" />
+         <img src="https://i.ibb.co/K0gPMbf/Home-1.png" alt="" />
          <img src="https://i.ibb.co/QvR0kqR/About.png" alt="" />
          <img src="https://i.ibb.co/qR44yVn/Services.png" alt="" />
          <img src="https://i.ibb.co/cFMvqkZ/FAQs.png" alt="" />

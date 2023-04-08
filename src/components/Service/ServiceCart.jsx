@@ -15,7 +15,7 @@ const ServiceCart = ({ service }) => {
             <figure><img className='serviceImg' src={imgUrl} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title capitalize">{service.category}</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, magnam non laudantium vitae eos tempora obcaecati,</p>
+                {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, magnam non laudantium vitae eos tempora obcaecati,</p> */}
                 <div className="card-actions justify-start my-5">
                     <button onClick={learnMore} className="btn btn-outline rounded-none capitalize font-mono text-sm">Read more</button>
                 </div>

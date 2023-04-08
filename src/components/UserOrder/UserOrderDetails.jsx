@@ -25,11 +25,7 @@ const UserOrderDetails = () => {
     const fetchData = async () => {
         setLoading(true)
         try {
-<<<<<<< HEAD
             let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy/${orderId}`)
-=======
-            let { data, status } = await axios.get(`https://omepcserver.up.railway.app/api/omEpc/buy/${orderId}`)
->>>>>>> origin/final_version
             // console.log(data.data)
             if (status === 200) {
                 setVisible(true)
@@ -49,11 +45,7 @@ const UserOrderDetails = () => {
     }
 
     const handelCancel = (id) => {
-<<<<<<< HEAD
         fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/cancel/${id}`, {
-=======
-        fetch(`https://omepcserver.up.railway.app/api/omEpc/buy/cancel/${id}`, {
->>>>>>> origin/final_version
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,11 +72,7 @@ const UserOrderDetails = () => {
                     icon: "error",
                 });
             })
-<<<<<<< HEAD
-    };
-=======
     }
->>>>>>> origin/final_version
 
     return (
         <div className='px-5 lg:px-14 md:px-10'>

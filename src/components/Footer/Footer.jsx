@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,16 +31,18 @@ const Footer = () => {
       </div>
       <div>
         <span className="footer-title">Products</span>
-        <a className="link link-hover">UPS & Backup</a>
-        <a className="link link-hover">Survillence</a>
-        <a className="link link-hover">Printer</a>
-        <a className="link link-hover">Computer</a>
+        <Link to="/ups" className="link link-hover">UPS & Backup</Link>
+        <Link to="/surveillance" className="link link-hover">Survillence</Link>
+        <Link to="/printer" className="link link-hover">Printer</Link>
+        <Link  to="/computer" className="link link-hover">Computer</Link>
+        <Link  to="/accesories" className="link link-hover">Accessories</Link>
+        <Link  to="/refurbished" className="link link-hover">Refurbished</Link>
       </div>
       <div>
         <span className="footer-title">Company</span>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Services</a>
-        <a className="link link-hover">Career</a>
+        <Link to="/about" className="link link-hover">About us</Link>
+        <Link to="/service" className="link link-hover">Services</Link>
+        <Link to='/career' className="link link-hover">Career</Link>
       </div>
       <div>
         <span className="footer-title">Social Links</span>

@@ -44,7 +44,7 @@ const Client = () => {
           <SwiperSlide>
             <img
               className="max-w-fit h-fit"
-              src="https://yt3.googleusercontent.com/-SqWW5wu-_p90A2gCAAD8NtrtHVz43jrq84P4BYHRkNrGbRBNqYwnUY2s4SKPbsuio-Elt8ONg=s900-c-k-c0x00ffffff-no-rj"
+              src="https://i.ibb.co/3BWR9ZT/channels4-profile.jpg"
               alt=""
             />
           </SwiperSlide>
