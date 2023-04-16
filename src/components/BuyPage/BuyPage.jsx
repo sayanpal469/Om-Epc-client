@@ -90,7 +90,7 @@ const BuyPage = () => {
                     if (response.status == 200) {
                         swal('Order Successfull')
                         navigate('/myOrder')
-                        window.location.reload();
+                        // window.location.reload();
                     }
                 })
                 .catch(function (error) {
