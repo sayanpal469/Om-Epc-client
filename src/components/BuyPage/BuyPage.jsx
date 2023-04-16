@@ -14,7 +14,7 @@ const BuyPage = () => {
     const [quantity, setQuantuty] = useState(1);
     const [userEmail] = useUserEmail();
     const navigate = useNavigate();
-    let deliveryCost = 100;
+    let deliveryCost = 99;
     const [phoneNumber, setPhoneNumber] = useState('');
     const [phError, setPhError] = useState('');
     const [pinError, setPinError] = useState('');
@@ -55,7 +55,7 @@ const BuyPage = () => {
 
 
     const { image, price, ram, modelName, brand } = buyProduct
-
+    console.log(buyProduct);
     const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
 
 
@@ -210,7 +210,7 @@ const BuyPage = () => {
 
                                 <tr className='flex justify-between mt-5 px-2'>
                                     <td className='font-bold capitalize'>Delivery Cost</td>
-                                    <td className='font-semibold'>₹{deliveryCost}</td>
+                                    <td className='font-semibold'>₹{quantity === 1 ? deliveryCost : quantity < 4 && quantity > 1 ? deliveryCost + 50 : deliveryCost + 100}*</td>
                                 </tr>
 
                                 <tr className='flex justify-between mt-5 px-2'>
