@@ -95,7 +95,7 @@ const Ups = () => {
   }, [dragging]);
 
   const handelFilterApply = () => {
-    console.log(upses);
+    // console.log(upses);
     const NumValue = Number(value);
     if(NumValue === 0) {
       setValue(0)
@@ -103,7 +103,7 @@ const Ups = () => {
     if (NumValue > 0 || selectedCheckboxes) {
       // console.log((value));
       const filterObject = { price: value, brands: selectedCheckboxes };
-      console.log(filterObject);
+      // console.log(filterObject);
 
       const filteredupses = upses.filter((computer) => {
         const priceMatch =
@@ -128,12 +128,12 @@ const Ups = () => {
         }
       });
 
-      console.log(filteredupses);
+      // console.log(filteredupses);
       // // console.log(selectedCheckboxes);
       // console.log(filterObject);
       setUpsesFilterList(filteredupses);
     } else if (NumValue <= 0) {
-      console.log(value);
+      // console.log(value);
       setUpsesFilterList([]);
     } else if (NumValue <= 0 && selectedCheckboxes ) {
       setUpsesFilterList([]);

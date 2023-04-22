@@ -129,12 +129,12 @@ const Printer = () => {
         }
       });
 
-      console.log(filteredprinters);
+      // console.log(filteredprinters);
       // // console.log(selectedCheckboxes);
       // console.log(filterObject);
       setPrintersFilterList(filteredprinters);
     } else if (NumValue <= 0) {
-      console.log(value);
+      // console.log(value);
       setPrintersFilterList([]);
     } else if (NumValue <= 0 && selectedCheckboxes) {
       setPrintersFilterList([]);

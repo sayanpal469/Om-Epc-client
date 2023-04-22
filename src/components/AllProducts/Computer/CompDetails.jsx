@@ -18,7 +18,7 @@ const CompDetails = () => {
       setLoading(true);
       try {
         let { data, status } = await axios.get(
-          `https://omepcserver.up.railway.app/api/omEpc/product/computer/${compId}`
+          `https://omepc-server.onrender.com/api/omEpc/product/computer/${compId}`
         );
         // let data = await res.json
         // console.log(data.computer)
@@ -31,7 +31,7 @@ const CompDetails = () => {
       } catch (error) {
         // setError(error.message)
         setLoading(false);
-        console.log(error.message);
+        // console.log(error.message);
       }
     };
 
@@ -69,7 +69,7 @@ const CompDetails = () => {
     color,
     description,
   } = computer;
-  const imgUrl = `https://omepcserver.up.railway.app/uploads/${image}`;
+  const imgUrl = `https://omepc-server.onrender.com/uploads/${image}`;
 
   return (
     // < !--component -- >
@@ -148,7 +148,10 @@ const CompDetails = () => {
                 <span className="text-gray-600 ml-3">4 Reviews</span>
               </span>
               <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
-                <a href="https://www.facebook.com/omepcsolution" className="text-gray-500 cursor-pointer">
+                <a
+                  href="https://www.facebook.com/omepcsolution"
+                  className="text-gray-500 cursor-pointer"
+                >
                   <svg
                     fill="currentColor"
                     stroke-linecap="round"
@@ -160,7 +163,10 @@ const CompDetails = () => {
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                   </svg>
                 </a>
-                <a href="https://wa.me/7981413743" className="ml-2 cursor-pointer text-gray-500">
+                <a
+                  href="https://wa.me/7981413743"
+                  className="ml-2 cursor-pointer text-gray-500"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-5 h-5"
@@ -172,7 +178,10 @@ const CompDetails = () => {
                     <path d="M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24zm.14 4.5a7.34 7.34 0 0 0-6.46 10.82l.15.26L4.5 19.5l4.08-1.3a7.38 7.38 0 0 0 10.92-6.4c0-4.03-3.3-7.3-7.36-7.3zm0 1.16c3.41 0 6.19 2.76 6.19 6.15a6.17 6.17 0 0 1-9.37 5.27l-.23-.15-2.38.76.77-2.28a6.08 6.08 0 0 1-1.17-3.6 6.17 6.17 0 0 1 6.19-6.15zM9.66 8.47a.67.67 0 0 0-.48.23l-.14.15c-.2.23-.5.65-.5 1.34 0 .72.43 1.41.64 1.71l.14.2a7.26 7.26 0 0 0 3.04 2.65l.4.14c1.44.54 1.47.33 1.77.3.33-.03 1.07-.43 1.22-.85.15-.42.15-.78.1-.85-.02-.05-.08-.08-.15-.12l-1.12-.54a5.15 5.15 0 0 0-.3-.13c-.17-.06-.3-.1-.41.09-.12.18-.47.58-.57.7-.1.1-.18.13-.32.08l-.4-.18a4.64 4.64 0 0 1-2.13-1.98c-.1-.18-.01-.28.08-.37l.27-.31c.1-.1.12-.18.18-.3a.3.3 0 0 0 .01-.26l-.1-.23-.48-1.15c-.15-.36-.3-.3-.4-.3l-.35-.02z" />
                   </svg>
                 </a>
-                <a onClick={() => (window.location.href = 'tel:917981413743')} className="ml-2 cursor-pointer text-gray-500">
+                <a
+                  onClick={() => (window.location.href = "tel:917981413743")}
+                  className="ml-2 cursor-pointer text-gray-500"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

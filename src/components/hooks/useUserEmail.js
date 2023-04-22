@@ -28,7 +28,7 @@ const useUserEmail = () => {
                 // console.log(data.email)
             }
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
     return [userEmail]

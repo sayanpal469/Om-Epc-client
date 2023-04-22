@@ -6,7 +6,7 @@ const AdminCareer = () => {
   const [careers, setCareers] = useState([]);
 
   useEffect(() => {
-    fetch("https://omepcserver.up.railway.app/api/omEpc/carrer")
+    fetch("https://omepc-server.onrender.com/api/omEpc/carrer")
       .then((res) => res.json())
       .then((data) => {
         if (data.success === true) {

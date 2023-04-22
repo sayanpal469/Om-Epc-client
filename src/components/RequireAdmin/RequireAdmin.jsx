@@ -11,7 +11,7 @@ const RequireAdmin = ({ children }) => {
     // const [admin] = useAdmin()
     const auth = localStorage?.getItem('user');
     const userAuth = JSON.parse(auth)
-    console.log(userAuth)
+    // console.log(userAuth)
 
     useEffect(() => {
         if (userAuth.isAdmin) {

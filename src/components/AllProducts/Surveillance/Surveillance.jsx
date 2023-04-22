@@ -108,7 +108,7 @@ const Surveillance = () => {
     if (NumValue > 0 || selectedCheckboxes) {
       // console.log((value));
       const filterObject = { price: value, brands: selectedCheckboxes };
-      console.log(filterObject);
+      // console.log(filterObject);
 
       const filteredComputers = surveillances.filter((computer) => {
         const priceMatch =
@@ -133,12 +133,12 @@ const Surveillance = () => {
         }
       });
 
-      console.log(filteredComputers);
+      // console.log(filteredComputers);
       // // console.log(selectedCheckboxes);
       // console.log(filterObject);
       setSurveillanceFilterList(filteredComputers);
     } else if (NumValue <= 0) {
-      console.log(value);
+      // console.log(value);
       setSurveillanceFilterList([]);
     } else if (NumValue <= 0 && selectedCheckboxes ) {
       setSurveillanceFilterList([]);

@@ -17,7 +17,7 @@ const ServiceRequestCart = ({ index, request, setCancel }) => {
 
   const handelCancel = (id) => {
     fetch(
-      `https://omepcserver.up.railway.app/api/omEpc/serviceReq/${type}/cancel/${id}`,
+      `https://omepc-server.onrender.com/api/omEpc/serviceReq/${type}/cancel/${id}`,
       {
         method: "PUT",
         headers: {

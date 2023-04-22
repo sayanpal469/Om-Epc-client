@@ -1,45 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch('https://omepcserver.up.railway.app/api/omEpc/login', {
+    fetch("https://omepc-server.onrender.com/api/omEpc/login", {
       method: "POST",
       body: JSON.stringify({
         email: email,
         password: password,
       }),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // console.log(data)
         if (data.success == true) {
           // console.log(data)
-          localStorage.setItem('user', JSON.stringify(data.user))
-          navigate('/', { state:{isLoggedIn : true} })
+          localStorage.setItem("user", JSON.stringify(data.user));
+          navigate("/", { state: { isLoggedIn: true } });
         } else {
           swal(`${data.message}`);
         }
-      })
+      });
   };
   return (
     <div className="login-container">
       <div className="flex items-center justify-center h-[100%]">
         <div className="w-full lg:w-[550px]">
-          <form onSubmit={handleSubmit} className=" form-container  rounded-lg p-8">
-          <h2 className="text-5xl text-white">Login</h2>
+          <form
+            onSubmit={handleSubmit}
+            className=" form-container  rounded-lg p-8"
+          >
+            <h2 className="text-5xl text-white">Login</h2>
             <div className="mb-4">
               <label
                 className="block text-white font-medium mb-2"

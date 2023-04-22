@@ -96,7 +96,7 @@ const Computer = () => {
   }, [dragging]);
 
   const handelFilterApply = () => {
-    console.log(computers);
+    // console.log(computers);
     const NumValue = Number(value);
     if(NumValue === 0) {
       setValue(0)
@@ -104,7 +104,7 @@ const Computer = () => {
     if (NumValue > 0 || selectedCheckboxes) {
       // console.log((value));
       const filterObject = { price: value, brands: selectedCheckboxes };
-      console.log(filterObject);
+      // console.log(filterObject);
 
       const filteredComputers = computers.filter((computer) => {
         const priceMatch =
@@ -129,12 +129,12 @@ const Computer = () => {
         }
       });
 
-      console.log(filteredComputers);
+      // console.log(filteredComputers);
       // // console.log(selectedCheckboxes);
       // console.log(filterObject);
       setComputersFilterList(filteredComputers);
     } else if (NumValue <= 0) {
-      console.log(value);
+      // console.log(value);
       setComputersFilterList([]);
     } else if (NumValue <= 0 && selectedCheckboxes ) {
       setComputersFilterList([]);
